@@ -32,5 +32,7 @@ export const confirm = async (page: Page) => {
 }
 
 export const expectPoints = async (page: Page, points: number) => {
-  await expect(page.getByText(String(points), { exact: true })).toBeVisible()
+  const display = String(Math.round(points * 100) / 100)
+
+  await expect(page.getByText(display, { exact: true })).toBeVisible()
 }

@@ -77,7 +77,7 @@ export const orderToPoint = (
     return maxPoints
   }
 
-  return Math.round(maxPoints - (index / (totalPlayers - 1)) * (maxPoints / 2))
+  return maxPoints - (index / (totalPlayers - 1)) * (maxPoints / 2)
 }
 
 export const timeToPoint = (startTime: number, question: Question): number => {

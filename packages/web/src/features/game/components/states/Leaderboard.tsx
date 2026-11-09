@@ -4,14 +4,16 @@ import { AnimatePresence, motion, useSpring, useTransform } from "motion/react"
 import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 
+import { formatPoints } from "@razzia/web/lib/formatPoints"
+
 interface Props {
   data: ManagerStatusDataMap["SHOW_LEADERBOARD"]
 }
 
 const AnimatedPoints = ({ from, to }: { from: number; to: number }) => {
   const spring = useSpring(from, { stiffness: 1000, damping: 30 })
-  const display = useTransform(spring, (value) => Math.round(value))
-  const [displayValue, setDisplayValue] = useState(from)
+  const display = useTransform(spring, (value) => formatPoints(value))
+  const [displayValue, setDisplayValue] = useState(() => formatPoints(from))
 
   useEffect(() => {
     spring.set(to)
@@ -105,7 +107,7 @@ const Leaderboard = ({ data: { oldLeaderboard, leaderboard } }: Props) => {
                   to={leaderboard.find((u) => u.id === id)?.points ?? 0}
                 />
               ) : (
-                <span className="drop-shadow-md">{points}</span>
+                <span className="drop-shadow-md">{formatPoints(points)}</span>
               )}
             </motion.div>
           ))}

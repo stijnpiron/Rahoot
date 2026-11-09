@@ -34,7 +34,7 @@ export const scoreQuestion = (
       return scoring(question, playerAnswer.answerIds)
     })()
 
-    const points = Math.round((playerAnswer?.points ?? 0) * scoreMultiplier)
+    const points = (playerAnswer?.points ?? 0) * scoreMultiplier
     const isCorrect = scoreMultiplier > 0
     const penalty = !isCorrect && playerAnswer ? (question.penalty ?? 0) : 0
 

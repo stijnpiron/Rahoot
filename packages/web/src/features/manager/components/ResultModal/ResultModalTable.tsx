@@ -6,6 +6,7 @@ import {
   ANSWERS_LABELS,
 } from "@razzia/web/features/game/utils/constants"
 import { useResultModal } from "@razzia/web/features/manager/contexts/result-modal-context"
+import { formatPoints } from "@razzia/web/lib/formatPoints"
 import { formatValue } from "@razzia/web/features/questions/estimation/utils"
 import { isAnswerCorrect } from "@razzia/web/features/questions/utils"
 import clsx from "clsx"
@@ -71,7 +72,7 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
         </td>
       )}
       <td className="text-foreground px-4 py-2.5 text-right font-semibold">
-        {points ?? getPlayerPoints(playerName)}
+        {formatPoints(points ?? getPlayerPoints(playerName))}
       </td>
     </tr>
   )
