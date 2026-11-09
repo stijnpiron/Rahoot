@@ -42,6 +42,10 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "Außerhalb der Toleranz",
       "average": "Durchschnittliche Antwort: {{value}}"
+    },
+    "pin": {
+      "insideArea": "Innerhalb des Bereichs",
+      "outsideArea": "Außerhalb des Bereichs"
     }
   },
   "tabs": {

@@ -63,7 +63,11 @@
     "trueFalseInvalidSolution": "Elige qué respuesta es correcta",
     "puzzleInvalidAnswers": "Una pregunta de rompecabezas debe tener entre 2 y 8 respuestas",
     "puzzleSurveyUnsupported": "Las preguntas de rompecabezas no están disponibles en modo encuesta",
-    "noEnabledQuestions": "Al menos una pregunta debe estar activada"
+    "noEnabledQuestions": "Al menos una pregunta debe estar activada",
+    "pinMediaRequired": "Una pregunta de pin necesita una imagen",
+    "pinInvalidOptions": "Faltan los ajustes de pin o no son válidos",
+    "pinInvalidArea": "Dibuja un área válida en la imagen",
+    "pinAreaRequired": "Dibuja el área correcta en la imagen"
   },
   "result": {
     "notFound": "Resultado no encontrado"
@@ -74,6 +78,7 @@
     "title": "Algo salió mal"
   },
   "media": {
+    "duplicate": "Este archivo ya existe como \"{{name}}\".",
     "invalidName": "Nombre de archivo no válido",
     "invalidType": "Archivo no compatible, sube una imagen, un audio o un vídeo",
     "missingFile": "No se ha enviado ningún archivo",

@@ -1,11 +1,17 @@
-import type { QuestionOptions } from "@razzia/common/types/game"
+import type {
+  PinPoint,
+  QuestionMedia,
+  QuestionOptions,
+} from "@razzia/common/types/game"
 import type { ManagerStatusDataMap } from "@razzia/common/types/game/status"
 
 export interface AnswerComponentProps {
   answers: string[]
   options?: QuestionOptions
   puzzleOrder?: number[]
+  media?: QuestionMedia
   onSubmit: (_answerKeys: number[]) => void
+  onSubmitPin?: (_pin: PinPoint) => void
   readOnly?: boolean
   fill?: boolean
 }

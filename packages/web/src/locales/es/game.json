@@ -68,5 +68,12 @@
   "trueFalse": {
     "true": "Verdadero",
     "false": "Falso"
+  },
+  "pin": {
+    "confirm": "Confirmar",
+    "confirmed": "¡Fijado!",
+    "imageAlt": "Marca la respuesta en la imagen",
+    "teaser": "Coloca un pin en la imagen",
+    "noPins": "Sin pines"
   }
 }

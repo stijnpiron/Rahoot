@@ -54,6 +54,20 @@
       },
       "trueFalse": {
         "correctAnswer": "Correct answer"
+      },
+      "pin": {
+        "title": "Pin settings",
+        "shape": {
+          "rect": "Rectangle",
+          "circle": "Circle",
+          "freehand": "Freehand"
+        },
+        "zoomIn": "Zoom in",
+        "zoomOut": "Zoom out",
+        "erase": "Erase area",
+        "moveHint": "Use the hand tool to drag the area to a new position.",
+        "mediaHint": "Add an image first, then draw the correct area on it.",
+        "move": "Move area"
       }
     },
     "deleteQuestion": "Delete question",
@@ -83,7 +97,8 @@
     "multi": "Multiple choice",
     "estimation": "Estimation",
     "trueFalse": "True/False",
-    "puzzle": "Puzzle"
+    "puzzle": "Puzzle",
+    "pin": "Pin on image"
   },
   "quizzSaved": "Quizz saved successfully",
   "quizzUpdated": "Quizz updated successfully",
@@ -95,6 +110,8 @@
     "libraryEmpty": "Your library is empty",
     "upload": "Upload",
     "uploadHint": "Images, audio or video, up to {{size}} MB",
+    "duplicateTitle": "Media already exists",
+    "useExisting": "Use existing",
     "search": "Search media...",
     "filter": {
       "all": "All"

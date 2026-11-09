@@ -68,5 +68,12 @@
   "trueFalse": {
     "true": "Doğru",
     "false": "Yanlış"
+  },
+  "pin": {
+    "confirm": "Onayla",
+    "confirmed": "İşaretlendi!",
+    "imageAlt": "Cevabı görsel üzerinde işaretle",
+    "teaser": "Görsel üzerine bir işaret koyun",
+    "noPins": "İşaret yok"
   }
 }

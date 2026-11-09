@@ -78,6 +78,7 @@ export const QUESTION_TYPES = {
   ESTIMATION: "estimation",
   TRUE_FALSE: "trueFalse",
   PUZZLE: "puzzle",
+  PIN: "pin",
 } as const
 
 export const ESTIMATION_INPUT_MODES = {

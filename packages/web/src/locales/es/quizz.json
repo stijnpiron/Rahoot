@@ -54,6 +54,20 @@
       },
       "trueFalse": {
         "correctAnswer": "Respuesta correcta"
+      },
+      "pin": {
+        "title": "Ajustes de pin",
+        "shape": {
+          "rect": "Rectángulo",
+          "circle": "Círculo",
+          "freehand": "A mano alzada"
+        },
+        "zoomIn": "Acercar",
+        "zoomOut": "Alejar",
+        "erase": "Borrar área",
+        "moveHint": "Usa la herramienta de mano para arrastrar el área a una nueva posición.",
+        "mediaHint": "Añade primero una imagen y dibuja después el área correcta.",
+        "move": "Mover área"
       }
     },
     "deleteQuestion": "Eliminar pregunta",
@@ -83,7 +97,8 @@
     "multi": "Opción múltiple",
     "estimation": "Estimación",
     "trueFalse": "Verdadero/Falso",
-    "puzzle": "Rompecabezas"
+    "puzzle": "Rompecabezas",
+    "pin": "Pin en imagen"
   },
   "quizzSaved": "Cuestionario guardado con éxito",
   "quizzUpdated": "Cuestionario actualizado con éxito",
@@ -95,6 +110,8 @@
     "libraryEmpty": "Tu biblioteca está vacía",
     "upload": "Subir",
     "uploadHint": "Imágenes, audio o vídeo, hasta {{size}} MB",
+    "duplicateTitle": "El medio ya existe",
+    "useExisting": "Usar el existente",
     "search": "Buscar archivos...",
     "filter": {
       "all": "Todo"

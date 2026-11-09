@@ -54,6 +54,20 @@
       },
       "trueFalse": {
         "correctAnswer": "Poprawna odpowiedź"
+      },
+      "pin": {
+        "title": "Ustawienia pinezki",
+        "shape": {
+          "rect": "Prostokąt",
+          "circle": "Koło",
+          "freehand": "Odręcznie"
+        },
+        "zoomIn": "Powiększ",
+        "zoomOut": "Pomniejsz",
+        "erase": "Wymaż obszar",
+        "moveHint": "Użyj narzędzia ręki, aby przeciągnąć obszar w nowe miejsce.",
+        "mediaHint": "Najpierw dodaj obraz, a potem narysuj właściwy obszar.",
+        "move": "Przenieś obszar"
       }
     },
     "deleteQuestion": "Usuń pytanie",
@@ -83,7 +97,8 @@
     "multi": "Wielokrotny wybór",
     "estimation": "Szacowanie",
     "trueFalse": "Prawda/Fałsz",
-    "puzzle": "Puzzle"
+    "puzzle": "Puzzle",
+    "pin": "Pin na obrazie"
   },
   "quizzSaved": "Quiz został zapisany",
   "quizzUpdated": "Quiz został zaktualizowany",
@@ -95,6 +110,8 @@
     "libraryEmpty": "Twoja biblioteka jest pusta",
     "upload": "Prześlij",
     "uploadHint": "Obrazy, dźwięk lub wideo, do {{size}} MB",
+    "duplicateTitle": "Medium już istnieje",
+    "useExisting": "Użyj istniejącego",
     "search": "Szukaj multimediów...",
     "filter": {
       "all": "Wszystkie"

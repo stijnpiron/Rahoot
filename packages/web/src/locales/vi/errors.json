@@ -63,7 +63,11 @@
     "trueFalseInvalidSolution": "Chọn câu trả lời đúng",
     "puzzleInvalidAnswers": "Câu hỏi ghép thứ tự phải có từ 2 đến 8 đáp án",
     "puzzleSurveyUnsupported": "Câu hỏi ghép thứ tự không được hỗ trợ ở chế độ khảo sát",
-    "noEnabledQuestions": "Phải bật ít nhất một câu hỏi"
+    "noEnabledQuestions": "Phải bật ít nhất một câu hỏi",
+    "pinMediaRequired": "Câu hỏi ghim cần một ảnh",
+    "pinInvalidOptions": "Thiếu cài đặt ghim hoặc không hợp lệ",
+    "pinInvalidArea": "Vẽ một vùng hợp lệ trên ảnh",
+    "pinAreaRequired": "Vẽ vùng đúng trên ảnh"
   },
   "result": {
     "notFound": "Không tìm thấy kết quả"
@@ -74,6 +78,7 @@
     "title": "Đã có lỗi xảy ra"
   },
   "media": {
+    "duplicate": "Tệp này đã tồn tại với tên \"{{name}}\".",
     "invalidName": "Tên media không hợp lệ",
     "invalidType": "Tệp không được hỗ trợ, hãy tải lên hình ảnh, âm thanh hoặc video",
     "missingFile": "Chưa có tệp nào được gửi",

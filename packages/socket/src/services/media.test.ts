@@ -34,6 +34,29 @@ describe("saveMedia", () => {
       saveMedia(new File(["<script></script>"], "evil.png")),
     ).rejects.toThrow("errors:media.invalidType")
   })
+
+  it("rejects a duplicate upload and returns the existing media", async () => {
+    const first = await saveMedia(new File([PNG_BYTES], "image.png"))
+
+    await expect(
+      saveMedia(new File([PNG_BYTES], "copy.png")),
+    ).rejects.toMatchObject({
+      key: "errors:media.duplicate",
+      data: { media: { name: first.name } },
+    })
+    expect(listMedia().map((m) => m.name)).toEqual([first.name])
+  })
+
+  it("finds duplicates for files uploaded before the hash store existed", async () => {
+    const first = await saveMedia(new File([PNG_BYTES], "image.png"))
+    fs.rmSync(join(mediaDir(), "hashes.json"))
+
+    await expect(
+      saveMedia(new File([PNG_BYTES], "copy.png")),
+    ).rejects.toMatchObject({
+      data: { media: { name: first.name } },
+    })
+  })
 })
 
 describe("listMedia", () => {
@@ -54,6 +77,15 @@ describe("deleteMedia", () => {
     deleteMedia(media.name)
 
     expect(listMedia()).toEqual([])
+  })
+
+  it("re-uploads the same content after a delete", async () => {
+    const first = await saveMedia(new File([PNG_BYTES], "image.png"))
+    deleteMedia(first.name)
+
+    const second = await saveMedia(new File([PNG_BYTES], "image.png"))
+
+    expect(second.name).not.toBe(first.name)
   })
 
   it.each(["../secret.png", "image.exe", "image"])(

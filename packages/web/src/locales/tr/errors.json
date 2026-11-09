@@ -63,7 +63,11 @@
     "trueFalseInvalidSolution": "Hangi cevabın doğru olduğunu seç",
     "puzzleInvalidAnswers": "Yapboz sorusu 2 ile 8 cevap arasında olmalıdır",
     "puzzleSurveyUnsupported": "Yapboz soruları anket modunda desteklenmez",
-    "noEnabledQuestions": "En az bir soru etkin olmalıdır"
+    "noEnabledQuestions": "En az bir soru etkin olmalıdır",
+    "pinMediaRequired": "İşaret sorusu bir görsel gerektirir",
+    "pinInvalidOptions": "İşaret ayarları eksik veya geçersiz",
+    "pinInvalidArea": "Görsel üzerine geçerli bir alan çizin",
+    "pinAreaRequired": "Görsel üzerine doğru alanı çizin"
   },
   "result": {
     "notFound": "Sonuç bulunamadı"
@@ -74,6 +78,7 @@
     "title": "Bir şeyler ters gitti"
   },
   "media": {
+    "duplicate": "Bu dosya zaten \"{{name}}\" olarak mevcut.",
     "invalidName": "Geçersiz medya adı",
     "invalidType": "Desteklenmeyen dosya; bir görsel, ses veya video dosyası yükleyin",
     "missingFile": "Hiçbir dosya gönderilmedi",

@@ -63,7 +63,11 @@
     "trueFalseInvalidSolution": "Wybierz, która odpowiedź jest poprawna",
     "puzzleInvalidAnswers": "Pytanie typu puzzle musi mieć od 2 do 8 odpowiedzi",
     "puzzleSurveyUnsupported": "Pytania typu puzzle nie są obsługiwane w trybie ankiety",
-    "noEnabledQuestions": "Przynajmniej jedno pytanie musi być włączone"
+    "noEnabledQuestions": "Przynajmniej jedno pytanie musi być włączone",
+    "pinMediaRequired": "Pytanie z pinezką wymaga obrazu",
+    "pinInvalidOptions": "Brak ustawień pinezki lub są nieprawidłowe",
+    "pinInvalidArea": "Narysuj prawidłowy obszar na obrazie",
+    "pinAreaRequired": "Narysuj właściwy obszar na obrazie"
   },
   "result": {
     "notFound": "Nie znaleziono wyniku"
@@ -74,6 +78,7 @@
     "title": "Coś poszło nie tak"
   },
   "media": {
+    "duplicate": "Ten plik już istnieje jako \"{{name}}\".",
     "invalidName": "Nieprawidłowa nazwa pliku multimedialnego",
     "invalidType": "Nieobsługiwany plik, prześlij obraz, plik audio lub wideo",
     "missingFile": "Nie przesłano żadnego pliku",

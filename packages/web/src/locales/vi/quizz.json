@@ -54,6 +54,20 @@
       },
       "trueFalse": {
         "correctAnswer": "Câu trả lời đúng"
+      },
+      "pin": {
+        "title": "Cài đặt ghim",
+        "shape": {
+          "rect": "Hình chữ nhật",
+          "circle": "Hình tròn",
+          "freehand": "Vẽ tay"
+        },
+        "zoomIn": "Phóng to",
+        "zoomOut": "Thu nhỏ",
+        "erase": "Xóa vùng",
+        "moveHint": "Dùng công cụ bàn tay để kéo vùng đến vị trí mới.",
+        "mediaHint": "Thêm ảnh trước, sau đó vẽ vùng đúng.",
+        "move": "Di chuyển vùng"
       }
     },
     "deleteQuestion": "Xóa câu hỏi",
@@ -83,7 +97,8 @@
     "multi": "Chọn nhiều đáp án",
     "estimation": "Ước lượng",
     "trueFalse": "Đúng/Sai",
-    "puzzle": "Ghép thứ tự"
+    "puzzle": "Ghép thứ tự",
+    "pin": "Ghim trên ảnh"
   },
   "quizzSaved": "Đã lưu trò chơi thành công",
   "quizzUpdated": "Đã cập nhật trò chơi thành công",
@@ -95,6 +110,8 @@
     "libraryEmpty": "Thư viện của bạn đang trống",
     "upload": "Tải lên",
     "uploadHint": "Hình ảnh, âm thanh hoặc video, tối đa {{size}} MB",
+    "duplicateTitle": "Tệp này đã tồn tại",
+    "useExisting": "Dùng tệp có sẵn",
     "search": "Tìm media...",
     "filter": {
       "all": "Tất cả"

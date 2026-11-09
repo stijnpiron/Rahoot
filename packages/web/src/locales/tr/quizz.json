@@ -54,6 +54,20 @@
       },
       "trueFalse": {
         "correctAnswer": "Doğru cevap"
+      },
+      "pin": {
+        "title": "İşaret ayarları",
+        "shape": {
+          "rect": "Dikdörtgen",
+          "circle": "Daire",
+          "freehand": "Serbest çizim"
+        },
+        "zoomIn": "Yakınlaştır",
+        "zoomOut": "Uzaklaştır",
+        "erase": "Alanı sil",
+        "moveHint": "Alanı yeni bir konuma sürüklemek için el aracını kullanın.",
+        "mediaHint": "Önce bir görsel ekleyin, sonra doğru alanı çizin.",
+        "move": "Alanı taşı"
       }
     },
     "deleteQuestion": "Soruyu sil",
@@ -83,7 +97,8 @@
     "multi": "Çoktan seçmeli",
     "estimation": "Tahmin",
     "trueFalse": "Doğru/Yanlış",
-    "puzzle": "Yapboz"
+    "puzzle": "Yapboz",
+    "pin": "Görselde işaretle"
   },
   "quizzSaved": "Test başarıyla kaydedildi",
   "quizzUpdated": "Test başarıyla güncellendi",
@@ -95,6 +110,8 @@
     "libraryEmpty": "Kitaplığınız boş",
     "upload": "Yükle",
     "uploadHint": "{{size}} MB'a kadar görsel, ses veya video",
+    "duplicateTitle": "Medya zaten mevcut",
+    "useExisting": "Mevcut olanı kullan",
     "search": "Medyada ara...",
     "filter": {
       "all": "Tümü"
