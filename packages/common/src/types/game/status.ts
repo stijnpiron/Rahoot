@@ -1,5 +1,6 @@
 import type {
   Player,
+  PinPoint,
   QuestionMedia,
   QuestionOptions,
   QuestionType,
@@ -74,6 +75,7 @@ interface ManagerExtraStatus {
     options?: QuestionOptions
     note?: string
     puzzleFullyCorrect?: { count: number; total: number }
+    pins?: Array<PinPoint & { name: string; correct: boolean }>
   }
   SHOW_LEADERBOARD: { oldLeaderboard: Player[]; leaderboard: Player[] }
 }

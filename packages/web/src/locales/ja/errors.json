@@ -63,7 +63,11 @@
     "trueFalseInvalidSolution": "正解を選んでください",
     "puzzleInvalidAnswers": "パズル問題のタイルは2〜8個である必要があります",
     "puzzleSurveyUnsupported": "パズル問題はアンケートモードでは使用できません",
-    "noEnabledQuestions": "少なくとも1つの問題を有効にする必要があります"
+    "noEnabledQuestions": "少なくとも1つの問題を有効にする必要があります",
+    "pinMediaRequired": "ピン問題には画像が必要です",
+    "pinInvalidOptions": "ピン設定がないか無効です",
+    "pinInvalidArea": "画像に有効なエリアを描いてください",
+    "pinAreaRequired": "画像に正しいエリアを描いてください"
   },
   "result": {
     "notFound": "結果が見つかりません"

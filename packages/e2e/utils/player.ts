@@ -147,6 +147,24 @@ export const confirm = async (page: Page) => {
   await page.getByRole("button", { name: t("game:confirm") }).click()
 }
 
+export const dropPin = async (page: Page, xRatio: number, yRatio: number) => {
+  const image = page.locator(`img[alt="${t("game:pin.imageAlt")}"]`)
+
+  await image.waitFor({ state: "visible", timeout: 15000 })
+
+  const box = await image.boundingBox()
+
+  if (!box) {
+    throw new Error("Pin image not visible")
+  }
+
+  await page.mouse.click(
+    box.x + box.width * xRatio,
+    box.y + box.height * yRatio,
+  )
+  await page.getByRole("button", { name: t("game:pin.confirm") }).click()
+}
+
 export const expectPoints = async (page: Page, points: number) => {
   const display = String(Math.round(points * 100) / 100)
 

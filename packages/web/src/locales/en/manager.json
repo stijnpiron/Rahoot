@@ -42,6 +42,10 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "Outside the margin",
       "average": "Average answer: {{value}}"
+    },
+    "pin": {
+      "insideArea": "Inside the area",
+      "outsideArea": "Outside the area"
     }
   },
   "tabs": {

@@ -63,7 +63,11 @@
     "trueFalseInvalidSolution": "Pick which answer is correct",
     "puzzleInvalidAnswers": "A puzzle question must have between 2 and 8 answers",
     "puzzleSurveyUnsupported": "Puzzle questions are not supported in survey mode",
-    "noEnabledQuestions": "At least one question must be enabled"
+    "noEnabledQuestions": "At least one question must be enabled",
+    "pinMediaRequired": "A pin question needs an image",
+    "pinInvalidOptions": "Pin settings are missing or invalid",
+    "pinInvalidArea": "Draw a valid area on the image",
+    "pinAreaRequired": "Draw the correct area on the image"
   },
   "result": {
     "notFound": "Result not found"

@@ -9,10 +9,8 @@ export const type = QUESTION_TYPES.PUZZLE
  * them. The stored `answers` order is the solution, so tile `i` belongs at
  * position `i`.
  */
-export const scoring: ScoringFn = (
-  question: Question,
-  answerIds: number[],
-): number => {
+export const scoring: ScoringFn = (question, answer): number => {
+  const { answerIds } = answer
   const total = question.answers.length
 
   if (total === 0 || answerIds.length !== total) {
@@ -30,6 +28,6 @@ export const countFullyCorrect = (
 ): number =>
   answers.filter(
     (answer) =>
-      scoring(question, answer.answerIds) === 1 &&
+      scoring(question, answer) === 1 &&
       answer.answerIds.length === question.answers.length,
   ).length

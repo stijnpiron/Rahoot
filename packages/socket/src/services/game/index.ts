@@ -1,6 +1,7 @@
 import { createDefaultGameSettings, EVENTS } from "@razzia/common/constants"
 import type {
   GameSettings,
+  PinPoint,
   Player,
   Quizz,
   QuizzMode,
@@ -382,8 +383,8 @@ class Game {
     await this.round.start(socket)
   }
 
-  selectAnswer(socket: Socket, answerIds: number[]) {
-    this.round.selectAnswer(socket, answerIds)
+  selectAnswer(socket: Socket, answerIds: number[], pin?: PinPoint) {
+    this.round.selectAnswer(socket, answerIds, pin)
   }
 
   advance() {

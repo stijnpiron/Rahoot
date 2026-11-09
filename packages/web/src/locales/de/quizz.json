@@ -54,6 +54,20 @@
       },
       "trueFalse": {
         "correctAnswer": "Richtige Antwort"
+      },
+      "pin": {
+        "title": "Pin-Einstellungen",
+        "shape": {
+          "rect": "Rechteck",
+          "circle": "Kreis",
+          "freehand": "Freihand"
+        },
+        "zoomIn": "Vergrößern",
+        "zoomOut": "Verkleinern",
+        "erase": "Bereich löschen",
+        "moveHint": "Verschiebe den Bereich mit dem Hand-Werkzeug an eine neue Position.",
+        "mediaHint": "Füge zuerst ein Bild hinzu und zeichne dann den richtigen Bereich.",
+        "move": "Bereich verschieben"
       }
     },
     "deleteQuestion": "Frage löschen",
@@ -83,7 +97,8 @@
     "multi": "Mehrfachauswahl",
     "estimation": "Schätzung",
     "trueFalse": "Wahr/Falsch",
-    "puzzle": "Puzzle"
+    "puzzle": "Puzzle",
+    "pin": "Bild anpinnen"
   },
   "quizzSaved": "Quiz erfolgreich gespeichert",
   "quizzUpdated": "Quiz erfolgreich aktualisiert",

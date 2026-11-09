@@ -54,6 +54,20 @@
       },
       "trueFalse": {
         "correctAnswer": "Risposta corretta"
+      },
+      "pin": {
+        "title": "Impostazioni pin",
+        "shape": {
+          "rect": "Rettangolo",
+          "circle": "Cerchio",
+          "freehand": "A mano libera"
+        },
+        "zoomIn": "Zoom avanti",
+        "zoomOut": "Zoom indietro",
+        "erase": "Cancella area",
+        "moveHint": "Usa lo strumento mano per trascinare l'area in una nuova posizione.",
+        "mediaHint": "Aggiungi prima un'immagine, poi disegna l'area corretta.",
+        "move": "Sposta area"
       }
     },
     "deleteQuestion": "Elimina domanda",
@@ -83,7 +97,8 @@
     "multi": "Scelta multipla",
     "estimation": "Stima",
     "trueFalse": "Vero/Falso",
-    "puzzle": "Puzzle"
+    "puzzle": "Puzzle",
+    "pin": "Pin sull'immagine"
   },
   "quizzSaved": "Quiz salvato con successo",
   "quizzUpdated": "Quiz aggiornato con successo",

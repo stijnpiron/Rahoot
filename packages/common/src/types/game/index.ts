@@ -28,7 +28,22 @@ export interface EstimationQuestionOptions {
   margin: number
 }
 
-export type QuestionOptions = MultiQuestionOptions | EstimationQuestionOptions
+export interface PinPoint {
+  x: number
+  y: number
+}
+
+export type PinArea =
+  | { kind: "rect"; x: number; y: number; w: number; h: number }
+  | { kind: "circle"; cx: number; cy: number; r: number }
+  | { kind: "freehand"; points: PinPoint[] }
+
+export interface PinQuestionOptions {
+  area: PinArea | null
+}
+
+export type QuestionOptions =
+  MultiQuestionOptions | EstimationQuestionOptions | PinQuestionOptions
 
 export interface Player {
   id: string
@@ -42,6 +57,7 @@ export interface Player {
 export interface Answer {
   playerId: string
   answerIds: number[]
+  pin?: PinPoint
   points: number
 }
 
@@ -111,6 +127,7 @@ export interface GameUpdateQuestion {
 export interface PlayerAnswerRecord {
   playerName: string
   answerIds: number[] | null
+  pin?: PinPoint | null
   correct?: boolean
   points?: number
 }

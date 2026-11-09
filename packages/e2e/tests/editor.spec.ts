@@ -209,6 +209,65 @@ test("saves a puzzle question with tiles in solution order", async ({
   })
 })
 
+test("saves a pin question with a drawn area", async ({ page }) => {
+  const subject = uniqueSubject("Pin quizz")
+
+  await page.getByRole("button", { name: t("manager:quizz.create") }).click()
+  await page.getByPlaceholder(t("quizz:titleQuizzPlaceholder")).fill(subject)
+  await page
+    .getByPlaceholder(t("quizz:question.placeholder"))
+    .fill("Where is the center?")
+  await selectOption(
+    page,
+    t("quizz:question.config.answerMode"),
+    t("quizz:questionType.pin"),
+  )
+
+  // Add an image by URL through the media panel.
+  await page
+    .getByRole("button", { name: t("quizz:media.fromUrl") })
+    .first()
+    .click()
+  await page
+    .getByPlaceholder(t("quizz:question.mediaUrlPlaceholder"))
+    .fill(
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAtElEQVR4nO3QQQkAIADAQOObxZJawY8M4WABxo25ti4b+cFHwYIFKw8WLFh5sGDByoMFC1YeLFiw8mDBgpUHCxasPFiwYOXBggUrDxYsWHmwYMHKgwULVh4sWLDyYMGClQcLFqw8WLBg5cGCBSsPFixYebBgwcqDBQtWHixYsPJgwYKVBwsWrDxYsGDlwYIFKw8WLFh5sGDByoMFC1YeLFiw8mDBgpUHCxasPFiwYOXBgvWmA2y8nwxsMNU8AAAAAElFTkSuQmCC",
+    )
+  await page
+    .getByRole("button", { name: t("quizz:question.media.image") })
+    .click()
+
+  // Draw a rectangle area directly on the inline image preview.
+  const canvas = page.locator(`img[alt="Where is the center?"]`)
+  await canvas.waitFor({ state: "visible", timeout: 15000 })
+  const box = await canvas.boundingBox()
+
+  if (!box) {
+    throw new Error("Pin canvas not visible")
+  }
+
+  await page.mouse.move(box.x + box.width * 0.3, box.y + box.height * 0.3)
+  await page.mouse.down()
+  await page.mouse.move(box.x + box.width * 0.7, box.y + box.height * 0.7, {
+    steps: 5,
+  })
+  await page.mouse.up()
+
+  await saveQuizz(page)
+
+  expect(readQuizz(subject)).toMatchObject({
+    questions: [
+      {
+        type: "pin",
+        answers: [],
+        options: {
+          area: { kind: "rect", x: 0.3, y: 0.3, w: 0.4, h: 0.4 },
+        },
+      },
+    ],
+  })
+})
+
 test("disables a question and keeps it in the saved quizz", async ({
   page,
 }) => {

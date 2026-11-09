@@ -122,6 +122,25 @@ const ResultModalAnswers = () => {
       return estimationRows()
     }
 
+    if (questionResult.type === QUESTION_TYPES.PIN) {
+      return [
+        {
+          label: t("manager:result.pin.insideArea"),
+          count: correctCount,
+          isCorrect: true,
+          color: "bg-correct",
+          answerLabel: "✓",
+        },
+        {
+          label: t("manager:result.pin.outsideArea"),
+          count: answeredCount - correctCount,
+          isCorrect: false,
+          color: "bg-red-500",
+          answerLabel: "✗",
+        },
+      ]
+    }
+
     return questionResult.answers.map((label, ai) => ({
       label:
         questionResult.type === QUESTION_TYPES.TRUE_FALSE

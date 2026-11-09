@@ -1,4 +1,8 @@
-import { MAX_MEDIA_SIZE, MEDIA_TYPES } from "@razzia/common/constants"
+import {
+  MAX_MEDIA_SIZE,
+  MEDIA_TYPES,
+  QUESTION_TYPES,
+} from "@razzia/common/constants"
 import type { QuestionMediaType } from "@razzia/common/types/game"
 import { questionMediaValidator } from "@razzia/common/validators/quizz"
 import Button from "@razzia/web/components/Button"
@@ -7,6 +11,8 @@ import Input from "@razzia/web/components/Input"
 import Loader from "@razzia/web/components/Loader"
 import QuestionMedia from "@razzia/web/components/QuestionMedia"
 import MediaLibrary from "@razzia/web/features/quizz/components/QuestionEditor/MediaLibrary"
+import PinAreaEditor from "@razzia/web/features/questions/pin/components/PinAreaEditor"
+import { getPinOptions } from "@razzia/web/features/questions/pin/utils"
 import { useQuizzEditor } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
 import {
   UPLOAD_ACCEPT,
@@ -39,6 +45,8 @@ const QuestionEditorMedia = () => {
   const [isLibraryOpen, setIsLibraryOpen] = useState(false)
   const [isUrlOpen, setIsUrlOpen] = useState(Boolean(questionMedia?.url))
   const { t } = useTranslation()
+
+  const isPinQuestion = currentQuestion.type === QUESTION_TYPES.PIN
 
   const { upload, pendingCount } = useUploadMedia(({ type, url }) =>
     updateQuestion(currentIndex, { media: { type, url } }),
@@ -89,11 +97,24 @@ const QuestionEditorMedia = () => {
 
   return (
     <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-3 p-4">
-      <QuestionMedia
-        media={currentQuestion.media}
-        alt="Question Media"
-        autoPlay={false}
-      />
+      {isPinQuestion && questionMedia?.type === MEDIA_TYPES.IMAGE ? (
+        <PinAreaEditor
+          mediaUrl={questionMedia.url}
+          alt={currentQuestion.question}
+          area={getPinOptions(currentQuestion.options).area}
+          onChange={(area) =>
+            updateQuestion(currentIndex, {
+              options: { ...getPinOptions(currentQuestion.options), area },
+            })
+          }
+        />
+      ) : (
+        <QuestionMedia
+          media={currentQuestion.media}
+          alt="Question Media"
+          autoPlay={false}
+        />
+      )}
 
       {!questionMedia?.type && (
         <Card className="my-auto flex max-h-100 w-full max-w-xl flex-1 flex-col items-center justify-center gap-2">

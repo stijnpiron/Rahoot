@@ -1,5 +1,8 @@
-import { QUIZZ_MODES } from "@razzia/common/constants"
-import { isEstimationOptions } from "@razzia/common/questions/options"
+import { QUESTION_TYPES, QUIZZ_MODES } from "@razzia/common/constants"
+import {
+  isEstimationOptions,
+  isPinOptions,
+} from "@razzia/common/questions/options"
 import type { PlayerAnswerRecord } from "@razzia/common/types/game"
 import {
   ANSWERS_COLORS,
@@ -21,22 +24,27 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
   const { result, questionResult, getPlayerPoints } = useResultModal()
   const { t } = useTranslation()
 
-  const { playerName, answerIds, correct, points } = playerAnswer
-  const hasAnswer = answerIds !== null && answerIds.length > 0
+  const { playerName, answerIds, pin, correct, points } = playerAnswer
+  const hasAnswer =
+    (answerIds !== null && answerIds.length > 0) ||
+    (pin !== null && pin !== undefined)
 
-  const isCorrect = correct ?? isAnswerCorrect(questionResult, answerIds)
+  const isCorrect = correct ?? isAnswerCorrect(questionResult, playerAnswer)
   const isEstimation = isEstimationOptions(questionResult.options)
+  const isPin =
+    isPinOptions(questionResult.options) ||
+    questionResult.type === QUESTION_TYPES.PIN
 
   return (
     <tr>
       <td className="px-5 py-2.5 font-medium">{playerName}</td>
       <td className="px-4 py-2.5">
-        {hasAnswer && isEstimation && (
+        {hasAnswer && isEstimation && answerIds && (
           <span className="bg-accent text-accent-foreground inline-flex rounded-md px-2 py-1 text-xs font-bold">
             {formatValue(answerIds[0])}
           </span>
         )}
-        {hasAnswer && !isEstimation && (
+        {hasAnswer && !isEstimation && !isPin && answerIds && (
           <div className="flex flex-wrap gap-1">
             {answerIds.map((id) => (
               <span
@@ -53,6 +61,11 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
               </span>
             ))}
           </div>
+        )}
+        {pin && (
+          <span className="bg-accent text-accent-foreground inline-flex rounded-md px-2 py-1 text-xs font-bold">
+            {Math.round(pin.x * 100)}%, {Math.round(pin.y * 100)}%
+          </span>
         )}
         {!hasAnswer && <span className="text-muted-foreground text-xs">-</span>}
       </td>

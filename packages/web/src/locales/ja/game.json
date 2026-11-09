@@ -68,5 +68,12 @@
   "trueFalse": {
     "true": "正しい",
     "false": "誤り"
+  },
+  "pin": {
+    "confirm": "決定",
+    "confirmed": "ピン留め完了！",
+    "imageAlt": "画像の上に答えをピン留め",
+    "teaser": "画像にピンを置いてください",
+    "noPins": "ピンなし"
   }
 }

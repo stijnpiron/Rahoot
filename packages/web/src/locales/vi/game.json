@@ -69,5 +69,12 @@
   "trueFalse": {
     "true": "Đúng",
     "false": "Sai"
+  },
+  "pin": {
+    "confirm": "Xác nhận",
+    "confirmed": "Đã ghim!",
+    "imageAlt": "Đánh dấu câu trả lời trên ảnh",
+    "teaser": "Hãy ghim một điểm trên ảnh",
+    "noPins": "Không có ghim"
   }
 }

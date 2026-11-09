@@ -42,7 +42,7 @@ export const ResultModalProvider = ({ children, result, onClose }: Props) => {
   ).length
 
   const correctCount = questionResult.playerAnswers.filter(
-    (pa) => pa.correct ?? isAnswerCorrect(questionResult, pa.answerIds),
+    (pa) => pa.correct ?? isAnswerCorrect(questionResult, pa),
   ).length
 
   const correctPct =

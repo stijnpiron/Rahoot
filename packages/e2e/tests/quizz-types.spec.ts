@@ -6,6 +6,7 @@ import {
   answer,
   answerTrueFalse,
   confirm,
+  dropPin,
   expectPoints,
   joinGame,
   solvePuzzle,
@@ -52,6 +53,13 @@ test("scores every question type with its scoring settings", async ({
 
   await solvePuzzle(player, ["Ant", "Cat", "Dog"])
   await expect(player.getByText("+750")).toBeVisible()
+  await expectPoints(player, 3300)
+  await next(manager)
+
+  // Pin at (0.75, 0.5) is outside the circle (r 0.2 around (0.5, 0.5)):
+  // no points.
+  await dropPin(player, 0.75, 0.5)
+  await expect(player.getByText("+0")).toBeVisible()
   await expectPoints(player, 3300)
   await next(manager)
 

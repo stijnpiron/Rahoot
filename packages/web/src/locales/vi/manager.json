@@ -42,6 +42,10 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "Ngoài biên độ",
       "average": "Câu trả lời trung bình: {{value}}"
+    },
+    "pin": {
+      "insideArea": "Trong vùng",
+      "outsideArea": "Ngoài vùng"
     }
   },
   "tabs": {

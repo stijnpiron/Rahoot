@@ -42,6 +42,10 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "Tolerans dışında",
       "average": "Ortalama cevap: {{value}}"
+    },
+    "pin": {
+      "insideArea": "Alan içinde",
+      "outsideArea": "Alan dışında"
     }
   },
   "tabs": {

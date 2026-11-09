@@ -54,6 +54,20 @@
       },
       "trueFalse": {
         "correctAnswer": "Bonne réponse"
+      },
+      "pin": {
+        "title": "Paramètres d'épingle",
+        "shape": {
+          "rect": "Rectangle",
+          "circle": "Cercle",
+          "freehand": "À main levée"
+        },
+        "zoomIn": "Zoom avant",
+        "zoomOut": "Zoom arrière",
+        "erase": "Effacer la zone",
+        "moveHint": "Utilisez l'outil main pour faire glisser la zone vers une nouvelle position.",
+        "mediaHint": "Ajoutez d'abord une image, puis dessinez la bonne zone.",
+        "move": "Déplacer la zone"
       }
     },
     "deleteQuestion": "Supprimer la question",
@@ -83,7 +97,8 @@
     "multi": "Choix multiple",
     "estimation": "Estimation",
     "trueFalse": "Vrai/Faux",
-    "puzzle": "Puzzle"
+    "puzzle": "Puzzle",
+    "pin": "Épingle sur image"
   },
   "quizzSaved": "Quizz enregistré avec succès",
   "quizzUpdated": "Quizz mis à jour avec succès",
