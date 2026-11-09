@@ -51,6 +51,9 @@
         "stepHint": "Dokładność suwaka i oczekiwanej odpowiedzi",
         "margin": "Margines",
         "marginHint": "Odpowiedzi mieszczące się w tej odległości od poprawnej dostają od 100% (dokładne trafienie) do 50% punktów. Odpowiedzi poza marginesem nie dostają nic."
+      },
+      "trueFalse": {
+        "correctAnswer": "Poprawna odpowiedź"
       }
     },
     "deleteQuestion": "Usuń pytanie",
@@ -72,7 +75,8 @@
   "questionType": {
     "single": "Jednokrotny wybór",
     "multi": "Wielokrotny wybór",
-    "estimation": "Szacowanie"
+    "estimation": "Szacowanie",
+    "trueFalse": "Prawda/Fałsz"
   },
   "quizzSaved": "Quiz został zapisany",
   "quizzUpdated": "Quiz został zaktualizowany",

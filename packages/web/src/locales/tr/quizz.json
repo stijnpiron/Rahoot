@@ -51,6 +51,9 @@
         "stepHint": "Kaydırıcının ve beklenen cevabın hassasiyeti",
         "margin": "Tolerans",
         "marginHint": "Doğru cevaba bu mesafedeki cevaplar %100'den (tam) %50'ye kadar puan alır. Tolerans dışındaki cevaplar puan almaz."
+      },
+      "trueFalse": {
+        "correctAnswer": "Doğru cevap"
       }
     },
     "deleteQuestion": "Soruyu sil",
@@ -72,7 +75,8 @@
   "questionType": {
     "single": "Tek seçenekli",
     "multi": "Çoktan seçmeli",
-    "estimation": "Tahmin"
+    "estimation": "Tahmin",
+    "trueFalse": "Doğru/Yanlış"
   },
   "quizzSaved": "Test başarıyla kaydedildi",
   "quizzUpdated": "Test başarıyla güncellendi",

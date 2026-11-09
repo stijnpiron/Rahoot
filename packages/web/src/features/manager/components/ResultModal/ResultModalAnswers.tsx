@@ -123,7 +123,10 @@ const ResultModalAnswers = () => {
     }
 
     return questionResult.answers.map((label, ai) => ({
-      label,
+      label:
+        questionResult.type === QUESTION_TYPES.TRUE_FALSE
+          ? t(`game:trueFalse.${label}`)
+          : label,
       count: questionResult.playerAnswers.filter((pa) =>
         pa.answerIds?.includes(ai),
       ).length,

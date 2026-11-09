@@ -64,5 +64,9 @@
   },
   "showQrCode": "QR kodunu göster",
   "streak": "Doğru cevap serisi",
-  "pinDigit": "PIN'in {{position}}. rakamı"
+  "pinDigit": "PIN'in {{position}}. rakamı",
+  "trueFalse": {
+    "true": "Doğru",
+    "false": "Yanlış"
+  }
 }

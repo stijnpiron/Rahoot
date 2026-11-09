@@ -51,6 +51,9 @@
         "stepHint": "Precisión del deslizador y de la respuesta esperada",
         "margin": "Margen",
         "marginHint": "Las respuestas dentro de esta distancia de la respuesta correcta obtienen del 100 % (exacta) al 50 %. Fuera de ella no obtienen nada."
+      },
+      "trueFalse": {
+        "correctAnswer": "Respuesta correcta"
       }
     },
     "deleteQuestion": "Eliminar pregunta",
@@ -72,7 +75,8 @@
   "questionType": {
     "single": "Opción única",
     "multi": "Opción múltiple",
-    "estimation": "Estimación"
+    "estimation": "Estimación",
+    "trueFalse": "Verdadero/Falso"
   },
   "quizzSaved": "Cuestionario guardado con éxito",
   "quizzUpdated": "Cuestionario actualizado con éxito",

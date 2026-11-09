@@ -65,5 +65,9 @@
   },
   "showQrCode": "Hiện mã QR",
   "streak": "Chuỗi trả lời đúng",
-  "pinDigit": "Chữ số {{position}} của mã PIN"
+  "pinDigit": "Chữ số {{position}} của mã PIN",
+  "trueFalse": {
+    "true": "Đúng",
+    "false": "Sai"
+  }
 }

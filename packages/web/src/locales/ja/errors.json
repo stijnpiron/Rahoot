@@ -58,7 +58,9 @@
     "estimationSolutionOutOfRange": "正解は最小値と最大値の間である必要があります",
     "estimationStepInvalid": "刻み幅は 0 より大きくする必要があります",
     "estimationMarginNegative": "許容範囲は負の値にできません",
-    "estimationInvalidOptions": "数値推定の設定がないか、無効です"
+    "estimationInvalidOptions": "数値推定の設定がないか、無効です",
+    "trueFalseInvalidAnswers": "正誤問題はちょうど2つの選択肢が必要です",
+    "trueFalseInvalidSolution": "正解を選んでください"
   },
   "result": {
     "notFound": "結果が見つかりません"

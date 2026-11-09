@@ -51,6 +51,9 @@
         "stepHint": "スライダーと正解の精度",
         "margin": "許容範囲",
         "marginHint": "正解からこの範囲内の回答は 100%（完全一致）から 50% の得点になります。範囲外は 0 点です。"
+      },
+      "trueFalse": {
+        "correctAnswer": "正解"
       }
     },
     "deleteQuestion": "この質問を削除",
@@ -72,7 +75,8 @@
   "questionType": {
     "single": "単一選択",
     "multi": "複数選択",
-    "estimation": "数値推定"
+    "estimation": "数値推定",
+    "trueFalse": "正誤問題"
   },
   "quizzSaved": "クイズを保存しました",
   "quizzUpdated": "クイズを更新しました",

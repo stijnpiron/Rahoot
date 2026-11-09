@@ -58,7 +58,9 @@
     "estimationSolutionOutOfRange": "Đáp án đúng phải nằm giữa giá trị tối thiểu và tối đa",
     "estimationStepInvalid": "Bước nhảy phải lớn hơn 0",
     "estimationMarginNegative": "Biên độ không được âm",
-    "estimationInvalidOptions": "Cài đặt ước lượng bị thiếu hoặc không hợp lệ"
+    "estimationInvalidOptions": "Cài đặt ước lượng bị thiếu hoặc không hợp lệ",
+    "trueFalseInvalidAnswers": "Câu hỏi đúng/sai phải có đúng hai câu trả lời",
+    "trueFalseInvalidSolution": "Chọn câu trả lời đúng"
   },
   "result": {
     "notFound": "Không tìm thấy kết quả"

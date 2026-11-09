@@ -64,5 +64,9 @@
   },
   "showQrCode": "Mostrar código QR",
   "streak": "Racha de respuestas",
-  "pinDigit": "Dígito {{position}} del PIN"
+  "pinDigit": "Dígito {{position}} del PIN",
+  "trueFalse": {
+    "true": "Verdadero",
+    "false": "Falso"
+  }
 }

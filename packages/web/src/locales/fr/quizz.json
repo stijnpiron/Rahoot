@@ -51,6 +51,9 @@
         "stepHint": "Précision du curseur et de la réponse attendue",
         "margin": "Marge",
         "marginHint": "Les réponses à cette distance de la bonne réponse rapportent de 100 % (exacte) à 50 %. Au-delà, elles ne rapportent rien."
+      },
+      "trueFalse": {
+        "correctAnswer": "Bonne réponse"
       }
     },
     "deleteQuestion": "Supprimer la question",
@@ -72,7 +75,8 @@
   "questionType": {
     "single": "Choix unique",
     "multi": "Choix multiple",
-    "estimation": "Estimation"
+    "estimation": "Estimation",
+    "trueFalse": "Vrai/Faux"
   },
   "quizzSaved": "Quizz enregistré avec succès",
   "quizzUpdated": "Quizz mis à jour avec succès",

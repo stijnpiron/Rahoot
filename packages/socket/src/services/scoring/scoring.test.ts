@@ -65,3 +65,21 @@ describe("estimation scoring", () => {
     expect(score(question, [])).toBe(0)
   })
 })
+
+describe("true/false scoring", () => {
+  const score = QUESTION_SCORING[QUESTION_TYPES.TRUE_FALSE]
+  const question = createQuestion({
+    type: QUESTION_TYPES.TRUE_FALSE,
+    answers: ["true", "false"],
+    solutions: [0],
+  })
+
+  it("scores only the right answer", () => {
+    expect(score(question, [0])).toBe(1)
+    expect(score(question, [1])).toBe(0)
+  })
+
+  it("rejects several answers even if one is right", () => {
+    expect(score(question, [0, 1])).toBe(0)
+  })
+})

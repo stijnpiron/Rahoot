@@ -64,5 +64,9 @@
   },
   "showQrCode": "QRコードを表示",
   "streak": "連続正解",
-  "pinDigit": "PIN の {{position}} 桁目"
+  "pinDigit": "PIN の {{position}} 桁目",
+  "trueFalse": {
+    "true": "正しい",
+    "false": "誤り"
+  }
 }

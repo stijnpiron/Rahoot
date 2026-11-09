@@ -51,6 +51,9 @@
         "stepHint": "Genauigkeit des Schiebereglers und der erwarteten Antwort",
         "margin": "Toleranz",
         "marginHint": "Antworten innerhalb dieses Abstands zur richtigen Antwort bringen 100 % (exakt) bis 50 %. Außerhalb gibt es keine Punkte."
+      },
+      "trueFalse": {
+        "correctAnswer": "Richtige Antwort"
       }
     },
     "deleteQuestion": "Frage löschen",
@@ -72,7 +75,8 @@
   "questionType": {
     "single": "Einzelauswahl",
     "multi": "Mehrfachauswahl",
-    "estimation": "Schätzung"
+    "estimation": "Schätzung",
+    "trueFalse": "Wahr/Falsch"
   },
   "quizzSaved": "Quiz erfolgreich gespeichert",
   "quizzUpdated": "Quiz erfolgreich aktualisiert",

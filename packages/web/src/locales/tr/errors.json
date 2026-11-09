@@ -58,7 +58,9 @@
     "estimationSolutionOutOfRange": "Doğru cevap minimum ile maksimum arasında olmalıdır",
     "estimationStepInvalid": "Adım 0'dan büyük olmalıdır",
     "estimationMarginNegative": "Tolerans negatif olamaz",
-    "estimationInvalidOptions": "Tahmin ayarları eksik veya geçersiz"
+    "estimationInvalidOptions": "Tahmin ayarları eksik veya geçersiz",
+    "trueFalseInvalidAnswers": "Doğru/yanlış sorusu tam olarak iki cevap içermelidir",
+    "trueFalseInvalidSolution": "Hangi cevabın doğru olduğunu seç"
   },
   "result": {
     "notFound": "Sonuç bulunamadı"

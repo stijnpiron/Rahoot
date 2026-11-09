@@ -49,6 +49,15 @@
         "step": 1,
         "margin": 10
       }
+    },
+    {
+      "type": "trueFalse",
+      "question": "Is 2 greater than 1?",
+      "category": "Round",
+      "answers": ["true", "false"],
+      "solutions": [1],
+      "cooldown": 3,
+      "time": -1
     }
   ]
 }

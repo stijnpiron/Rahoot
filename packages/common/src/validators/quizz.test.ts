@@ -39,6 +39,16 @@ const estimationQuestion = (overrides: Partial<Question> = {}): Question => ({
   ...overrides,
 })
 
+const trueFalseQuestion = (overrides: Partial<Question> = {}): Question => ({
+  type: QUESTION_TYPES.TRUE_FALSE,
+  question: "Is it true ?",
+  answers: ["true", "false"],
+  solutions: [0],
+  cooldown: 5,
+  time: 15,
+  ...overrides,
+})
+
 const quizz = (
   questions: Question[],
   gameMode: Quizz["gameMode"] = QUIZZ_MODES.QUIZ,
@@ -59,6 +69,7 @@ describe("quizzValidator", () => {
         options: { scoringMode: SCORING_MODES.STRICT },
       }),
       estimationQuestion(),
+      trueFalseQuestion(),
     ])
 
     expect(issues(data)).toEqual([])
@@ -132,6 +143,33 @@ describe("quizzValidator", () => {
     expect(issues(quizz([estimationQuestion({ solutions: [101] })]))).toContain(
       "errors:quizz.estimationSolutionOutOfRange",
     )
+  })
+
+  it("requires exactly two answers for true/false questions", () => {
+    expect(issues(quizz([trueFalseQuestion({ answers: ["true"] })]))).toContain(
+      "errors:quizz.trueFalseInvalidAnswers",
+    )
+    expect(
+      issues(
+        quizz([trueFalseQuestion({ answers: ["true", "false", "maybe"] })]),
+      ),
+    ).toContain("errors:quizz.trueFalseInvalidAnswers")
+  })
+
+  it("requires exactly one solution of 0 or 1 for true/false questions", () => {
+    expect(issues(quizz([trueFalseQuestion({ solutions: [0, 1] })]))).toContain(
+      "errors:quizz.trueFalseInvalidSolution",
+    )
+    expect(issues(quizz([trueFalseQuestion({ solutions: [2] })]))).toContain(
+      "errors:quizz.trueFalseInvalidSolution",
+    )
+    expect(issues(quizz([trueFalseQuestion({ solutions: [1] })]))).toEqual([])
+  })
+
+  it("allows true/false without a solution in survey mode", () => {
+    expect(
+      issues(quizz([trueFalseQuestion({ solutions: [] })], QUIZZ_MODES.SURVEY)),
+    ).toEqual([])
   })
 })
 

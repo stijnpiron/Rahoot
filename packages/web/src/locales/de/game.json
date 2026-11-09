@@ -64,5 +64,9 @@
   },
   "showQrCode": "QR-Code anzeigen",
   "streak": "Antwortserie",
-  "pinDigit": "PIN-Ziffer {{position}}"
+  "pinDigit": "PIN-Ziffer {{position}}",
+  "trueFalse": {
+    "true": "Wahr",
+    "false": "Falsch"
+  }
 }

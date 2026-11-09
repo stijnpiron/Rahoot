@@ -51,6 +51,9 @@
         "stepHint": "Precision of the slider and the expected answer",
         "margin": "Margin",
         "marginHint": "Answers within this distance of the correct answer score from 100% (exact) down to 50%. Answers outside score nothing."
+      },
+      "trueFalse": {
+        "correctAnswer": "Correct answer"
       }
     },
     "deleteQuestion": "Delete question",
@@ -72,7 +75,8 @@
   "questionType": {
     "single": "Single choice",
     "multi": "Multiple choice",
-    "estimation": "Estimation"
+    "estimation": "Estimation",
+    "trueFalse": "True/False"
   },
   "quizzSaved": "Quizz saved successfully",
   "quizzUpdated": "Quizz updated successfully",

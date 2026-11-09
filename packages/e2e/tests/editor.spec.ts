@@ -146,6 +146,36 @@ test("saves every question type and setting", async ({ page }) => {
   })
 })
 
+test("saves a true/false question and keeps the solution when switching types", async ({
+  page,
+}) => {
+  const subject = uniqueSubject("True false quizz")
+
+  await page.getByRole("button", { name: t("manager:quizz.create") }).click()
+  await page.getByPlaceholder(t("quizz:titleQuizzPlaceholder")).fill(subject)
+  await page
+    .getByPlaceholder(t("quizz:question.placeholder"))
+    .fill("Is Rahoot fun?")
+  await selectOption(
+    page,
+    t("quizz:question.config.answerMode"),
+    t("quizz:questionType.trueFalse"),
+  )
+  await page.getByRole("button", { name: t("game:trueFalse.false") }).click()
+
+  await saveQuizz(page)
+
+  expect(readQuizz(subject)).toMatchObject({
+    questions: [
+      {
+        type: "trueFalse",
+        answers: ["true", "false"],
+        solutions: [1],
+      },
+    ],
+  })
+})
+
 test("hides the scoring settings in survey mode", async ({ page }) => {
   const subject = uniqueSubject("Survey quizz")
 

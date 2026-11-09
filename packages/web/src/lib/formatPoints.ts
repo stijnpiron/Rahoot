@@ -1,6 +1,7 @@
 /**
- * Formats points for display: exact value up to 2 decimals, trailing zeros trimmed.
- * `900` -> "900", `937.42` -> "937.42"
+ * Formats points for display: rounded to the nearest whole number.
+ * Internal scores keep their exact value for ranking; only display is rounded.
+ * `900` -> "900", `100.2` -> "100", `100.7` -> "101"
  */
 export const formatPoints = (points: number): string =>
-  String(Math.round(points * 100) / 100)
+  String(Math.round(points))

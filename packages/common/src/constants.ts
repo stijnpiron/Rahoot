@@ -72,6 +72,7 @@ export const QUESTION_TYPES = {
   SINGLE: "single",
   MULTI: "multi",
   ESTIMATION: "estimation",
+  TRUE_FALSE: "trueFalse",
 } as const
 
 export const ESTIMATION_INPUT_MODES = {

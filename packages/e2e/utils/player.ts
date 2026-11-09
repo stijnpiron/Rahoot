@@ -27,6 +27,10 @@ export const answer = async (page: Page, label: string) => {
     .click()
 }
 
+export const answerTrueFalse = async (page: Page, value: string) => {
+  await page.getByRole("button", { name: t(`game:trueFalse.${value}`) }).click()
+}
+
 export const confirm = async (page: Page) => {
   await page.getByRole("button", { name: t("game:confirm") }).click()
 }
