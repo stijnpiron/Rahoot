@@ -51,6 +51,23 @@
         "stepHint": "Precisione del cursore e della risposta attesa",
         "margin": "Margine",
         "marginHint": "Le risposte entro questa distanza dalla risposta corretta valgono dal 100% (esatta) al 50%. Fuori dal margine non valgono nulla."
+      },
+      "trueFalse": {
+        "correctAnswer": "Risposta corretta"
+      },
+      "pin": {
+        "title": "Impostazioni pin",
+        "shape": {
+          "rect": "Rettangolo",
+          "circle": "Cerchio",
+          "freehand": "A mano libera"
+        },
+        "zoomIn": "Zoom avanti",
+        "zoomOut": "Zoom indietro",
+        "erase": "Cancella area",
+        "moveHint": "Usa lo strumento mano per trascinare l'area in una nuova posizione.",
+        "mediaHint": "Aggiungi prima un'immagine, poi disegna l'area corretta.",
+        "move": "Sposta area"
       }
     },
     "deleteQuestion": "Elimina domanda",
@@ -66,13 +83,22 @@
     "notePlaceholder": "Aggiungi una spiegazione mostrata quando viene rivelata la risposta",
     "estimation": {
       "correctAnswer": "Risposta corretta"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Trascina le tessere nell'ordine corretto: quest'ordine è la risposta.",
+      "reorder": "Riordina la tessera"
+    },
+    "disableQuestion": "Disattiva domanda",
+    "enableQuestion": "Attiva domanda"
   },
   "questionHasErrors": "Questa domanda contiene errori",
   "questionType": {
     "single": "Scelta singola",
     "multi": "Scelta multipla",
-    "estimation": "Stima"
+    "estimation": "Stima",
+    "trueFalse": "Vero/Falso",
+    "puzzle": "Puzzle",
+    "pin": "Pin sull'immagine"
   },
   "quizzSaved": "Quiz salvato con successo",
   "quizzUpdated": "Quiz aggiornato con successo",
@@ -84,6 +110,8 @@
     "libraryEmpty": "La tua libreria è vuota",
     "upload": "Carica",
     "uploadHint": "Immagini, audio o video, fino a {{size}} MB",
+    "duplicateTitle": "Il media esiste già",
+    "useExisting": "Usa esistente",
     "search": "Cerca file...",
     "filter": {
       "all": "Tutti"

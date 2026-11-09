@@ -51,6 +51,23 @@
         "stepHint": "Precision of the slider and the expected answer",
         "margin": "Margin",
         "marginHint": "Answers within this distance of the correct answer score from 100% (exact) down to 50%. Answers outside score nothing."
+      },
+      "trueFalse": {
+        "correctAnswer": "Correct answer"
+      },
+      "pin": {
+        "title": "Pin settings",
+        "shape": {
+          "rect": "Rectangle",
+          "circle": "Circle",
+          "freehand": "Freehand"
+        },
+        "zoomIn": "Zoom in",
+        "zoomOut": "Zoom out",
+        "erase": "Erase area",
+        "moveHint": "Use the hand tool to drag the area to a new position.",
+        "mediaHint": "Add an image first, then draw the correct area on it.",
+        "move": "Move area"
       }
     },
     "deleteQuestion": "Delete question",
@@ -66,13 +83,22 @@
     "notePlaceholder": "Add an explanation shown when the answer is revealed",
     "estimation": {
       "correctAnswer": "Correct answer"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Drag the tiles into the correct order — this order is the answer.",
+      "reorder": "Reorder tile"
+    },
+    "disableQuestion": "Disable question",
+    "enableQuestion": "Enable question"
   },
   "questionHasErrors": "This question has errors",
   "questionType": {
     "single": "Single choice",
     "multi": "Multiple choice",
-    "estimation": "Estimation"
+    "estimation": "Estimation",
+    "trueFalse": "True/False",
+    "puzzle": "Puzzle",
+    "pin": "Pin on image"
   },
   "quizzSaved": "Quizz saved successfully",
   "quizzUpdated": "Quizz updated successfully",
@@ -84,6 +110,8 @@
     "libraryEmpty": "Your library is empty",
     "upload": "Upload",
     "uploadHint": "Images, audio or video, up to {{size}} MB",
+    "duplicateTitle": "Media already exists",
+    "useExisting": "Use existing",
     "search": "Search media...",
     "filter": {
       "all": "All"

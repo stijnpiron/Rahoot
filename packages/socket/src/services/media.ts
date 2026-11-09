@@ -8,11 +8,13 @@ import type {
 } from "@razzia/common/types/game"
 import { getPath } from "@razzia/socket/services/config"
 import {
+  conflict,
   invalidInput,
   notFound,
   unsupportedMediaType,
 } from "@razzia/socket/services/errors"
 import { normalizeFilename } from "@razzia/socket/utils/file"
+import { createHash } from "crypto"
 import { fileTypeFromBuffer } from "file-type"
 import fs from "fs"
 import { extname, join } from "path"
@@ -30,6 +32,72 @@ const EXTENSIONS = [...EXTENSION_TYPES.keys()]
 const MEDIA_NAME_PATTERN = new RegExp(`^[A-Za-z0-9_-]+\\.(${EXTENSIONS})$`, "u")
 
 const getMediaDir = () => getPath("media")
+
+const getHashesPath = () => join(getMediaDir(), "hashes.json")
+
+type MediaHashes = Record<string, string>
+
+const readHashes = (): MediaHashes => {
+  try {
+    return JSON.parse(fs.readFileSync(getHashesPath(), "utf8")) as MediaHashes
+  } catch {
+    return {}
+  }
+}
+
+const writeHashes = (hashes: MediaHashes): void => {
+  fs.writeFileSync(getHashesPath(), JSON.stringify(hashes, null, 2))
+}
+
+const removeHash = (hashes: MediaHashes, name: string): MediaHashes =>
+  Object.fromEntries(Object.entries(hashes).filter(([, n]) => n !== name))
+
+const hashBuffer = (buffer: Buffer) =>
+  createHash("sha256").update(buffer).digest("hex")
+
+const findHashByName = (
+  hashes: MediaHashes,
+  name: string,
+): string | undefined =>
+  Object.keys(hashes).find((hash) => hashes[hash] === name)
+
+/**
+ * Scans the media directory to fill in hashes for files uploaded before the
+ * hash store existed, and prunes entries whose file is gone.
+ */
+const backfillHashes = (hashes: MediaHashes): MediaHashes => {
+  const dir = getMediaDir()
+
+  if (!fs.existsSync(dir)) {
+    return {}
+  }
+
+  const next: MediaHashes = {}
+
+  for (const name of fs.readdirSync(dir)) {
+    const path = join(dir, name)
+
+    if (!EXTENSION_TYPES.has(extname(name)) || !isRegularFile(path)) {
+      continue
+    }
+
+    if (!MEDIA_NAME_PATTERN.test(name)) {
+      continue
+    }
+
+    const existingHash = findHashByName(hashes, name)
+
+    if (existingHash) {
+      next[existingHash] = name
+
+      continue
+    }
+
+    next[hashBuffer(fs.readFileSync(path))] = name
+  }
+
+  return next
+}
 
 const isAcceptedMime = (
   mime: string,
@@ -94,6 +162,25 @@ export const saveMedia = async (file: File): Promise<UploadedMedia> => {
     fs.mkdirSync(dir, { recursive: true })
   }
 
+  const hash = hashBuffer(buffer)
+  let hashes = readHashes()
+
+  if (!(hash in hashes)) {
+    hashes = backfillHashes(hashes)
+  }
+
+  const existingName = hashes[hash]
+
+  if (
+    existingName &&
+    MEDIA_NAME_PATTERN.test(existingName) &&
+    isRegularFile(join(dir, existingName))
+  ) {
+    throw conflict("errors:media.duplicate", {
+      media: toUploadedMedia(existingName, type),
+    })
+  }
+
   let name = generateName()
 
   while (fs.existsSync(join(dir, name))) {
@@ -101,6 +188,7 @@ export const saveMedia = async (file: File): Promise<UploadedMedia> => {
   }
 
   fs.writeFileSync(join(dir, name), buffer)
+  writeHashes({ ...hashes, [hash]: name })
 
   return toUploadedMedia(name, type)
 }
@@ -117,4 +205,13 @@ export const deleteMedia = (name: string): void => {
   }
 
   fs.unlinkSync(path)
+  deleteMediaHash(name)
+}
+
+const deleteMediaHash = (name: string): void => {
+  const hashes = readHashes()
+
+  if (findHashByName(hashes, name)) {
+    writeHashes(removeHash(hashes, name))
+  }
 }

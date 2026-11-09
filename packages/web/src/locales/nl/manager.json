@@ -1,0 +1,56 @@
+{
+  "configurationsTitle": "Configuraties",
+  "logout": "Uitloggen",
+  "passwordPlaceholder": "Wachtwoord",
+  "quizz": {
+    "create": "Quizz maken",
+    "delete": "Quizz verwijderen",
+    "deleteConfirm": "Weet je zeker dat je \"{{name}}\" wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+    "deleted": "Quizz verwijderd",
+    "export": "Quizz exporteren als JSON",
+    "import": "Quizz importeren uit JSON",
+    "none": "Nog geen quizz gemaakt",
+    "notFound": "Geen quizz gevonden",
+    "pleaseCreate": "Maak eerst een quizz",
+    "pleaseSelect": "Selecteer eerst een quizz",
+    "startGame": "Spel starten",
+    "edit": "Quizz bewerken"
+  },
+  "result": {
+    "delete": "Resultaat verwijderen",
+    "deleteConfirm": "Resultaat van \"{{name}}\" verwijderen? Dit kan niet ongedaan worden gemaakt.",
+    "deleted": "Resultaat verwijderd",
+    "noAnswer": "Geen antwoord",
+    "none": "Nog geen resultaten, speel een spel af om hier rapporten te zien",
+    "paginationOf": " van ",
+    "stats": {
+      "correctAnswers": "Correcte antwoorden",
+      "playersAnswered": "Spelers geantwoord"
+    },
+    "table": {
+      "answered": "Geantwoord",
+      "correct": " Correct",
+      "correctIncorrect": "Correct / Onjuist",
+      "incorrect": " Onjuist",
+      "player": "Speler",
+      "points": "Punten"
+    },
+    "playerCount": "{{count}} speler(s)",
+    "timeLimitSuffix": "s tijdslimiet",
+    "estimation": {
+      "answered": "Geantwoord",
+      "withinMargin": "{{value}} ± {{margin}}",
+      "outsideMargin": "Buiten de marge",
+      "average": "Gemiddeld antwoord: {{value}}"
+    },
+    "pin": {
+      "insideArea": "Binnen het gebied",
+      "outsideArea": "Buiten het gebied"
+    }
+  },
+  "tabs": {
+    "play": "Spelen",
+    "quizz": "Quizz",
+    "results": "Resultaten"
+  }
+}

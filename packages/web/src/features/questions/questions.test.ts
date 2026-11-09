@@ -37,13 +37,15 @@ const question = (overrides: Partial<Question> = {}): Question => ({
 
 describe("isAnswerCorrect", () => {
   it("accepts any right choice", () => {
-    expect(isAnswerCorrect(question(), [1, 2])).toBe(true)
-    expect(isAnswerCorrect(question(), [2])).toBe(false)
+    expect(isAnswerCorrect(question(), { answerIds: [1, 2] })).toBe(true)
+    expect(isAnswerCorrect(question(), { answerIds: [2] })).toBe(false)
   })
 
   it("is false without an answer or a solution", () => {
-    expect(isAnswerCorrect(question(), null)).toBe(false)
-    expect(isAnswerCorrect(question({ solutions: undefined }), [0])).toBe(false)
+    expect(isAnswerCorrect(question(), { answerIds: null })).toBe(false)
+    expect(
+      isAnswerCorrect(question({ solutions: undefined }), { answerIds: [0] }),
+    ).toBe(false)
   })
 
   it("accepts estimations within the margin", () => {
@@ -53,8 +55,8 @@ describe("isAnswerCorrect", () => {
       options: estimationOptions(),
     })
 
-    expect(isAnswerCorrect(estimation, [60])).toBe(true)
-    expect(isAnswerCorrect(estimation, [61])).toBe(false)
+    expect(isAnswerCorrect(estimation, { answerIds: [60] })).toBe(true)
+    expect(isAnswerCorrect(estimation, { answerIds: [61] })).toBe(false)
   })
 })
 

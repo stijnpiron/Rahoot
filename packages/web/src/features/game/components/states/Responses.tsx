@@ -1,3 +1,4 @@
+import { QUESTION_TYPES } from "@razzia/common/constants"
 import type { ManagerStatusDataMap } from "@razzia/common/types/game/status"
 import AnswerButton from "@razzia/web/features/game/components/AnswerButton"
 import AnswerNote from "@razzia/web/features/game/components/AnswerNote"
@@ -10,6 +11,7 @@ import { calculatePercentages } from "@razzia/web/features/game/utils/score"
 import { QUESTION_REGISTRY } from "@razzia/web/features/questions"
 import clsx from "clsx"
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import useSound from "use-sound"
 
 interface Props {
@@ -18,6 +20,7 @@ interface Props {
 
 const Responses = ({ data }: Props) => {
   const { question, answers, responses, solutions, type, note } = data
+  const { t } = useTranslation()
   const { ResponsesComponent } = QUESTION_REGISTRY[type]
   const percentages = calculatePercentages(responses)
   const [isMusicPlaying, setIsMusicPlaying] = useState(false)
@@ -103,7 +106,9 @@ const Responses = ({ data }: Props) => {
               label={ANSWERS_LABELS[key]}
               correct={solutions ? solutions.includes(key) : undefined}
             >
-              {answer}
+              {type === QUESTION_TYPES.TRUE_FALSE
+                ? t(`game:trueFalse.${answer}`)
+                : answer}
             </AnswerButton>
           ))}
         </div>

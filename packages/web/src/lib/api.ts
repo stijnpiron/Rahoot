@@ -6,11 +6,17 @@ import { StatusCodes } from "http-status-codes"
 export class ApiError extends Error {
   readonly status: StatusCodes
   readonly key: string
+  readonly data?: Record<string, unknown>
 
-  constructor(status: StatusCodes, key: string) {
+  constructor(
+    status: StatusCodes,
+    key: string,
+    data?: Record<string, unknown>,
+  ) {
     super(key)
     this.status = status
     this.key = key
+    this.data = data
   }
 }
 
@@ -34,13 +40,17 @@ const authFetch: typeof fetch = async (input, init) => {
 
 export const api = hc<ApiType>("/api", { fetch: authFetch })
 
-const readErrorKey = async (response: Response, fallback: string) => {
+const readError = async (response: Response, fallback: string) => {
   try {
-    const body = (await response.json()) as { error?: string }
+    const body = (await response.json()) as {
+      error?: string
+    } & Record<string, unknown>
 
-    return body.error ?? fallback
+    const { error: key, ...data } = body
+
+    return { key: key ?? fallback, data }
   } catch {
-    return fallback
+    return { key: fallback, data: {} as Record<string, unknown> }
   }
 }
 
@@ -63,10 +73,12 @@ export const unwrap = async <R extends AnyClientResponse>(
   const response = await request
 
   if (!response.ok) {
-    throw new ApiError(
-      response.status,
-      await readErrorKey(response as unknown as Response, fallback),
+    const { key, data } = await readError(
+      response as unknown as Response,
+      fallback,
     )
+
+    throw new ApiError(response.status, key, data)
   }
 
   return (await response.json()) as ApiSuccess<R>
@@ -79,9 +91,11 @@ export const unwrapEmpty = async (
   const response = await request
 
   if (!response.ok) {
-    throw new ApiError(
-      response.status,
-      await readErrorKey(response as unknown as Response, fallback),
+    const { key, data } = await readError(
+      response as unknown as Response,
+      fallback,
     )
+
+    throw new ApiError(response.status, key, data)
   }
 }

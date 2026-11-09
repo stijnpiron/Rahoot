@@ -51,6 +51,23 @@
         "stepHint": "スライダーと正解の精度",
         "margin": "許容範囲",
         "marginHint": "正解からこの範囲内の回答は 100%（完全一致）から 50% の得点になります。範囲外は 0 点です。"
+      },
+      "trueFalse": {
+        "correctAnswer": "正解"
+      },
+      "pin": {
+        "title": "ピン設定",
+        "shape": {
+          "rect": "長方形",
+          "circle": "円",
+          "freehand": "フリーハンド"
+        },
+        "zoomIn": "拡大",
+        "zoomOut": "縮小",
+        "erase": "エリアを消す",
+        "moveHint": "手のツールでエリアをドラッグして移動します。",
+        "mediaHint": "先に画像を追加してから、正しいエリアを描いてください。",
+        "move": "エリアを移動"
       }
     },
     "deleteQuestion": "この質問を削除",
@@ -66,13 +83,22 @@
     "notePlaceholder": "答えの発表時に表示される解説を追加",
     "estimation": {
       "correctAnswer": "正解"
-    }
+    },
+    "puzzle": {
+      "orderHint": "タイルを正しい順にドラッグしてください。その並び順が答えです。",
+      "reorder": "タイルを並べ替える"
+    },
+    "disableQuestion": "問題を無効にする",
+    "enableQuestion": "問題を有効にする"
   },
   "questionHasErrors": "この質問にはエラーがあります",
   "questionType": {
     "single": "単一選択",
     "multi": "複数選択",
-    "estimation": "数値推定"
+    "estimation": "数値推定",
+    "trueFalse": "正誤問題",
+    "puzzle": "パズル",
+    "pin": "画像にピン留め"
   },
   "quizzSaved": "クイズを保存しました",
   "quizzUpdated": "クイズを更新しました",
@@ -84,6 +110,8 @@
     "libraryEmpty": "メディアライブラリは空です",
     "upload": "アップロード",
     "uploadHint": "画像、音声、動画、最大 {{size}} MB",
+    "duplicateTitle": "メディアは既に存在します",
+    "useExisting": "既存のものを使用",
     "search": "メディアを検索...",
     "filter": {
       "all": "すべて"

@@ -1,12 +1,36 @@
-import { EVENTS, MAX_ANSWERS } from "@razzia/common/constants"
+import { EVENTS, PUZZLE_MAX_ANSWERS } from "@razzia/common/constants"
+import { pinPointValidator } from "@razzia/common/validators/questions/pin"
 import { z } from "zod"
 
 const gameMessageValidator = z.object({ gameId: z.string().min(1) })
 
 const answerKeysValidator = z
   .array(z.number())
-  .max(MAX_ANSWERS)
+  .max(PUZZLE_MAX_ANSWERS)
   .refine((keys) => new Set(keys).size === keys.length)
+
+const selectedAnswerValidator = z
+  .object({
+    answerKeys: answerKeysValidator.optional(),
+    answerPin: pinPointValidator.optional(),
+  })
+  .superRefine(({ answerKeys, answerPin }, ctx) => {
+    if (answerKeys === undefined && answerPin === undefined) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["answerKeys"],
+        message: "errors:invalidRequest",
+      })
+    }
+
+    if (answerKeys !== undefined && answerPin !== undefined) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["answerPin"],
+        message: "errors:invalidRequest",
+      })
+    }
+  })
 
 export const clientEventValidators = {
   [EVENTS.MANAGER.RECONNECT]: gameMessageValidator,
@@ -23,6 +47,6 @@ export const clientEventValidators = {
   [EVENTS.PLAYER.RECONNECT]: gameMessageValidator,
   [EVENTS.PLAYER.LEAVE]: gameMessageValidator,
   [EVENTS.PLAYER.SELECTED_ANSWER]: gameMessageValidator.extend({
-    data: z.object({ answerKeys: answerKeysValidator }),
+    data: selectedAnswerValidator,
   }),
 }

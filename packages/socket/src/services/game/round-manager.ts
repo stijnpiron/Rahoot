@@ -4,6 +4,7 @@ import {
   MAX_POINTS,
   MEDIA_TYPES,
   NO_TIME_LIMIT,
+  QUESTION_TYPES,
   QUIZZ_MODES,
 } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
@@ -12,6 +13,7 @@ import type {
   GameResult,
   GameSettings,
   GameUpdateQuestion,
+  PinPoint,
   Player,
   Question,
   QuestionResult,
@@ -26,12 +28,14 @@ import {
 } from "@razzia/common/types/game/status"
 import { CooldownTimer } from "@razzia/socket/services/game/cooldown-timer"
 import { PlayerManager } from "@razzia/socket/services/game/player-manager"
+import { countFullyCorrect } from "@razzia/socket/services/scoring/puzzle"
 import {
   countAnswers,
   scoreQuestion,
   type ScoredPlayer,
 } from "@razzia/socket/services/scoring/round"
 import { orderToPoint, timeToPoint } from "@razzia/socket/utils/game"
+import { shuffleIndices } from "@razzia/socket/utils/shuffle"
 import sleep, { SECOND_MS } from "@razzia/socket/utils/sleep"
 import { nanoid } from "nanoid"
 
@@ -80,6 +84,7 @@ export class RoundManager {
   private tempOldLeaderboard: Player[] | null = null
   private questionsHistory: QuestionResult[] = []
   private autoAdvanceTimer: NodeJS.Timeout | null = null
+  private puzzleOrder: number[] | null = null
 
   constructor(opts: RoundManagerOptions) {
     this.opts = opts
@@ -134,6 +139,50 @@ export class RoundManager {
 
   private isSurvey(): boolean {
     return this.opts.quizz.gameMode === QUIZZ_MODES.SURVEY
+  }
+
+  private isPuzzle(): boolean {
+    return this.question.type === QUESTION_TYPES.PUZZLE
+  }
+
+  private isPin(): boolean {
+    return this.question.type === QUESTION_TYPES.PIN
+  }
+
+  private buildPinsPayload(
+    scored: ScoredPlayer[] = [],
+  ): Array<PinPoint & { name: string; correct: boolean }> {
+    return this.playersAnswers.flatMap((answer) => {
+      if (!answer.pin) {
+        return []
+      }
+
+      const player = this.opts.players.findById(answer.playerId)
+
+      if (!player) {
+        return []
+      }
+
+      const score = scored.find((s) => s.id === player.id)
+
+      return [
+        {
+          ...answer.pin,
+          name: player.username,
+          correct: score?.lastCorrect ?? false,
+        },
+      ]
+    })
+  }
+
+  /**
+   * Shuffled display order for the current puzzle question, memoized so
+   * SHOW_PREPARED and SELECT_ANSWER broadcast the same order.
+   */
+  private getPuzzleOrder(): number[] {
+    this.puzzleOrder ??= shuffleIndices(this.question.answers.length)
+
+    return this.puzzleOrder
   }
 
   // ── Auto advance ─────────────────────────────────────────────────────────
@@ -272,6 +321,7 @@ export class RoundManager {
     }
 
     this.currentStep = -1
+    this.puzzleOrder = null
 
     this.opts.onNewQuestion()
 
@@ -280,10 +330,13 @@ export class RoundManager {
       total: this.opts.quizz.questions.length,
     })
 
+    const puzzleOrder = this.isPuzzle() ? this.getPuzzleOrder() : undefined
+
     this.opts.broadcast(STATUS.SHOW_PREPARED, {
       totalAnswers: this.question.answers.length,
       questionNumber: this.currentQuestion + 1,
       questionType: this.question.type,
+      puzzleOrder,
     })
 
     await sleep(2)
@@ -317,13 +370,16 @@ export class RoundManager {
 
     this.opts.broadcast(STATUS.SELECT_ANSWER, {
       question: this.question.question,
-      answers: this.question.answers,
+      answers: puzzleOrder
+        ? puzzleOrder.map((index) => this.question.answers[index])
+        : this.question.answers,
       media: this.question.media,
       time: this.question.time,
       totalPlayer: this.opts.players.count(),
       questionType: this.question.type,
       options: this.question.options,
       answersOnly: this.opts.getSettings().answersOnly,
+      puzzleOrder,
     })
 
     await this.opts.cooldown.start(this.question.time)
@@ -344,13 +400,15 @@ export class RoundManager {
       ...this.question,
       solutions: this.isSurvey() ? undefined : this.question.solutions,
       playerAnswers: players.map((player) => {
+        const storedAnswer = this.playersAnswers.find(
+          (a) => a.playerId === player.id,
+        )
         const score = scored.find((s) => s.id === player.id)
 
         return {
           playerName: player.username,
-          answerIds:
-            this.playersAnswers.find((a) => a.playerId === player.id)
-              ?.answerIds ?? null,
+          answerIds: storedAnswer?.answerIds ?? null,
+          ...(this.isPin() && { pin: storedAnswer?.pin ?? null }),
           ...(score && {
             correct: score.lastCorrect,
             points: score.lastPoints,
@@ -369,6 +427,7 @@ export class RoundManager {
         ...this.question,
         solutions: undefined,
         responses: answerCounts,
+        ...(this.isPin() && { pins: this.buildPinsPayload() }),
       })
 
       currentPlayers.forEach((player) => {
@@ -415,6 +474,13 @@ export class RoundManager {
     this.opts.send(this.opts.getManagerId(), STATUS.SHOW_RESPONSES, {
       ...this.question,
       responses: answerCounts,
+      puzzleFullyCorrect: this.isPuzzle()
+        ? {
+            count: countFullyCorrect(this.question, this.playersAnswers),
+            total: currentPlayers.length,
+          }
+        : undefined,
+      ...(this.isPin() && { pins: this.buildPinsPayload(sortedPlayers) }),
     })
 
     this.recordHistory(currentPlayers, sortedPlayers)
@@ -498,7 +564,14 @@ export class RoundManager {
 
   // ── Player actions ───────────────────────────────────────────────────────
 
-  private normalizeAnswer(answerIds: number[]): number[] | null {
+  private normalizeAnswer(
+    answerIds: number[],
+    pin?: PinPoint,
+  ): number[] | null {
+    if (this.isPin()) {
+      return pin ? [] : null
+    }
+
     const { options } = this.question
 
     if (!isEstimationOptions(options)) {
@@ -518,7 +591,7 @@ export class RoundManager {
     return [Math.min(options.max, Math.max(options.min, value))]
   }
 
-  selectAnswer(socket: Socket, answerIds: number[]): void {
+  selectAnswer(socket: Socket, answerIds: number[], pin?: PinPoint): void {
     const player = this.opts.players.findById(socket.id)
 
     if (!player || !this.acceptingAnswers) {
@@ -529,7 +602,7 @@ export class RoundManager {
       return
     }
 
-    const submitted = this.normalizeAnswer(answerIds)
+    const submitted = this.normalizeAnswer(answerIds, pin)
 
     if (!submitted) {
       return
@@ -554,6 +627,7 @@ export class RoundManager {
     this.playersAnswers.push({
       playerId: player.id,
       answerIds: submitted,
+      ...(this.isPin() && pin && { pin }),
       points,
     })
 

@@ -1,6 +1,5 @@
 import { QUESTION_TYPES, SCORING_MODES } from "@razzia/common/constants"
 import { isMultiOptions } from "@razzia/common/questions/options"
-import type { Question } from "@razzia/common/types/game"
 import type { ScoringFn } from "@razzia/socket/services/scoring"
 
 export const type = QUESTION_TYPES.MULTI
@@ -34,10 +33,8 @@ const SCORING_BY_MODE = [
   },
 ]
 
-export const scoring: ScoringFn = (
-  question: Question,
-  answerIds: number[],
-): number => {
+export const scoring: ScoringFn = (question, answer): number => {
+  const { answerIds } = answer
   const mode = isMultiOptions(question.options)
     ? question.options.scoringMode
     : SCORING_MODES.BALANCED

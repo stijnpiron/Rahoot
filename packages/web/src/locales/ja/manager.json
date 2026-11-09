@@ -42,6 +42,10 @@
       "withinMargin": "{{value}} ± {{margin}}",
       "outsideMargin": "許容範囲外",
       "average": "平均回答: {{value}}"
+    },
+    "pin": {
+      "insideArea": "エリア内",
+      "outsideArea": "エリア外"
     }
   },
   "tabs": {

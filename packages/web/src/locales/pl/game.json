@@ -64,5 +64,16 @@
   },
   "showQrCode": "Pokaż kod QR",
   "streak": "Seria poprawnych odpowiedzi",
-  "pinDigit": "Cyfra PIN nr {{position}}"
+  "pinDigit": "Cyfra PIN nr {{position}}",
+  "trueFalse": {
+    "true": "Prawda",
+    "false": "Fałsz"
+  },
+  "pin": {
+    "confirm": "Potwierdź",
+    "confirmed": "Przypięto!",
+    "imageAlt": "Oznacz odpowiedź na obrazie",
+    "teaser": "Przypnij pinezkę na obrazie",
+    "noPins": "Brak pinezek"
+  }
 }

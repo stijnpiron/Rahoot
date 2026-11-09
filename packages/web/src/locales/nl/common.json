@@ -1,0 +1,30 @@
+{
+  "cancel": "Annuleren",
+  "confirm": "Bevestigen",
+  "connecting": "Verbinden...",
+  "delete": "Verwijderen",
+  "exit": "Afsluiten",
+  "exitFullscreen": "Volledig scherm sluiten",
+  "fullscreen": "Volledig scherm",
+  "language": {
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "it": "Italiano",
+    "ja": "日本語",
+    "nl": "Nederlands",
+    "pl": "Polski",
+    "tr": "Türkçe",
+    "vi": "Tiếng Việt"
+  },
+  "loading": "Laden...",
+  "next": "Volgende",
+  "save": "Opslaan",
+  "seconds": "sec",
+  "skip": "Overslaan",
+  "submit": "Indienen",
+  "close": "Sluiten",
+  "previous": "Vorige",
+  "changeLanguage": "Taal wijzigen"
+}

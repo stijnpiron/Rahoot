@@ -1,0 +1,79 @@
+{
+  "answerNoted": "Bedankt, dat is genoteerd",
+  "confirm": "Bevestigen",
+  "correct": "Mooi!",
+  "gamePinLabel": "Spel-PIN:",
+  "generatedUsernameNotice": "Je krijgt een willekeurige bijnaam als je meedoet.",
+  "hud": {
+    "answers": "Antwoorden",
+    "time": "Tijd"
+  },
+  "media": {
+    "showImage": "Afbeelding tonen",
+    "showVideo": "Video tonen"
+  },
+  "question": {
+    "show": "Vraag tonen"
+  },
+  "joinInstruction": "Doe mee met het spel op",
+  "leaderboard": "Ranglijst",
+  "lock": {
+    "lock": "Vergrendel de ruimte",
+    "unlock": "Ontgrendel de ruimte"
+  },
+  "pinLabel": "PIN-code",
+  "playerConnectionLost": "Verbinding verbroken",
+  "playerReconnecting": "Wachten op herverbinding",
+  "playersJoined": "Spelers verbonden",
+  "questionPrefix": "Vraag #",
+  "rank_ordinal_other": "{{count}}e plaats",
+  "reconnect": "Opnieuw verbinden",
+  "reconnectTitle": "Je was in een spel",
+  "resultBehind": ", achter ",
+  "resultTop": "Je bent geëindigd op de ",
+  "settings": {
+    "autoAdvance": {
+      "hint": "Ga na de onthulling en de ranglijst vanzelf verder.",
+      "label": "Automatisch verder",
+      "leaderboardDelay": "Ranglijst",
+      "responsesDelay": "Resultaat"
+    },
+    "generatedUsernames": {
+      "label": "Bijnamen genereren",
+      "hint": "Spelers kiezen een gegenereerde naam in plaats van er zelf een te typen."
+    },
+    "answersOnly": {
+      "label": "Alleen antwoorden",
+      "hint": "Spelers zien alleen de antwoordknoppen, met een knop om de vraag opnieuw te lezen."
+    },
+    "title": "Spelinstellingen"
+  },
+  "startGame": "Start",
+  "summary": {
+    "title": "Enquete voltooid",
+    "participants": "Deelnemers",
+    "questions": "Vragen"
+  },
+  "usernamePlaceholder": "Gebruikersnaam hier",
+  "waitingForAnswers": "Wachten op de antwoorden van de spelers",
+  "waitingForPlayers": "Wachten op spelers",
+  "wrong": "Helaas",
+  "estimation": {
+    "yourAnswer": "Jouw antwoord",
+    "rangeHint": "Tussen {{min}} en {{max}}"
+  },
+  "showQrCode": "QR-code tonen",
+  "streak": "Antwoordreeks",
+  "pinDigit": "PIN-cijfer {{position}}",
+  "trueFalse": {
+    "true": "Waar",
+    "false": "Onwaar"
+  },
+  "pin": {
+    "confirm": "Bevestigen",
+    "confirmed": "Gepind!",
+    "imageAlt": "Pin het antwoord op de afbeelding",
+    "teaser": "Plaats een pin op de afbeelding",
+    "noPins": "Geen pinnen"
+  }
+}

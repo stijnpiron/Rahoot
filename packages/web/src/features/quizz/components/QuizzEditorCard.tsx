@@ -2,7 +2,7 @@ import { MEDIA_TYPES, QUESTION_TYPES } from "@razzia/common/constants"
 import type { Question, QuestionMedia } from "@razzia/common/types/game"
 import AlertDialog from "@razzia/web/components/AlertDialog"
 import clsx from "clsx"
-import { CircleAlert, Music, Trash2, Video } from "lucide-react"
+import { CircleAlert, Eye, EyeOff, Music, Trash2, Video } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { twMerge } from "tailwind-merge"
 
@@ -32,6 +32,7 @@ interface Props {
   canDelete: boolean
   onClick: () => void
   onDelete: () => void
+  onToggleEnabled: () => void
 }
 
 const QuizzEditorCard = ({
@@ -42,8 +43,10 @@ const QuizzEditorCard = ({
   canDelete,
   onClick,
   onDelete,
+  onToggleEnabled,
 }: Props) => {
   const { t } = useTranslation()
+  const isEnabled = question.enabled !== false
 
   return (
     <div
@@ -54,6 +57,7 @@ const QuizzEditorCard = ({
           {
             "border-primary": isActive,
             "border-red-500": isInvalid,
+            "opacity-50": !isEnabled,
           },
         ),
       )}
@@ -96,6 +100,30 @@ const QuizzEditorCard = ({
           ))}
         </div>
       )}
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation()
+          onToggleEnabled()
+        }}
+        aria-label={t(
+          isEnabled
+            ? "quizz:question.disableQuestion"
+            : "quizz:question.enableQuestion",
+        )}
+        className={clsx(
+          "bg-background absolute top-1.5 right-8 rounded-sm p-1",
+          isEnabled
+            ? "text-muted-foreground/60 hover:text-red-500"
+            : "text-red-500",
+        )}
+      >
+        {isEnabled ? (
+          <Eye className="size-3.5" />
+        ) : (
+          <EyeOff className="size-3.5" />
+        )}
+      </button>
 
       {canDelete && (
         <AlertDialog

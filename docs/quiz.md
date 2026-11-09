@@ -50,7 +50,7 @@ Quiz Options:
 - `gameMode`: `"quiz"` (default) or `"survey"`, see [Survey mode](#survey-mode)
 - `subject`: Title/topic of the quiz
 - `questions`: Array of question objects containing:
-  - `type`: `"single"` (exactly one answer), `"multi"` (one or more) or `"estimation"` (a number, see [Estimation questions](#estimation-questions)). Defaults to `"single"` when omitted
+  - `type`: `"single"` (exactly one answer), `"multi"` (one or more), `"estimation"` (a number, see [Estimation questions](#estimation-questions)), `"trueFalse"` (see [True/False questions](#truefalse-questions)), `"puzzle"` (see [Puzzle questions](#puzzle-questions)) or `"pin"` (see [Pin questions](#pin-questions)). Defaults to `"single"` when omitted
   - `question`: The question text
   - `category`: Optional round name, see [Categories](#categories)
   - `note`: Optional explanation shown on the main screen when the answer is revealed, e.g. `"Red, green and blue are the primary colors of light"`
@@ -93,6 +93,68 @@ An `"estimation"` question asks for a number instead of offering answers to pick
 - `options.min` / `options.max`: Bounds of the accepted values, `max` must be greater than `min`
 - `options.step`: Precision of the slider (must be greater than 0)
 - `options.margin`: How far from the expected value an answer still counts as correct. An exact answer earns `maxPoints`, an answer at the edge of the margin earns half of it, and anything further away earns nothing (and the `penalty`, if any). A margin of `0` only accepts the exact value
+
+## True/False questions
+
+A `"trueFalse"` question shows two fixed buttons, True and False, localized for every player. The only setting is which side is correct:
+
+```json
+{
+  "type": "trueFalse",
+  "question": "A fly lives longer than a year.",
+  "answers": ["true", "false"],
+  "solutions": [1],
+  "cooldown": 5,
+  "time": 15
+}
+```
+
+- `answers`: Always exactly `["true", "false"]`. These are canonical keys — the UI shows localized labels, never this raw text
+- `solutions`: Exactly one index, `0` for True or `1` for False. Required in `"quiz"` mode, omitted in `"survey"` mode (a true/false survey is a binary poll)
+
+## Puzzle questions
+
+A `"puzzle"` question shows shuffled tiles that players drag into the correct order. The stored `answers` order is the solution — there is no `solutions` array:
+
+```json
+{
+  "type": "puzzle",
+  "question": "Order these from smallest to largest",
+  "answers": ["Ant", "Cat", "Dog"],
+  "cooldown": 5,
+  "time": 30,
+  "maxPoints": 1000
+}
+```
+
+- `answers`: 2 to 8 non-empty tiles, stored in the correct order. Every player sees the same shuffle for a question
+- `solutions`: Not used, do not set it
+- Scoring: each correctly placed tile earns a share of the points; a fully correct order earns `maxPoints`. A wrong tile earns nothing extra but correct tiles still count, so a mostly-right order scores partial points
+- Survey mode: not supported
+
+## Pin questions
+
+A `"pin"` question shows an image and players drop a single pin on it. One author-drawn area (rectangle, circle, or freehand polygon) marks the correct region:
+
+```json
+{
+  "type": "pin",
+  "question": "Where is the Eiffel Tower?",
+  "answers": [],
+  "media": { "type": "image", "url": "/media/paris.png" },
+  "cooldown": 5,
+  "time": 30,
+  "maxPoints": 1000,
+  "options": {
+    "area": { "kind": "circle", "cx": 0.5, "cy": 0.5, "r": 0.2 }
+  }
+}
+```
+
+- `media`: required, must be an image. This is the question's single media slot
+- `options.area`: the correct area in normalized image coordinates (0-1 on both axes). `kind` is `"rect"` (`x`, `y`, `w`, `h`), `"circle"` (`cx`, `cy`, `r`) or `"freehand"` (`points`, at least 3). Required in quiz mode, optional in survey mode. Pins inside the area earn full points, pins outside earn nothing
+- `solutions`: Not used, do not set it
+- Survey mode: allowed with no area, e.g. a "where are you from?" poll; the reveal shows all named pins
 
 ## Categories
 

@@ -51,6 +51,23 @@
         "stepHint": "Precisión del deslizador y de la respuesta esperada",
         "margin": "Margen",
         "marginHint": "Las respuestas dentro de esta distancia de la respuesta correcta obtienen del 100 % (exacta) al 50 %. Fuera de ella no obtienen nada."
+      },
+      "trueFalse": {
+        "correctAnswer": "Respuesta correcta"
+      },
+      "pin": {
+        "title": "Ajustes de pin",
+        "shape": {
+          "rect": "Rectángulo",
+          "circle": "Círculo",
+          "freehand": "A mano alzada"
+        },
+        "zoomIn": "Acercar",
+        "zoomOut": "Alejar",
+        "erase": "Borrar área",
+        "moveHint": "Usa la herramienta de mano para arrastrar el área a una nueva posición.",
+        "mediaHint": "Añade primero una imagen y dibuja después el área correcta.",
+        "move": "Mover área"
       }
     },
     "deleteQuestion": "Eliminar pregunta",
@@ -66,13 +83,22 @@
     "notePlaceholder": "Añade una explicación que se muestra al revelar la respuesta",
     "estimation": {
       "correctAnswer": "Respuesta correcta"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Arrastra las fichas al orden correcto: ese orden es la respuesta.",
+      "reorder": "Reordenar ficha"
+    },
+    "disableQuestion": "Desactivar pregunta",
+    "enableQuestion": "Activar pregunta"
   },
   "questionHasErrors": "Esta pregunta contiene errores",
   "questionType": {
     "single": "Opción única",
     "multi": "Opción múltiple",
-    "estimation": "Estimación"
+    "estimation": "Estimación",
+    "trueFalse": "Verdadero/Falso",
+    "puzzle": "Rompecabezas",
+    "pin": "Pin en imagen"
   },
   "quizzSaved": "Cuestionario guardado con éxito",
   "quizzUpdated": "Cuestionario actualizado con éxito",
@@ -84,6 +110,8 @@
     "libraryEmpty": "Tu biblioteca está vacía",
     "upload": "Subir",
     "uploadHint": "Imágenes, audio o vídeo, hasta {{size}} MB",
+    "duplicateTitle": "El medio ya existe",
+    "useExisting": "Usar el existente",
     "search": "Buscar archivos...",
     "filter": {
       "all": "Todo"

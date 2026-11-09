@@ -38,6 +38,7 @@ interface SortableItemProps {
   canDelete: boolean
   onClick: () => void
   onDelete: () => void
+  onToggleEnabled: () => void
 }
 
 const SortableItem = ({
@@ -49,6 +50,7 @@ const SortableItem = ({
   canDelete,
   onClick,
   onDelete,
+  onToggleEnabled,
 }: SortableItemProps) => {
   const {
     attributes,
@@ -75,6 +77,7 @@ const SortableItem = ({
         canDelete={canDelete}
         onClick={onClick}
         onDelete={onDelete}
+        onToggleEnabled={onToggleEnabled}
       />
     </div>
   )
@@ -89,6 +92,7 @@ const QuizzEditorSidebar = () => {
     addQuestion,
     removeQuestion,
     reorderQuestions,
+    updateQuestion,
   } = useQuizzEditor()
   const {
     formState: { errors },
@@ -151,6 +155,11 @@ const QuizzEditorSidebar = () => {
                 canDelete={questions.length > 1}
                 onClick={handleSlideClick(index)}
                 onDelete={handleDelete(index)}
+                onToggleEnabled={() =>
+                  updateQuestion(index, {
+                    enabled: question.enabled === false,
+                  })
+                }
               />
             ))}
           </div>

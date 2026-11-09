@@ -51,6 +51,23 @@
         "stepHint": "Genauigkeit des Schiebereglers und der erwarteten Antwort",
         "margin": "Toleranz",
         "marginHint": "Antworten innerhalb dieses Abstands zur richtigen Antwort bringen 100 % (exakt) bis 50 %. Außerhalb gibt es keine Punkte."
+      },
+      "trueFalse": {
+        "correctAnswer": "Richtige Antwort"
+      },
+      "pin": {
+        "title": "Pin-Einstellungen",
+        "shape": {
+          "rect": "Rechteck",
+          "circle": "Kreis",
+          "freehand": "Freihand"
+        },
+        "zoomIn": "Vergrößern",
+        "zoomOut": "Verkleinern",
+        "erase": "Bereich löschen",
+        "moveHint": "Verschiebe den Bereich mit dem Hand-Werkzeug an eine neue Position.",
+        "mediaHint": "Füge zuerst ein Bild hinzu und zeichne dann den richtigen Bereich.",
+        "move": "Bereich verschieben"
       }
     },
     "deleteQuestion": "Frage löschen",
@@ -66,13 +83,22 @@
     "notePlaceholder": "Erklärung hinzufügen, die beim Aufdecken der Antwort angezeigt wird",
     "estimation": {
       "correctAnswer": "Richtige Antwort"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Ziehe die Kacheln in die richtige Reihenfolge – diese Reihenfolge ist die Antwort.",
+      "reorder": "Kachel verschieben"
+    },
+    "disableQuestion": "Frage deaktivieren",
+    "enableQuestion": "Frage aktivieren"
   },
   "questionHasErrors": "Diese Frage enthält Fehler",
   "questionType": {
     "single": "Einzelauswahl",
     "multi": "Mehrfachauswahl",
-    "estimation": "Schätzung"
+    "estimation": "Schätzung",
+    "trueFalse": "Wahr/Falsch",
+    "puzzle": "Puzzle",
+    "pin": "Bild anpinnen"
   },
   "quizzSaved": "Quiz erfolgreich gespeichert",
   "quizzUpdated": "Quiz erfolgreich aktualisiert",
@@ -84,6 +110,8 @@
     "libraryEmpty": "Deine Mediathek ist leer",
     "upload": "Hochladen",
     "uploadHint": "Bilder, Audio oder Video, bis zu {{size}} MB",
+    "duplicateTitle": "Medium existiert bereits",
+    "useExisting": "Vorhandene verwenden",
     "search": "Medien suchen...",
     "filter": {
       "all": "Alle"
