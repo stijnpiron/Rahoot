@@ -1,5 +1,7 @@
 {
   "cancel": "Cancelar",
+  "changeLanguage": "Cambiar idioma",
+  "close": "Cerrar",
   "confirm": "Confirmar",
   "connecting": "Conectando...",
   "delete": "Eliminar",
@@ -7,23 +9,22 @@
   "exitFullscreen": "Salir de pantalla completa",
   "fullscreen": "Pantalla completa",
   "language": {
-    "de": "Deutsch - Alemán",
-    "en": "English - Inglés",
-    "es": "Español - Español",
-    "fr": "Français - Francés",
-    "it": "Italiano - Italiano",
-    "ja": "日本語 - Japonés",
-    "tr": "Türkçe - Turco",
-    "pl": "Polski - Polaco",
-    "vi": "Tiếng Việt - Vietnamita"
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "it": "Italiano",
+    "ja": "日本語",
+    "nl": "Nederlands",
+    "pl": "Polski",
+    "tr": "Türkçe",
+    "vi": "Tiếng Việt"
   },
   "loading": "Cargando...",
   "next": "Siguiente",
+  "previous": "Anterior",
   "save": "Guardar",
   "seconds": "seg",
   "skip": "Omitir",
-  "submit": "Enviar",
-  "close": "Cerrar",
-  "previous": "Anterior",
-  "changeLanguage": "Cambiar idioma"
+  "submit": "Enviar"
 }
