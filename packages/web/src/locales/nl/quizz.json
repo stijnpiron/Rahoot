@@ -1,0 +1,133 @@
+{
+  "addAnswerPlaceholder": "Antwoord toevoegen...",
+  "addQuestion": "Vraag toevoegen",
+  "answersCountSuffix": " antwoorden",
+  "deleteQuestion": "Vraag verwijderen",
+  "gameMode": {
+    "quiz": "Quiz",
+    "survey": "Enquete"
+  },
+  "noQuestionYet": "Nog geen vraag",
+  "question": {
+    "addMediaHint": "Voeg een afbeelding, video of audio toe aan je vraag",
+    "config": {
+      "answerTime": "Antwoordtijd",
+      "answerTimeHint": "Tijd die spelers hebben om te antwoorden",
+      "noTimeLimit": "Geen tijdslimiet",
+      "noTimeLimitHint": "Punten worden toegekend op basis van de volgorde van antwoorden. Er is geen tijdslimiet om te antwoorden.",
+      "questionDisplay": "Weergave van de vraag",
+      "questionDisplayHint": "Duur voordat de antwoorden verschijnen",
+      "timings": "Tijden",
+      "answerMode": "Antwoordmodus",
+      "category": "Categorie",
+      "categoryPlaceholder": "bijv. Aardrijkskunde",
+      "categoryHint": "Opeenvolgende vragen met dezelfde categorie vormen een ronde. De ranglijst wordt alleen getoond als de categorie verandert.",
+      "scoring": "Puntentelling",
+      "maxPoints": "Maximale punten",
+      "maxPointsHint": "Maximaal aantal punten voor een correct antwoord",
+      "penalty": "Straf",
+      "penaltyHint": "Punten die worden afgetrokken bij een fout antwoord (totaal kan niet onder 0 komen)",
+      "scoringMode": "Puntentellingsmodus",
+      "scoringMode.strict": "Strikt",
+      "scoringMode.balanced": "Gebalanceerd",
+      "scoringMode.lenient": "Soepel",
+      "scoringModeHint.strict": "Alleen volle punten als alle correcte antwoorden zijn gekozen en geen foutieve",
+      "scoringModeHint.balanced": "Gedeeltelijke punten: correcte keuzes minus foutieve",
+      "scoringModeHint.lenient": "Punten per correct antwoord, geen straf voor foutieve",
+      "estimation": {
+        "title": "Schatting",
+        "inputMode": "Invoertype",
+        "inputModes": {
+          "slider": "Schuifregelaar",
+          "input": "Vrije invoer"
+        },
+        "inputModeHint": {
+          "slider": "Spelers kiezen een waarde met een schuifregelaar tussen de grenzen",
+          "input": "Spelers typen een getal tussen de grenzen"
+        },
+        "min": "Minimum",
+        "max": "Maximum",
+        "step": "Stap",
+        "stepHint": "Nauwkeurigheid van de schuifregelaar en het verwachte antwoord",
+        "margin": "Marge",
+        "marginHint": "Antwoorden binnen deze afstand van het correcte antwoord scoren van 100% (exact) tot 50%. Antwoorden erbuiten scoren niets."
+      },
+      "trueFalse": {
+        "correctAnswer": "Correct antwoord"
+      },
+      "pin": {
+        "title": "Pin-instellingen",
+        "shape": {
+          "rect": "Rechthoek",
+          "circle": "Cirkel",
+          "freehand": "Vrije hand"
+        },
+        "zoomIn": "Inzoomen",
+        "zoomOut": "Uitzoomen",
+        "erase": "Gebied wissen",
+        "moveHint": "Gebruik de hand om het gebied naar een nieuwe positie te slepen.",
+        "mediaHint": "Voeg eerst een afbeelding toe en teken er daarna het correcte gebied op.",
+        "move": "Gebied verplaatsen"
+      }
+    },
+    "deleteQuestion": "Vraag verwijderen",
+    "deleteQuestionConfirm": "Weet je zeker dat je deze vraag wilt verwijderen?",
+    "media": {
+      "audio": "Audio",
+      "image": "Afbeelding",
+      "video": "Video"
+    },
+    "mediaUrlPlaceholder": "URL invoeren...",
+    "placeholder": "Begin met het typen van je vraag...",
+    "note": "Uitleg",
+    "notePlaceholder": "Voeg uitleg toe die wordt getoond wanneer het antwoord wordt onthuld",
+    "estimation": {
+      "correctAnswer": "Correct antwoord"
+    },
+    "puzzle": {
+      "orderHint": "Sleep de tegels in de juiste volgorde — deze volgorde is het antwoord.",
+      "reorder": "Tegel verplaatsen"
+    },
+    "disableQuestion": "Vraag uitschakelen",
+    "enableQuestion": "Vraag inschakelen"
+  },
+  "questionHasErrors": "Deze vraag bevat fouten",
+  "questionType": {
+    "single": "Eén keuze",
+    "multi": "Meerkeuze",
+    "estimation": "Schatting",
+    "trueFalse": "Waar/Onwaar",
+    "puzzle": "Puzzel",
+    "pin": "Pin op afbeelding"
+  },
+  "quizzSaved": "Quizz succesvol opgeslagen",
+  "quizzUpdated": "Quizz succesvol bijgewerkt",
+  "titleQuizzPlaceholder": "Titel van de quizz...",
+  "media": {
+    "delete": "Media verwijderen",
+    "deleteConfirm": "\"{{name}}\" verwijderen? Het wordt uit deze quizz gehaald en andere quizzen die het gebruiken kunnen het niet langer tonen.",
+    "library": "Mediabibliotheek",
+    "libraryEmpty": "Je bibliotheek is leeg",
+    "upload": "Uploaden",
+    "uploadHint": "Afbeeldingen, audio of video, tot {{size}} MB",
+    "duplicateTitle": "Media bestaat al",
+    "useExisting": "Bestaande gebruiken",
+    "search": "Media zoeken...",
+    "filter": {
+      "all": "Alle"
+    },
+    "use": "Gebruiken",
+    "dropHint": "Sleep je afbeeldingen, audio- en videobestanden hierheen, of gebruik de uploadknop",
+    "dropHere": "Laat los om te uploaden",
+    "noResults": "Geen media gevonden voor je zoekopdracht",
+    "fromUrl": "Toevoegen via een URL",
+    "view": {
+      "grid": "Rasterweergave",
+      "list": "Lijstweergave"
+    },
+    "filterByType": "Filteren op type"
+  },
+  "addAnswer": "Antwoord toevoegen",
+  "removeAnswer": "Antwoord verwijderen",
+  "markCorrect": "Markeer {{label}} als correct"
+}
