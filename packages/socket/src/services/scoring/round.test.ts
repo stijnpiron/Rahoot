@@ -44,6 +44,17 @@ describe("scoreQuestion", () => {
     expect(scored.lastPoints).toBe(500)
   })
 
+  it("keeps fractional points without rounding", () => {
+    const question = createQuestion({ type: "multi", solutions: [0, 1] })
+    const [scored] = scoreQuestion(
+      question,
+      [alice()],
+      [{ playerId: "alice", answerIds: [0], points: 937 }],
+    )
+
+    expect(scored.lastPoints).toBe(468.5)
+  })
+
   it("applies the penalty to wrong answers only, never below zero", () => {
     const question = createQuestion({ solutions: [0], penalty: 300 })
     const players = [

@@ -1,6 +1,7 @@
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
 import CricleCheck from "@razzia/web/features/game/components/icons/CricleCheck"
 import CricleXmark from "@razzia/web/features/game/components/icons/CricleXmark"
+import { formatPoints } from "@razzia/web/lib/formatPoints"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
 import { SFX } from "@razzia/web/features/game/utils/constants"
 import { useEffect } from "react"
@@ -45,7 +46,7 @@ const Result = ({
       </p>
       {correct && (
         <span className="mt-2 rounded-lg bg-black/40 px-4 py-2 text-2xl font-bold text-white drop-shadow-lg">
-          +{points}
+          +{formatPoints(points)}
         </span>
       )}
     </section>
