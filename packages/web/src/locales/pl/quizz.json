@@ -69,14 +69,21 @@
     "notePlaceholder": "Dodaj wyjaśnienie wyświetlane po odsłonięciu odpowiedzi",
     "estimation": {
       "correctAnswer": "Poprawna odpowiedź"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Przeciągnij kafelki we właściwej kolejności — ta kolejność to odpowiedź.",
+      "reorder": "Przenieś kafelek"
+    },
+    "disableQuestion": "Wyłącz pytanie",
+    "enableQuestion": "Włącz pytanie"
   },
   "questionHasErrors": "To pytanie zawiera błędy",
   "questionType": {
     "single": "Jednokrotny wybór",
     "multi": "Wielokrotny wybór",
     "estimation": "Szacowanie",
-    "trueFalse": "Prawda/Fałsz"
+    "trueFalse": "Prawda/Fałsz",
+    "puzzle": "Puzzle"
   },
   "quizzSaved": "Quiz został zapisany",
   "quizzUpdated": "Quiz został zaktualizowany",

@@ -69,14 +69,21 @@
     "notePlaceholder": "Cevap açıklandığında gösterilecek bir açıklama ekleyin",
     "estimation": {
       "correctAnswer": "Doğru cevap"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Kutucukları doğru sıraya sürükleyin — bu sıralama cevaptır.",
+      "reorder": "Kutucuğu yeniden sırala"
+    },
+    "disableQuestion": "Soruyu devre dışı bırak",
+    "enableQuestion": "Soruyu etkinleştir"
   },
   "questionHasErrors": "Bu soruda hatalar var",
   "questionType": {
     "single": "Tek seçenekli",
     "multi": "Çoktan seçmeli",
     "estimation": "Tahmin",
-    "trueFalse": "Doğru/Yanlış"
+    "trueFalse": "Doğru/Yanlış",
+    "puzzle": "Yapboz"
   },
   "quizzSaved": "Test başarıyla kaydedildi",
   "quizzUpdated": "Test başarıyla güncellendi",

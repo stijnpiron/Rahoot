@@ -60,7 +60,10 @@
     "estimationMarginNegative": "許容範囲は負の値にできません",
     "estimationInvalidOptions": "数値推定の設定がないか、無効です",
     "trueFalseInvalidAnswers": "正誤問題はちょうど2つの選択肢が必要です",
-    "trueFalseInvalidSolution": "正解を選んでください"
+    "trueFalseInvalidSolution": "正解を選んでください",
+    "puzzleInvalidAnswers": "パズル問題のタイルは2〜8個である必要があります",
+    "puzzleSurveyUnsupported": "パズル問題はアンケートモードでは使用できません",
+    "noEnabledQuestions": "少なくとも1つの問題を有効にする必要があります"
   },
   "result": {
     "notFound": "結果が見つかりません"

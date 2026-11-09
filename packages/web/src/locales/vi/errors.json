@@ -60,7 +60,10 @@
     "estimationMarginNegative": "Biên độ không được âm",
     "estimationInvalidOptions": "Cài đặt ước lượng bị thiếu hoặc không hợp lệ",
     "trueFalseInvalidAnswers": "Câu hỏi đúng/sai phải có đúng hai câu trả lời",
-    "trueFalseInvalidSolution": "Chọn câu trả lời đúng"
+    "trueFalseInvalidSolution": "Chọn câu trả lời đúng",
+    "puzzleInvalidAnswers": "Câu hỏi ghép thứ tự phải có từ 2 đến 8 đáp án",
+    "puzzleSurveyUnsupported": "Câu hỏi ghép thứ tự không được hỗ trợ ở chế độ khảo sát",
+    "noEnabledQuestions": "Phải bật ít nhất một câu hỏi"
   },
   "result": {
     "notFound": "Không tìm thấy kết quả"

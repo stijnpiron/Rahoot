@@ -173,6 +173,53 @@ describe("quizzValidator", () => {
   })
 })
 
+describe("puzzle questions", () => {
+  const puzzleQuestion = (overrides: Partial<Question> = {}): Question => ({
+    type: QUESTION_TYPES.PUZZLE,
+    question: "Order these ?",
+    answers: ["A", "B", "C"],
+    cooldown: 5,
+    time: 15,
+    ...overrides,
+  })
+
+  it("accepts a puzzle without solutions in quiz mode", () => {
+    expect(issues(quizz([puzzleQuestion()]))).toEqual([])
+  })
+
+  it("limits puzzle questions to 2-8 answers", () => {
+    expect(issues(quizz([puzzleQuestion({ answers: ["A"] })]))).toContain(
+      "errors:quizz.puzzleInvalidAnswers",
+    )
+    expect(
+      issues(
+        quizz([
+          puzzleQuestion({
+            answers: Array.from({ length: 9 }, (_, i) => `A${i}`),
+          }),
+        ]),
+      ),
+    ).toContain("errors:quizz.puzzleInvalidAnswers")
+  })
+
+  it("rejects puzzle questions in survey mode", () => {
+    expect(issues(quizz([puzzleQuestion()], QUIZZ_MODES.SURVEY))).toContain(
+      "errors:quizz.puzzleSurveyUnsupported",
+    )
+  })
+})
+
+describe("enabled questions", () => {
+  it("rejects a quizz where every question is disabled", () => {
+    expect(issues(quizz([choiceQuestion({ enabled: false })]))).toContain(
+      "errors:quizz.noEnabledQuestions",
+    )
+    expect(
+      issues(quizz([choiceQuestion({ enabled: false }), choiceQuestion()])),
+    ).toEqual([])
+  })
+})
+
 describe("questionMediaValidator", () => {
   it.each(["/media/picture.png", "https://example.com/picture.png"])(
     "accepts %s",

@@ -69,14 +69,21 @@
     "notePlaceholder": "Añade una explicación que se muestra al revelar la respuesta",
     "estimation": {
       "correctAnswer": "Respuesta correcta"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Arrastra las fichas al orden correcto: ese orden es la respuesta.",
+      "reorder": "Reordenar ficha"
+    },
+    "disableQuestion": "Desactivar pregunta",
+    "enableQuestion": "Activar pregunta"
   },
   "questionHasErrors": "Esta pregunta contiene errores",
   "questionType": {
     "single": "Opción única",
     "multi": "Opción múltiple",
     "estimation": "Estimación",
-    "trueFalse": "Verdadero/Falso"
+    "trueFalse": "Verdadero/Falso",
+    "puzzle": "Rompecabezas"
   },
   "quizzSaved": "Cuestionario guardado con éxito",
   "quizzUpdated": "Cuestionario actualizado con éxito",

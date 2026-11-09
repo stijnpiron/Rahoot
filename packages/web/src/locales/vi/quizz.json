@@ -69,14 +69,21 @@
     "notePlaceholder": "Thêm phần giải thích hiển thị khi công bố đáp án",
     "estimation": {
       "correctAnswer": "Đáp án đúng"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Kéo các ô vào đúng thứ tự — thứ tự đó chính là câu trả lời.",
+      "reorder": "Sắp xếp lại ô"
+    },
+    "disableQuestion": "Tắt câu hỏi",
+    "enableQuestion": "Bật câu hỏi"
   },
   "questionHasErrors": "Câu hỏi này có lỗi",
   "questionType": {
     "single": "Chọn một đáp án",
     "multi": "Chọn nhiều đáp án",
     "estimation": "Ước lượng",
-    "trueFalse": "Đúng/Sai"
+    "trueFalse": "Đúng/Sai",
+    "puzzle": "Ghép thứ tự"
   },
   "quizzSaved": "Đã lưu trò chơi thành công",
   "quizzUpdated": "Đã cập nhật trò chơi thành công",

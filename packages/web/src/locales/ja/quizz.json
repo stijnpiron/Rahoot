@@ -69,14 +69,21 @@
     "notePlaceholder": "答えの発表時に表示される解説を追加",
     "estimation": {
       "correctAnswer": "正解"
-    }
+    },
+    "puzzle": {
+      "orderHint": "タイルを正しい順にドラッグしてください。その並び順が答えです。",
+      "reorder": "タイルを並べ替える"
+    },
+    "disableQuestion": "問題を無効にする",
+    "enableQuestion": "問題を有効にする"
   },
   "questionHasErrors": "この質問にはエラーがあります",
   "questionType": {
     "single": "単一選択",
     "multi": "複数選択",
     "estimation": "数値推定",
-    "trueFalse": "正誤問題"
+    "trueFalse": "正誤問題",
+    "puzzle": "パズル"
   },
   "quizzSaved": "クイズを保存しました",
   "quizzUpdated": "クイズを更新しました",

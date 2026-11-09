@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Prepared = ({
-  data: { totalAnswers, questionNumber, questionType },
+  data: { totalAnswers, questionNumber, questionType, puzzleOrder },
 }: Props) => {
   const { t } = useTranslation()
   const PreparedComponent =
@@ -20,7 +20,10 @@ const Prepared = ({
         {t("game:questionPrefix")}
         {questionNumber}
       </h2>
-      <PreparedComponent totalAnswers={totalAnswers} />
+      <PreparedComponent
+        totalAnswers={totalAnswers}
+        puzzleOrder={puzzleOrder}
+      />
     </section>
   )
 }

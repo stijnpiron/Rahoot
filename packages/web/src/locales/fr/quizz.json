@@ -69,14 +69,21 @@
     "notePlaceholder": "Ajouter une explication affichée à la révélation de la réponse",
     "estimation": {
       "correctAnswer": "Bonne réponse"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Faites glisser les tuiles dans le bon ordre — cet ordre est la réponse.",
+      "reorder": "Réorganiser la tuile"
+    },
+    "disableQuestion": "Désactiver la question",
+    "enableQuestion": "Activer la question"
   },
   "questionHasErrors": "Cette question contient des erreurs",
   "questionType": {
     "single": "Choix unique",
     "multi": "Choix multiple",
     "estimation": "Estimation",
-    "trueFalse": "Vrai/Faux"
+    "trueFalse": "Vrai/Faux",
+    "puzzle": "Puzzle"
   },
   "quizzSaved": "Quizz enregistré avec succès",
   "quizzUpdated": "Quizz mis à jour avec succès",

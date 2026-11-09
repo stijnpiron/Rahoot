@@ -1,6 +1,7 @@
 import type { Question, QuestionType } from "@razzia/common/types/game"
 import * as estimation from "./estimation"
 import * as multi from "./multi"
+import * as puzzle from "./puzzle"
 import * as single from "./single"
 import * as trueFalse from "./trueFalse"
 
@@ -11,4 +12,5 @@ export const QUESTION_SCORING: Record<QuestionType, ScoringFn> = {
   [multi.type]: multi.scoring,
   [estimation.type]: estimation.scoring,
   [trueFalse.type]: trueFalse.scoring,
+  [puzzle.type]: puzzle.scoring,
 }

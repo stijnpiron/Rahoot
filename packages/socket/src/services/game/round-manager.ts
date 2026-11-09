@@ -4,6 +4,7 @@ import {
   MAX_POINTS,
   MEDIA_TYPES,
   NO_TIME_LIMIT,
+  QUESTION_TYPES,
   QUIZZ_MODES,
 } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
@@ -26,12 +27,14 @@ import {
 } from "@razzia/common/types/game/status"
 import { CooldownTimer } from "@razzia/socket/services/game/cooldown-timer"
 import { PlayerManager } from "@razzia/socket/services/game/player-manager"
+import { countFullyCorrect } from "@razzia/socket/services/scoring/puzzle"
 import {
   countAnswers,
   scoreQuestion,
   type ScoredPlayer,
 } from "@razzia/socket/services/scoring/round"
 import { orderToPoint, timeToPoint } from "@razzia/socket/utils/game"
+import { shuffleIndices } from "@razzia/socket/utils/shuffle"
 import sleep, { SECOND_MS } from "@razzia/socket/utils/sleep"
 import { nanoid } from "nanoid"
 
@@ -80,6 +83,7 @@ export class RoundManager {
   private tempOldLeaderboard: Player[] | null = null
   private questionsHistory: QuestionResult[] = []
   private autoAdvanceTimer: NodeJS.Timeout | null = null
+  private puzzleOrder: number[] | null = null
 
   constructor(opts: RoundManagerOptions) {
     this.opts = opts
@@ -134,6 +138,20 @@ export class RoundManager {
 
   private isSurvey(): boolean {
     return this.opts.quizz.gameMode === QUIZZ_MODES.SURVEY
+  }
+
+  private isPuzzle(): boolean {
+    return this.question.type === QUESTION_TYPES.PUZZLE
+  }
+
+  /**
+   * Shuffled display order for the current puzzle question, memoized so
+   * SHOW_PREPARED and SELECT_ANSWER broadcast the same order.
+   */
+  private getPuzzleOrder(): number[] {
+    this.puzzleOrder ??= shuffleIndices(this.question.answers.length)
+
+    return this.puzzleOrder
   }
 
   // ── Auto advance ─────────────────────────────────────────────────────────
@@ -272,6 +290,7 @@ export class RoundManager {
     }
 
     this.currentStep = -1
+    this.puzzleOrder = null
 
     this.opts.onNewQuestion()
 
@@ -280,10 +299,13 @@ export class RoundManager {
       total: this.opts.quizz.questions.length,
     })
 
+    const puzzleOrder = this.isPuzzle() ? this.getPuzzleOrder() : undefined
+
     this.opts.broadcast(STATUS.SHOW_PREPARED, {
       totalAnswers: this.question.answers.length,
       questionNumber: this.currentQuestion + 1,
       questionType: this.question.type,
+      puzzleOrder,
     })
 
     await sleep(2)
@@ -317,13 +339,16 @@ export class RoundManager {
 
     this.opts.broadcast(STATUS.SELECT_ANSWER, {
       question: this.question.question,
-      answers: this.question.answers,
+      answers: puzzleOrder
+        ? puzzleOrder.map((index) => this.question.answers[index])
+        : this.question.answers,
       media: this.question.media,
       time: this.question.time,
       totalPlayer: this.opts.players.count(),
       questionType: this.question.type,
       options: this.question.options,
       answersOnly: this.opts.getSettings().answersOnly,
+      puzzleOrder,
     })
 
     await this.opts.cooldown.start(this.question.time)
@@ -415,6 +440,12 @@ export class RoundManager {
     this.opts.send(this.opts.getManagerId(), STATUS.SHOW_RESPONSES, {
       ...this.question,
       responses: answerCounts,
+      puzzleFullyCorrect: this.isPuzzle()
+        ? {
+            count: countFullyCorrect(this.question, this.playersAnswers),
+            total: currentPlayers.length,
+          }
+        : undefined,
     })
 
     this.recordHistory(currentPlayers, sortedPlayers)

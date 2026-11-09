@@ -58,6 +58,15 @@
       "solutions": [1],
       "cooldown": 3,
       "time": -1
+    },
+    {
+      "type": "puzzle",
+      "question": "Order these from smallest to largest",
+      "category": "Round",
+      "answers": ["Ant", "Cat", "Dog"],
+      "cooldown": 3,
+      "time": -1,
+      "maxPoints": 750
     }
   ]
 }

@@ -6,6 +6,7 @@ import type {
 } from "@razzia/common/types/game"
 import * as estimation from "@razzia/web/features/questions/estimation"
 import * as multi from "@razzia/web/features/questions/multi"
+import * as puzzle from "@razzia/web/features/questions/puzzle"
 import * as single from "@razzia/web/features/questions/single"
 import * as trueFalse from "@razzia/web/features/questions/trueFalse"
 import type {
@@ -34,6 +35,7 @@ export const QUESTION_REGISTRY: Record<QuestionType, QuestionRegistryEntry> = {
   multi,
   estimation,
   trueFalse,
+  puzzle,
 }
 
 export const QUESTION_TYPE_LIST = Object.keys(

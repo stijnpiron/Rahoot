@@ -8,6 +8,7 @@ import {
   confirm,
   expectPoints,
   joinGame,
+  solvePuzzle,
 } from "@razzia/e2e/utils/player"
 
 test("scores every question type with its scoring settings", async ({
@@ -47,6 +48,11 @@ test("scores every question type with its scoring settings", async ({
   await answerTrueFalse(player, "false")
   await expect(player.getByText("+1000")).toBeVisible()
   await expectPoints(player, 2550)
+  await next(manager)
+
+  await solvePuzzle(player, ["Ant", "Cat", "Dog"])
+  await expect(player.getByText("+750")).toBeVisible()
+  await expectPoints(player, 3300)
   await next(manager)
 
   await expect(

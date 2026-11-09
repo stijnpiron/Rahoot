@@ -1,11 +1,11 @@
-import { EVENTS, MAX_ANSWERS } from "@razzia/common/constants"
+import { EVENTS, PUZZLE_MAX_ANSWERS } from "@razzia/common/constants"
 import { z } from "zod"
 
 const gameMessageValidator = z.object({ gameId: z.string().min(1) })
 
 const answerKeysValidator = z
   .array(z.number())
-  .max(MAX_ANSWERS)
+  .max(PUZZLE_MAX_ANSWERS)
   .refine((keys) => new Set(keys).size === keys.length)
 
 export const clientEventValidators = {

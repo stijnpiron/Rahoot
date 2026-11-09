@@ -60,7 +60,10 @@
     "estimationMarginNegative": "The margin cannot be negative",
     "estimationInvalidOptions": "Estimation settings are missing or invalid",
     "trueFalseInvalidAnswers": "A true/false question must have exactly two answers",
-    "trueFalseInvalidSolution": "Pick which answer is correct"
+    "trueFalseInvalidSolution": "Pick which answer is correct",
+    "puzzleInvalidAnswers": "A puzzle question must have between 2 and 8 answers",
+    "puzzleSurveyUnsupported": "Puzzle questions are not supported in survey mode",
+    "noEnabledQuestions": "At least one question must be enabled"
   },
   "result": {
     "notFound": "Result not found"

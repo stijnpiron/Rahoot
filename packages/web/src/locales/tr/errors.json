@@ -60,7 +60,10 @@
     "estimationMarginNegative": "Tolerans negatif olamaz",
     "estimationInvalidOptions": "Tahmin ayarları eksik veya geçersiz",
     "trueFalseInvalidAnswers": "Doğru/yanlış sorusu tam olarak iki cevap içermelidir",
-    "trueFalseInvalidSolution": "Hangi cevabın doğru olduğunu seç"
+    "trueFalseInvalidSolution": "Hangi cevabın doğru olduğunu seç",
+    "puzzleInvalidAnswers": "Yapboz sorusu 2 ile 8 cevap arasında olmalıdır",
+    "puzzleSurveyUnsupported": "Yapboz soruları anket modunda desteklenmez",
+    "noEnabledQuestions": "En az bir soru etkin olmalıdır"
   },
   "result": {
     "notFound": "Sonuç bulunamadı"

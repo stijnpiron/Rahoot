@@ -176,6 +176,87 @@ test("saves a true/false question and keeps the solution when switching types", 
   })
 })
 
+test("saves a puzzle question with tiles in solution order", async ({
+  page,
+}) => {
+  const subject = uniqueSubject("Puzzle quizz")
+
+  await page.getByRole("button", { name: t("manager:quizz.create") }).click()
+  await page.getByPlaceholder(t("quizz:titleQuizzPlaceholder")).fill(subject)
+  await page
+    .getByPlaceholder(t("quizz:question.placeholder"))
+    .fill("Order these")
+  await selectOption(
+    page,
+    t("quizz:question.config.answerMode"),
+    t("quizz:questionType.puzzle"),
+  )
+
+  await answerInput(page, 0).fill("First")
+  await answerInput(page, 1).fill("Second")
+  await addAnswer(page)
+  await answerInput(page, 2).fill("Third")
+
+  await saveQuizz(page)
+
+  expect(readQuizz(subject)).toMatchObject({
+    questions: [
+      {
+        type: "puzzle",
+        answers: ["First", "Second", "Third"],
+      },
+    ],
+  })
+})
+
+test("disables a question and keeps it in the saved quizz", async ({
+  page,
+}) => {
+  const subject = uniqueSubject("Disabled quizz")
+
+  seedQuizz(subject, {
+    questions: [
+      {
+        type: "single",
+        question: "Kept",
+        answers: ["Yes", "No"],
+        solutions: [0],
+        cooldown: 5,
+        time: 20,
+      },
+      {
+        type: "single",
+        question: "Skipped",
+        answers: ["Yes", "No"],
+        solutions: [0],
+        cooldown: 5,
+        time: 20,
+      },
+    ],
+  })
+  await page.reload()
+  await page
+    .getByRole("button", { name: t("manager:tabs.quizz"), exact: true })
+    .click()
+  await quizzRow(page, subject)
+    .getByRole("button", { name: t("manager:quizz.edit") })
+    .click()
+
+  await page
+    .locator("div.group")
+    .filter({ hasText: "Skipped" })
+    .first()
+    .getByRole("button", { name: t("quizz:question.disableQuestion") })
+    .click()
+  await page.getByRole("button", { name: t("common:save") }).click()
+  await expect(page).toHaveURL(/\/manager\/config$/u)
+
+  const saved = readQuizz(subject)
+
+  expect(saved?.questions[0]?.enabled).not.toBe(false)
+  expect(saved?.questions[1]?.enabled).toBe(false)
+})
+
 test("hides the scoring settings in survey mode", async ({ page }) => {
   const subject = uniqueSubject("Survey quizz")
 

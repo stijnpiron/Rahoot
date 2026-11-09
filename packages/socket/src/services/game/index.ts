@@ -80,7 +80,12 @@ class Game {
     })
 
     this.round = new RoundManager({
-      quizz,
+      quizz: {
+        ...quizz,
+        questions: quizz.questions.filter(
+          (question) => question.enabled !== false,
+        ),
+      },
       players: this.playerManager,
       cooldown: this.cooldown,
       io,

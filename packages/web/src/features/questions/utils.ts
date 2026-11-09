@@ -1,4 +1,4 @@
-import { MIN_ANSWERS } from "@razzia/common/constants"
+import { MIN_ANSWERS, QUESTION_TYPES } from "@razzia/common/constants"
 import { estimationAccuracy } from "@razzia/common/questions/estimation"
 import { isEstimationOptions } from "@razzia/common/questions/options"
 import type { Question } from "@razzia/common/types/game"
@@ -29,6 +29,13 @@ export const isAnswerCorrect = (
       value !== undefined &&
       solution !== undefined &&
       estimationAccuracy(value, solution, options.margin) > 0
+    )
+  }
+
+  if (question.type === QUESTION_TYPES.PUZZLE) {
+    return (
+      answerIds.length === question.answers.length &&
+      answerIds.every((id, index) => id === index)
     )
   }
 

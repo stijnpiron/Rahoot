@@ -60,7 +60,10 @@
     "estimationMarginNegative": "La marge ne peut pas être négative",
     "estimationInvalidOptions": "Les réglages de l'estimation sont manquants ou invalides",
     "trueFalseInvalidAnswers": "Une question vrai/faux doit avoir exactement deux réponses",
-    "trueFalseInvalidSolution": "Choisis la réponse correcte"
+    "trueFalseInvalidSolution": "Choisis la réponse correcte",
+    "puzzleInvalidAnswers": "Une question de puzzle doit comporter entre 2 et 8 réponses",
+    "puzzleSurveyUnsupported": "Les questions de puzzle ne sont pas prises en charge en mode sondage",
+    "noEnabledQuestions": "Au moins une question doit être activée"
   },
   "result": {
     "notFound": "Résultat introuvable"
