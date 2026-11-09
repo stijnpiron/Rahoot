@@ -78,6 +78,7 @@
     "title": "Bir şeyler ters gitti"
   },
   "media": {
+    "duplicate": "Bu dosya zaten \"{{name}}\" olarak mevcut.",
     "invalidName": "Geçersiz medya adı",
     "invalidType": "Desteklenmeyen dosya; bir görsel, ses veya video dosyası yükleyin",
     "missingFile": "Hiçbir dosya gönderilmedi",

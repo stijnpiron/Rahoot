@@ -110,6 +110,8 @@
     "libraryEmpty": "Tu biblioteca está vacía",
     "upload": "Subir",
     "uploadHint": "Imágenes, audio o vídeo, hasta {{size}} MB",
+    "duplicateTitle": "El medio ya existe",
+    "useExisting": "Usar el existente",
     "search": "Buscar archivos...",
     "filter": {
       "all": "Todo"

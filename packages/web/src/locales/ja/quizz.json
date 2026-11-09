@@ -110,6 +110,8 @@
     "libraryEmpty": "メディアライブラリは空です",
     "upload": "アップロード",
     "uploadHint": "画像、音声、動画、最大 {{size}} MB",
+    "duplicateTitle": "メディアは既に存在します",
+    "useExisting": "既存のものを使用",
     "search": "メディアを検索...",
     "filter": {
       "all": "すべて"

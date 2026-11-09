@@ -110,6 +110,8 @@
     "libraryEmpty": "Twoja biblioteka jest pusta",
     "upload": "Prześlij",
     "uploadHint": "Obrazy, dźwięk lub wideo, do {{size}} MB",
+    "duplicateTitle": "Medium już istnieje",
+    "useExisting": "Użyj istniejącego",
     "search": "Szukaj multimediów...",
     "filter": {
       "all": "Wszystkie"

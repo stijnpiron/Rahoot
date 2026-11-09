@@ -110,6 +110,8 @@
     "libraryEmpty": "Thư viện của bạn đang trống",
     "upload": "Tải lên",
     "uploadHint": "Hình ảnh, âm thanh hoặc video, tối đa {{size}} MB",
+    "duplicateTitle": "Tệp này đã tồn tại",
+    "useExisting": "Dùng tệp có sẵn",
     "search": "Tìm media...",
     "filter": {
       "all": "Tất cả"

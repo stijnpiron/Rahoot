@@ -110,6 +110,8 @@
     "libraryEmpty": "Ta médiathèque est vide",
     "upload": "Importer",
     "uploadHint": "Images, audio ou vidéo, jusqu'à {{size}} Mo",
+    "duplicateTitle": "Le média existe déjà",
+    "useExisting": "Utiliser l'existant",
     "search": "Rechercher un média...",
     "filter": {
       "all": "Tout"

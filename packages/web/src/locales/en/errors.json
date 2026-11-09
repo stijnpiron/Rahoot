@@ -78,6 +78,7 @@
     "title": "Something went wrong"
   },
   "media": {
+    "duplicate": "This file already exists as \"{{name}}\".",
     "invalidName": "Invalid media name",
     "invalidType": "Unsupported file, upload an image, an audio or a video file",
     "missingFile": "No file was sent",

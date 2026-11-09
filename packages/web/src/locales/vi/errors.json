@@ -78,6 +78,7 @@
     "title": "Đã có lỗi xảy ra"
   },
   "media": {
+    "duplicate": "Tệp này đã tồn tại với tên \"{{name}}\".",
     "invalidName": "Tên media không hợp lệ",
     "invalidType": "Tệp không được hỗ trợ, hãy tải lên hình ảnh, âm thanh hoặc video",
     "missingFile": "Chưa có tệp nào được gửi",

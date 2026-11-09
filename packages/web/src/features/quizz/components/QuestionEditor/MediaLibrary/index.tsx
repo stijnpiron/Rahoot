@@ -34,7 +34,7 @@ const hasFiles = (e: DragEvent) => e.dataTransfer.types.includes("Files")
 const MediaLibrary = ({ open, onOpenChange }: Props) => {
   const { questions, updateQuestion, currentIndex } = useQuizzEditor()
   const { data, isPending } = useQuery({ ...mediaListQuery(), enabled: open })
-  const { upload, pendingCount } = useUploadMedia()
+  const { upload, pendingCount, duplicateDialog } = useUploadMedia()
   const [search, setSearch] = useState("")
   const [filter, setFilter] = useState<MediaFilter>("all")
   const [view, setView] = useState<MediaView>("grid")
@@ -195,6 +195,8 @@ const MediaLibrary = ({ open, onOpenChange }: Props) => {
 
             {isDragging && <MediaDropOverlay />}
           </div>
+
+          {duplicateDialog}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

@@ -78,6 +78,7 @@
     "title": "Coś poszło nie tak"
   },
   "media": {
+    "duplicate": "Ten plik już istnieje jako \"{{name}}\".",
     "invalidName": "Nieprawidłowa nazwa pliku multimedialnego",
     "invalidType": "Nieobsługiwany plik, prześlij obraz, plik audio lub wideo",
     "missingFile": "Nie przesłano żadnego pliku",

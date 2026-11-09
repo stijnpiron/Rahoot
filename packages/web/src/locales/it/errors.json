@@ -78,6 +78,7 @@
     "title": "Qualcosa è andato storto"
   },
   "media": {
+    "duplicate": "Questo file esiste già come \"{{name}}\".",
     "invalidName": "Nome del file non valido",
     "invalidType": "File non supportato, carica un'immagine, un audio o un video",
     "missingFile": "Nessun file inviato",

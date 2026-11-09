@@ -110,6 +110,8 @@
     "libraryEmpty": "Your library is empty",
     "upload": "Upload",
     "uploadHint": "Images, audio or video, up to {{size}} MB",
+    "duplicateTitle": "Media already exists",
+    "useExisting": "Use existing",
     "search": "Search media...",
     "filter": {
       "all": "All"

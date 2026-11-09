@@ -110,6 +110,8 @@
     "libraryEmpty": "Deine Mediathek ist leer",
     "upload": "Hochladen",
     "uploadHint": "Bilder, Audio oder Video, bis zu {{size}} MB",
+    "duplicateTitle": "Medium existiert bereits",
+    "useExisting": "Vorhandene verwenden",
     "search": "Medien suchen...",
     "filter": {
       "all": "Alle"

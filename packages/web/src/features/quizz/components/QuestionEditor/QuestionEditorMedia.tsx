@@ -48,8 +48,8 @@ const QuestionEditorMedia = () => {
 
   const isPinQuestion = currentQuestion.type === QUESTION_TYPES.PIN
 
-  const { upload, pendingCount } = useUploadMedia(({ type, url }) =>
-    updateQuestion(currentIndex, { media: { type, url } }),
+  const { upload, pendingCount, duplicateDialog } = useUploadMedia(
+    ({ type, url }) => updateQuestion(currentIndex, { media: { type, url } }),
   )
   const isUploading = pendingCount > 0
 
@@ -199,6 +199,8 @@ const QuestionEditorMedia = () => {
       )}
 
       <MediaLibrary open={isLibraryOpen} onOpenChange={setIsLibraryOpen} />
+
+      {duplicateDialog}
 
       {questionMedia?.type && (
         <div className="absolute bottom-4">
