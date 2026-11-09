@@ -29,6 +29,13 @@ const routes = apiFactory
         return c.json({ error: "errors:quizz.notFound" }, StatusCodes.NOT_FOUND)
       }
 
+      if (quizz.questions.every((question) => question.enabled === false)) {
+        return c.json(
+          { error: "errors:quizz.noEnabledQuestions" },
+          StatusCodes.BAD_REQUEST,
+        )
+      }
+
       const registry = Registry.getInstance()
       const game = new Game(getIo(), c.get("claims").sub, quizz)
 

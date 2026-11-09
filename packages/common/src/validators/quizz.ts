@@ -50,6 +50,7 @@ const questionSchema = z.object({
     .min(0, "errors:quizz.maxPointsNegative")
     .optional(),
   penalty: z.number().int().min(0, "errors:quizz.penaltyNegative").optional(),
+  enabled: z.boolean().optional(),
   options: z
     .union([multiOptionsValidator, estimationOptionsValidator])
     .optional(),
@@ -68,11 +69,33 @@ export const quizzValidator = z
     questions: z.array(questionValidator).min(1, "errors:quizz.noQuestions"),
   })
   .superRefine((quizz, ctx) => {
+    if (quizz.questions.every((question) => question.enabled === false)) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["questions"],
+        message: "errors:quizz.noEnabledQuestions",
+      })
+    }
+
     if (quizz.gameMode !== QUIZZ_MODES.QUIZ) {
+      quizz.questions.forEach((question, index) => {
+        if (question.type === QUESTION_TYPES.PUZZLE) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["questions", index, "type"],
+            message: "errors:quizz.puzzleSurveyUnsupported",
+          })
+        }
+      })
+
       return
     }
 
     quizz.questions.forEach((question, index) => {
+      if (question.type === QUESTION_TYPES.PUZZLE) {
+        return
+      }
+
       if (question.solutions && question.solutions.length > 0) {
         return
       }

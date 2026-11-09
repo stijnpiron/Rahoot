@@ -60,7 +60,10 @@
     "estimationMarginNegative": "El margen no puede ser negativo",
     "estimationInvalidOptions": "La configuración de la estimación falta o no es válida",
     "trueFalseInvalidAnswers": "Una pregunta de verdadero/falso debe tener exactamente dos respuestas",
-    "trueFalseInvalidSolution": "Elige qué respuesta es correcta"
+    "trueFalseInvalidSolution": "Elige qué respuesta es correcta",
+    "puzzleInvalidAnswers": "Una pregunta de rompecabezas debe tener entre 2 y 8 respuestas",
+    "puzzleSurveyUnsupported": "Las preguntas de rompecabezas no están disponibles en modo encuesta",
+    "noEnabledQuestions": "Al menos una pregunta debe estar activada"
   },
   "result": {
     "notFound": "Resultado no encontrado"

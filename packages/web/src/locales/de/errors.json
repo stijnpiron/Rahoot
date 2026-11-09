@@ -60,7 +60,10 @@
     "estimationMarginNegative": "Die Toleranz darf nicht negativ sein",
     "estimationInvalidOptions": "Die Schätzungseinstellungen fehlen oder sind ungültig",
     "trueFalseInvalidAnswers": "Eine Wahr/Falsch-Frage muss genau zwei Antworten haben",
-    "trueFalseInvalidSolution": "Wähle, welche Antwort richtig ist"
+    "trueFalseInvalidSolution": "Wähle, welche Antwort richtig ist",
+    "puzzleInvalidAnswers": "Eine Puzzle-Frage muss zwischen 2 und 8 Antworten haben",
+    "puzzleSurveyUnsupported": "Puzzle-Fragen werden im Umfrage-Modus nicht unterstützt",
+    "noEnabledQuestions": "Mindestens eine Frage muss aktiviert sein"
   },
   "result": {
     "notFound": "Ergebnis nicht gefunden"

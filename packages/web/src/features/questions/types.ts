@@ -4,6 +4,7 @@ import type { ManagerStatusDataMap } from "@razzia/common/types/game/status"
 export interface AnswerComponentProps {
   answers: string[]
   options?: QuestionOptions
+  puzzleOrder?: number[]
   onSubmit: (_answerKeys: number[]) => void
   readOnly?: boolean
   fill?: boolean
@@ -16,6 +17,7 @@ export interface SolutionPickerProps {
 
 export interface PreparedComponentProps {
   totalAnswers: number
+  puzzleOrder?: number[]
 }
 
 export interface ResponsesComponentProps {

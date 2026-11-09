@@ -75,6 +75,7 @@ export interface Question {
   maxPoints?: number
   penalty?: number
   options?: QuestionOptions
+  enabled?: boolean
 }
 
 export interface Quizz {

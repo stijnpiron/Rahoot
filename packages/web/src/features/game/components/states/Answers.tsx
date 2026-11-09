@@ -34,6 +34,7 @@ const Answers = ({
     questionType,
     options,
     answersOnly,
+    puzzleOrder,
   },
 }: Props) => {
   const { socket } = useSocket()
@@ -173,6 +174,7 @@ const Answers = ({
         <AnswerComponent
           answers={answers}
           options={options}
+          puzzleOrder={puzzleOrder}
           onSubmit={handleSubmit}
           readOnly={!player}
           fill={showAnswersOnly}

@@ -69,14 +69,21 @@
     "notePlaceholder": "Aggiungi una spiegazione mostrata quando viene rivelata la risposta",
     "estimation": {
       "correctAnswer": "Risposta corretta"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Trascina le tessere nell'ordine corretto: quest'ordine è la risposta.",
+      "reorder": "Riordina la tessera"
+    },
+    "disableQuestion": "Disattiva domanda",
+    "enableQuestion": "Attiva domanda"
   },
   "questionHasErrors": "Questa domanda contiene errori",
   "questionType": {
     "single": "Scelta singola",
     "multi": "Scelta multipla",
     "estimation": "Stima",
-    "trueFalse": "Vero/Falso"
+    "trueFalse": "Vero/Falso",
+    "puzzle": "Puzzle"
   },
   "quizzSaved": "Quiz salvato con successo",
   "quizzUpdated": "Quiz aggiornato con successo",

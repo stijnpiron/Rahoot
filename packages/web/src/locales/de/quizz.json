@@ -69,14 +69,21 @@
     "notePlaceholder": "Erklärung hinzufügen, die beim Aufdecken der Antwort angezeigt wird",
     "estimation": {
       "correctAnswer": "Richtige Antwort"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Ziehe die Kacheln in die richtige Reihenfolge – diese Reihenfolge ist die Antwort.",
+      "reorder": "Kachel verschieben"
+    },
+    "disableQuestion": "Frage deaktivieren",
+    "enableQuestion": "Frage aktivieren"
   },
   "questionHasErrors": "Diese Frage enthält Fehler",
   "questionType": {
     "single": "Einzelauswahl",
     "multi": "Mehrfachauswahl",
     "estimation": "Schätzung",
-    "trueFalse": "Wahr/Falsch"
+    "trueFalse": "Wahr/Falsch",
+    "puzzle": "Puzzle"
   },
   "quizzSaved": "Quiz erfolgreich gespeichert",
   "quizzUpdated": "Quiz erfolgreich aktualisiert",
