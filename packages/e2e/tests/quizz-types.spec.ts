@@ -4,9 +4,12 @@ import { t } from "@razzia/e2e/utils/i18n"
 import { createGame, next, startGame } from "@razzia/e2e/utils/manager"
 import {
   answer,
+  answerTrueFalse,
   confirm,
+  dropPin,
   expectPoints,
   joinGame,
+  solvePuzzle,
 } from "@razzia/e2e/utils/player"
 
 test("scores every question type with its scoring settings", async ({
@@ -41,6 +44,23 @@ test("scores every question type with its scoring settings", async ({
   await confirm(player)
   await expect(player.getByText("+750")).toBeVisible()
   await expectPoints(player, 1550)
+  await next(manager)
+
+  await answerTrueFalse(player, "false")
+  await expect(player.getByText("+1000")).toBeVisible()
+  await expectPoints(player, 2550)
+  await next(manager)
+
+  await solvePuzzle(player, ["Ant", "Cat", "Dog"])
+  await expect(player.getByText("+750")).toBeVisible()
+  await expectPoints(player, 3300)
+  await next(manager)
+
+  // Pin at (0.75, 0.5) is outside the circle (r 0.2 around (0.5, 0.5)):
+  // no points.
+  await dropPin(player, 0.75, 0.5)
+  await expect(player.getByText("+0")).toBeVisible()
+  await expectPoints(player, 3300)
   await next(manager)
 
   await expect(

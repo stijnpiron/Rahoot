@@ -67,5 +67,16 @@
   },
   "showQrCode": "Show QR code",
   "streak": "Answer streak",
-  "pinDigit": "PIN digit {{position}}"
+  "pinDigit": "PIN digit {{position}}",
+  "trueFalse": {
+    "true": "True",
+    "false": "False"
+  },
+  "pin": {
+    "confirm": "Confirm",
+    "confirmed": "Pinned!",
+    "imageAlt": "Pin the answer on the image",
+    "teaser": "Drop a pin on the image",
+    "noPins": "No pins"
+  }
 }

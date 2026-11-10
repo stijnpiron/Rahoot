@@ -58,7 +58,16 @@
     "estimationSolutionOutOfRange": "La risposta corretta deve essere compresa tra il minimo e il massimo",
     "estimationStepInvalid": "Il passo deve essere maggiore di 0",
     "estimationMarginNegative": "Il margine non può essere negativo",
-    "estimationInvalidOptions": "Le impostazioni della stima mancano o non sono valide"
+    "estimationInvalidOptions": "Le impostazioni della stima mancano o non sono valide",
+    "trueFalseInvalidAnswers": "Una domanda vero/falso deve avere esattamente due risposte",
+    "trueFalseInvalidSolution": "Scegli quale risposta è corretta",
+    "puzzleInvalidAnswers": "Una domanda puzzle deve avere da 2 a 8 risposte",
+    "puzzleSurveyUnsupported": "Le domande puzzle non sono supportate in modalità sondaggio",
+    "noEnabledQuestions": "Almeno una domanda deve essere attiva",
+    "pinMediaRequired": "Una domanda pin richiede un'immagine",
+    "pinInvalidOptions": "Impostazioni pin mancanti o non valide",
+    "pinInvalidArea": "Disegna un'area valida sull'immagine",
+    "pinAreaRequired": "Disegna l'area corretta sull'immagine"
   },
   "result": {
     "notFound": "Risultato non trovato"
@@ -69,6 +78,7 @@
     "title": "Qualcosa è andato storto"
   },
   "media": {
+    "duplicate": "Questo file esiste già come \"{{name}}\".",
     "invalidName": "Nome del file non valido",
     "invalidType": "File non supportato, carica un'immagine, un audio o un video",
     "missingFile": "Nessun file inviato",

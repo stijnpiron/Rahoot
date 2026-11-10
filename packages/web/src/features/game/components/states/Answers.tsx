@@ -1,5 +1,10 @@
-import { EVENTS, MEDIA_TYPES, NO_TIME_LIMIT } from "@razzia/common/constants"
-import type { QuestionMediaType } from "@razzia/common/types/game"
+import {
+  EVENTS,
+  MEDIA_TYPES,
+  NO_TIME_LIMIT,
+  QUESTION_TYPES,
+} from "@razzia/common/constants"
+import type { PinPoint, QuestionMediaType } from "@razzia/common/types/game"
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
 import QuestionMedia from "@razzia/web/components/QuestionMedia"
 import QuestionDialog from "@razzia/web/features/game/components/QuestionDialog"
@@ -34,6 +39,7 @@ const Answers = ({
     questionType,
     options,
     answersOnly,
+    puzzleOrder,
   },
 }: Props) => {
   const { socket } = useSocket()
@@ -46,9 +52,14 @@ const Answers = ({
 
   const popupMedia: QuestionMediaType[] = [MEDIA_TYPES.IMAGE, MEDIA_TYPES.VIDEO]
   const isPopupMedia = popupMedia.includes(media?.type)
-  const showAnswersOnly = Boolean(player) && answersOnly
+  // Pin questions keep the image inline on mobile: the popup would break pinning.
+  const showAnswersOnly =
+    Boolean(player) && answersOnly && questionType !== QUESTION_TYPES.PIN
   const showMediaInPopup =
-    Boolean(player) && width < MOBILE_BREAKPOINT && isPopupMedia
+    Boolean(player) &&
+    width < MOBILE_BREAKPOINT &&
+    isPopupMedia &&
+    questionType !== QUESTION_TYPES.PIN
 
   const [sfxPop] = useSound(SFX.ANSWERS.SOUND, {
     volume: 0.1,
@@ -69,6 +80,20 @@ const Answers = ({
       gameId,
       data: {
         answerKeys,
+      },
+    })
+    sfxPop()
+  }
+
+  const handleSubmitPin = (pin: PinPoint) => {
+    if (!player || !gameId) {
+      return
+    }
+
+    socket.emit(EVENTS.PLAYER.SELECTED_ANSWER, {
+      gameId,
+      data: {
+        answerPin: pin,
       },
     })
     sfxPop()
@@ -145,12 +170,19 @@ const Answers = ({
               )}
             </QuestionDialog>
           ) : (
-            <QuestionMedia media={media} alt={question} />
+            questionType !== QUESTION_TYPES.PIN && (
+              <QuestionMedia media={media} alt={question} />
+            )
           )}
         </div>
       )}
 
-      <div className={clsx({ "flex flex-1 flex-col": showAnswersOnly })}>
+      <div
+        className={clsx({
+          "flex flex-1 flex-col":
+            showAnswersOnly || questionType === QUESTION_TYPES.PIN,
+        })}
+      >
         <div className="mx-auto mb-4 flex w-full max-w-7xl justify-between gap-1 px-2 text-lg font-bold text-white md:text-xl">
           {time !== NO_TIME_LIMIT && (
             <div className="flex flex-col items-center rounded-lg bg-black/40 px-4 text-lg font-bold">
@@ -173,7 +205,10 @@ const Answers = ({
         <AnswerComponent
           answers={answers}
           options={options}
+          puzzleOrder={puzzleOrder}
+          media={media}
           onSubmit={handleSubmit}
+          onSubmitPin={handleSubmitPin}
           readOnly={!player}
           fill={showAnswersOnly}
         />

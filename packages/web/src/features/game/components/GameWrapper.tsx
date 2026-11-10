@@ -17,6 +17,7 @@ import {
 import { useManagerStore } from "@razzia/web/features/game/stores/manager"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
 import { useQuestionStore } from "@razzia/web/features/game/stores/question"
+import { formatPoints } from "@razzia/web/lib/formatPoints"
 import { MANAGER_SKIP_BTN } from "@razzia/web/features/game/utils/constants"
 import type { Status as GameStatus } from "@razzia/web/features/game/utils/createStatus"
 import { useFullscreen } from "@razzia/web/hooks/useFullscreen"
@@ -205,7 +206,7 @@ const GameWrapper = ({
                 <p className="text-gray-800">{player?.username}</p>
                 {gameMode !== QUIZZ_MODES.SURVEY && (
                   <div className="rounded-lg bg-gray-800 px-3 py-1 text-lg">
-                    {player?.points}
+                    {formatPoints(player?.points ?? 0)}
                   </div>
                 )}
               </div>

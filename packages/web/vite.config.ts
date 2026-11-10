@@ -28,7 +28,12 @@ const mediaMimeTypes: Record<string, string> = Object.fromEntries(
 )
 
 const serveDir =
-  (prefix: string, dir: string, mimeTypes: Record<string, string>) =>
+  (
+    prefix: string,
+    dir: string,
+    mimeTypes: Record<string, string>,
+    fallback?: string,
+  ) =>
   (req: IncomingMessage, res: ServerResponse, next: () => void): void => {
     if (!req.url?.startsWith(prefix)) {
       next()
@@ -46,6 +51,13 @@ const serveDir =
       !fs.existsSync(filePath) ||
       !fs.statSync(filePath).isFile()
     ) {
+      if (fallback !== undefined && relative === "theme.json") {
+        res.setHeader("Content-Type", "application/json")
+        res.end(fallback)
+
+        return
+      }
+
       res.statusCode = 404
       res.end()
 
@@ -60,15 +72,17 @@ const serveDir =
     fs.createReadStream(filePath).pipe(res)
   }
 
+/** Serves the `config/branding` and `config/media` folders in `vite dev` and `vite preview` (nginx does this in prod). */
+
+/** 404 for other files, but `theme.json` always resolves so the client does not log a 404 when branding is absent. */
 const serveBranding = serveDir(
   "/branding/",
   configDir("branding"),
   brandingMimeTypes,
+  "{}",
 )
 
 const serveMedia = serveDir("/media/", configDir("media"), mediaMimeTypes)
-
-/** Serves the `config/branding` and `config/media` folders in `vite dev` and `vite preview` (nginx does this in prod). */
 const configServer = (): Plugin => ({
   name: "razzia-config-server",
   configureServer(server) {

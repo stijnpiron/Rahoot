@@ -1,5 +1,6 @@
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
+import { formatPoints } from "@razzia/web/lib/formatPoints"
 import { useTranslation } from "react-i18next"
 
 interface Props {
@@ -23,7 +24,7 @@ const PlayerFinished = ({ data: { rank, subject } }: Props) => {
       </p>
 
       <p className="mt-2 rounded bg-black/40 px-6 py-2 text-2xl font-bold text-white">
-        {player?.points ?? 0} pts
+        {formatPoints(player?.points ?? 0)} pts
       </p>
     </div>
   )

@@ -49,6 +49,40 @@
         "step": 1,
         "margin": 10
       }
+    },
+    {
+      "type": "trueFalse",
+      "question": "Is 2 greater than 1?",
+      "category": "Round",
+      "answers": ["true", "false"],
+      "solutions": [1],
+      "cooldown": 3,
+      "time": -1
+    },
+    {
+      "type": "puzzle",
+      "question": "Order these from smallest to largest",
+      "category": "Round",
+      "answers": ["Ant", "Cat", "Dog"],
+      "cooldown": 3,
+      "time": -1,
+      "maxPoints": 750
+    },
+    {
+      "type": "pin",
+      "question": "Where is the center?",
+      "category": "Round",
+      "answers": [],
+      "cooldown": 3,
+      "time": -1,
+      "maxPoints": 800,
+      "media": {
+        "type": "image",
+        "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAtElEQVR4nO3QQQkAIADAQOObxZJawY8M4WABxo25ti4b+cFHwYIFKw8WLFh5sGDByoMFC1YeLFiw8mDBgpUHCxasPFiwYOXBggUrDxYsWHmwYMHKgwULVh4sWLDyYMGClQcLFqw8WLBg5cGCBSsPFixYebBgwcqDBQtWHixYsPJgwYKVBwsWrDxYsGDlwYIFKw8WLFh5sGDByoMFC1YeLFiw8mDBgpUHCxasPFiwYOXBgvWmA2y8nwxsMNU8AAAAAElFTkSuQmCC"
+      },
+      "options": {
+        "area": { "kind": "circle", "cx": 0.5, "cy": 0.5, "r": 0.2 }
+      }
     }
   ]
 }

@@ -51,6 +51,23 @@
         "stepHint": "Độ chính xác của thanh trượt và đáp án mong đợi",
         "margin": "Biên độ",
         "marginHint": "Câu trả lời nằm trong khoảng này so với đáp án đúng được từ 100% (chính xác) đến 50% số điểm. Câu trả lời ngoài khoảng này không được điểm."
+      },
+      "trueFalse": {
+        "correctAnswer": "Câu trả lời đúng"
+      },
+      "pin": {
+        "title": "Cài đặt ghim",
+        "shape": {
+          "rect": "Hình chữ nhật",
+          "circle": "Hình tròn",
+          "freehand": "Vẽ tay"
+        },
+        "zoomIn": "Phóng to",
+        "zoomOut": "Thu nhỏ",
+        "erase": "Xóa vùng",
+        "moveHint": "Dùng công cụ bàn tay để kéo vùng đến vị trí mới.",
+        "mediaHint": "Thêm ảnh trước, sau đó vẽ vùng đúng.",
+        "move": "Di chuyển vùng"
       }
     },
     "deleteQuestion": "Xóa câu hỏi",
@@ -66,13 +83,22 @@
     "notePlaceholder": "Thêm phần giải thích hiển thị khi công bố đáp án",
     "estimation": {
       "correctAnswer": "Đáp án đúng"
-    }
+    },
+    "puzzle": {
+      "orderHint": "Kéo các ô vào đúng thứ tự — thứ tự đó chính là câu trả lời.",
+      "reorder": "Sắp xếp lại ô"
+    },
+    "disableQuestion": "Tắt câu hỏi",
+    "enableQuestion": "Bật câu hỏi"
   },
   "questionHasErrors": "Câu hỏi này có lỗi",
   "questionType": {
     "single": "Chọn một đáp án",
     "multi": "Chọn nhiều đáp án",
-    "estimation": "Ước lượng"
+    "estimation": "Ước lượng",
+    "trueFalse": "Đúng/Sai",
+    "puzzle": "Ghép thứ tự",
+    "pin": "Ghim trên ảnh"
   },
   "quizzSaved": "Đã lưu trò chơi thành công",
   "quizzUpdated": "Đã cập nhật trò chơi thành công",
@@ -84,6 +110,8 @@
     "libraryEmpty": "Thư viện của bạn đang trống",
     "upload": "Tải lên",
     "uploadHint": "Hình ảnh, âm thanh hoặc video, tối đa {{size}} MB",
+    "duplicateTitle": "Tệp này đã tồn tại",
+    "useExisting": "Dùng tệp có sẵn",
     "search": "Tìm media...",
     "filter": {
       "all": "Tất cả"

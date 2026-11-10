@@ -58,7 +58,16 @@
     "estimationSolutionOutOfRange": "正解は最小値と最大値の間である必要があります",
     "estimationStepInvalid": "刻み幅は 0 より大きくする必要があります",
     "estimationMarginNegative": "許容範囲は負の値にできません",
-    "estimationInvalidOptions": "数値推定の設定がないか、無効です"
+    "estimationInvalidOptions": "数値推定の設定がないか、無効です",
+    "trueFalseInvalidAnswers": "正誤問題はちょうど2つの選択肢が必要です",
+    "trueFalseInvalidSolution": "正解を選んでください",
+    "puzzleInvalidAnswers": "パズル問題のタイルは2〜8個である必要があります",
+    "puzzleSurveyUnsupported": "パズル問題はアンケートモードでは使用できません",
+    "noEnabledQuestions": "少なくとも1つの問題を有効にする必要があります",
+    "pinMediaRequired": "ピン問題には画像が必要です",
+    "pinInvalidOptions": "ピン設定がないか無効です",
+    "pinInvalidArea": "画像に有効なエリアを描いてください",
+    "pinAreaRequired": "画像に正しいエリアを描いてください"
   },
   "result": {
     "notFound": "結果が見つかりません"
@@ -69,6 +78,7 @@
     "title": "問題が発生しました"
   },
   "media": {
+    "duplicate": "このファイルは「{{name}}」として既に存在します。",
     "invalidName": "無効なメディア名です",
     "invalidType": "対応していないファイルです。画像、音声、または動画ファイルをアップロードしてください",
     "missingFile": "ファイルが送信されていません",

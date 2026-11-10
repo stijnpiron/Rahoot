@@ -39,7 +39,7 @@ app.onError((error, c) => {
       console.error("API error:", error)
     }
 
-    return c.json({ error: error.key }, error.status)
+    return c.json({ error: error.key, ...error.data }, error.status)
   }
 
   if (error instanceof HTTPException) {

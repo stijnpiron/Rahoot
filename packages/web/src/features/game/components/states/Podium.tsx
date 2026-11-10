@@ -1,4 +1,5 @@
 import type { ManagerStatusDataMap } from "@razzia/common/types/game/status"
+import { formatPoints } from "@razzia/web/lib/formatPoints"
 import { SFX } from "@razzia/web/features/game/utils/constants"
 import useScreenSize from "@razzia/web/hooks/useScreenSize"
 import clsx from "clsx"
@@ -142,7 +143,7 @@ const Podium = ({ data: { subject, top } }: Props) => {
               <div className="bg-primary flex h-full w-full flex-col items-center gap-4 rounded-t-xl pt-6 text-center shadow-2xl">
                 <Medal rank={2} />
                 <p className="text-3xl font-bold text-white drop-shadow-sm md:text-4xl">
-                  {top[1].points}
+                  {formatPoints(top[1].points)}
                 </p>
               </div>
             </div>
@@ -170,7 +171,7 @@ const Podium = ({ data: { subject, top } }: Props) => {
             <div className="bg-primary flex h-full w-full flex-col items-center gap-4 rounded-t-xl pt-6 text-center shadow-2xl">
               <Medal rank={1} />
               <p className="text-3xl font-bold text-white drop-shadow-sm md:text-4xl">
-                {top[0].points}
+                {formatPoints(top[0].points)}
               </p>
             </div>
           </div>
@@ -198,7 +199,7 @@ const Podium = ({ data: { subject, top } }: Props) => {
                 <Medal rank={3} />
 
                 <p className="text-3xl font-bold text-white drop-shadow-sm md:text-4xl">
-                  {top[2].points}
+                  {formatPoints(top[2].points)}
                 </p>
               </div>
             </div>

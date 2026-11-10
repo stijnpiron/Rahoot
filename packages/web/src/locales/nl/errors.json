@@ -1,0 +1,89 @@
+{
+  "api": {
+    "notFound": "De opgevraagde bron bestaat niet",
+    "serverError": "De server heeft een fout ondervonden, probeer het opnieuw"
+  },
+  "auth": {
+    "invalidInviteCode": "Ongeldige uitnodigingscode",
+    "joinTicketInvalid": "Je verzoek om mee te doen is verlopen, voer de PIN opnieuw in",
+    "sessionFailed": "Kon geen sessie starten, laad de pagina opnieuw",
+    "tokenInvalid": "Ongeldig sessietoken",
+    "tokenMissing": "Sessietoken ontbreekt",
+    "unauthorized": "Je hebt geen toestemming",
+    "usernameTooLong": "Gebruikersnaam mag niet langer zijn dan 24 tekens",
+    "usernameTooShort": "Gebruikersnaam mag niet leeg zijn"
+  },
+  "game": {
+    "alreadyStarted": "Spel is al gestart",
+    "expired": "Spel is verlopen",
+    "invalidAutoAdvanceDelay": "Vertraging moet tussen 3 en 600 seconden liggen",
+    "kickedByManager": "Je bent verwijderd door de beheerder",
+    "locked": "Spel is vergrendeld",
+    "managerAlreadyConnected": "Beheerder is al verbonden",
+    "managerCannotJoin": "Je kunt niet deelnemen aan je eigen spel",
+    "managerDisconnected": "Beheerder heeft de verbinding verbroken",
+    "noPlayersConnected": "Geen spelers verbonden",
+    "notFound": "Spel niet gevonden",
+    "playerAlreadyConnected": "Speler is al verbonden"
+  },
+  "invalidRequest": "Ongeldig verzoek",
+  "manager": {
+    "failedToReadConfig": "Kan de spelconfiguratie niet lezen",
+    "invalidPassword": "Ongeldig wachtwoord",
+    "passwordNotConfigured": "Beheerderswachtwoord is niet ingesteld"
+  },
+  "notFound": {
+    "back": "Terug naar de startpagina",
+    "description": "De pagina die je zoekt bestaat niet.",
+    "title": "Pagina niet gevonden"
+  },
+  "quizz": {
+    "answerEmpty": "Een antwoord mag niet leeg zijn",
+    "cooldownTooLong": "Weergavetijd van de vraag mag niet langer zijn dan 15 seconden",
+    "cooldownTooShort": "Weergavetijd van de vraag moet minimaal 3 seconden zijn",
+    "failedToDelete": "Kan de quizz niet verwijderen",
+    "failedToSave": "Quizz is onvolledig, zorg dat alle vragen een titel en minstens één correct antwoord hebben",
+    "failedToUpdate": "Kan de quizz niet bijwerken",
+    "invalidMediaUrl": "Media-URL moet een geldige URL zijn",
+    "maxPointsNegative": "Punten mogen niet negatief zijn",
+    "noQuestions": "Een quizz moet minstens één vraag bevatten",
+    "noSolution": "Kies minstens één correct antwoord",
+    "notFound": "Quizz niet gevonden",
+    "penaltyNegative": "Straf mag niet negatief zijn",
+    "questionEmpty": "Vraag mag niet leeg zijn",
+    "subjectEmpty": "Onderwerp mag niet leeg zijn",
+    "tooFewAnswers": "Een vraag moet minstens 2 antwoorden hebben",
+    "tooManyAnswers": "Een vraag mag niet meer dan 4 antwoorden hebben",
+    "estimationInvalidRange": "Het maximum moet groter zijn dan het minimum",
+    "estimationSolutionOutOfRange": "Het correcte antwoord moet tussen het minimum en het maximum liggen",
+    "estimationStepInvalid": "De stap moet groter zijn dan 0",
+    "estimationMarginNegative": "De marge mag niet negatief zijn",
+    "estimationInvalidOptions": "Schatting-instellingen ontbreken of zijn ongeldig",
+    "trueFalseInvalidAnswers": "Een waar/onwaar-vraag moet precies twee antwoorden hebben",
+    "trueFalseInvalidSolution": "Kies welk antwoord correct is",
+    "puzzleInvalidAnswers": "Een puzzelvraag moet tussen 2 en 8 antwoorden hebben",
+    "puzzleSurveyUnsupported": "Puzzelvragen worden niet ondersteund in enquetemodus",
+    "noEnabledQuestions": "Minstens één vraag moet ingeschakeld zijn",
+    "pinMediaRequired": "Een pin-vraag heeft een afbeelding nodig",
+    "pinInvalidOptions": "Pin-instellingen ontbreken of zijn ongeldig",
+    "pinInvalidArea": "Teken een geldig gebied op de afbeelding",
+    "pinAreaRequired": "Teken het correcte gebied op de afbeelding"
+  },
+  "result": {
+    "notFound": "Resultaat niet gevonden"
+  },
+  "route": {
+    "back": "Terug naar de startpagina",
+    "description": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
+    "title": "Er ging iets mis"
+  },
+  "media": {
+    "duplicate": "Dit bestand bestaat al als \"{{name}}\".",
+    "invalidName": "Ongeldige medianaam",
+    "invalidType": "Niet-ondersteund bestand, upload een afbeelding, audio of video",
+    "missingFile": "Er is geen bestand verzonden",
+    "notFound": "Media niet gevonden",
+    "tooLarge": "Bestand is te groot",
+    "uploadFailed": "Kan het bestand niet uploaden"
+  }
+}

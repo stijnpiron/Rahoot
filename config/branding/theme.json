@@ -1,0 +1,14 @@
+{
+	"answerColors": [
+		"#e69f00",
+		"#56b4e9",
+		"#3dbfa0",
+		"#cc79a7"
+	],
+	"appName": "Razzia",
+	"colors": {
+		"correct": "#22c55e",
+		"primary": "#0f766e",
+		"secondary": "#1a140b"
+	}
+}

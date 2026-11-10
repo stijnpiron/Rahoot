@@ -1,5 +1,6 @@
 import type {
   Player,
+  PinPoint,
   QuestionMedia,
   QuestionOptions,
   QuestionType,
@@ -27,6 +28,7 @@ export interface CommonStatusDataMap {
     totalAnswers: number
     questionNumber: number
     questionType: QuestionType
+    puzzleOrder?: number[]
   }
   SHOW_QUESTION: {
     question: string
@@ -42,6 +44,7 @@ export interface CommonStatusDataMap {
     questionType: QuestionType
     options?: QuestionOptions
     answersOnly: boolean
+    puzzleOrder?: number[]
   }
   SHOW_RESULT: {
     correct: boolean
@@ -71,6 +74,8 @@ interface ManagerExtraStatus {
     type: QuestionType
     options?: QuestionOptions
     note?: string
+    puzzleFullyCorrect?: { count: number; total: number }
+    pins?: Array<PinPoint & { name: string; correct: boolean }>
   }
   SHOW_LEADERBOARD: { oldLeaderboard: Player[]; leaderboard: Player[] }
 }

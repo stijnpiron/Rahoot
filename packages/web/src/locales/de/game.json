@@ -64,5 +64,16 @@
   },
   "showQrCode": "QR-Code anzeigen",
   "streak": "Antwortserie",
-  "pinDigit": "PIN-Ziffer {{position}}"
+  "pinDigit": "PIN-Ziffer {{position}}",
+  "trueFalse": {
+    "true": "Wahr",
+    "false": "Falsch"
+  },
+  "pin": {
+    "confirm": "Bestätigen",
+    "confirmed": "Gepinnt!",
+    "imageAlt": "Markiere die Antwort auf dem Bild",
+    "teaser": "Setze einen Pin auf das Bild",
+    "noPins": "Keine Pins"
+  }
 }

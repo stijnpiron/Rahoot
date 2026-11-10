@@ -39,6 +39,16 @@ const estimationQuestion = (overrides: Partial<Question> = {}): Question => ({
   ...overrides,
 })
 
+const trueFalseQuestion = (overrides: Partial<Question> = {}): Question => ({
+  type: QUESTION_TYPES.TRUE_FALSE,
+  question: "Is it true ?",
+  answers: ["true", "false"],
+  solutions: [0],
+  cooldown: 5,
+  time: 15,
+  ...overrides,
+})
+
 const quizz = (
   questions: Question[],
   gameMode: Quizz["gameMode"] = QUIZZ_MODES.QUIZ,
@@ -59,6 +69,7 @@ describe("quizzValidator", () => {
         options: { scoringMode: SCORING_MODES.STRICT },
       }),
       estimationQuestion(),
+      trueFalseQuestion(),
     ])
 
     expect(issues(data)).toEqual([])
@@ -132,6 +143,80 @@ describe("quizzValidator", () => {
     expect(issues(quizz([estimationQuestion({ solutions: [101] })]))).toContain(
       "errors:quizz.estimationSolutionOutOfRange",
     )
+  })
+
+  it("requires exactly two answers for true/false questions", () => {
+    expect(issues(quizz([trueFalseQuestion({ answers: ["true"] })]))).toContain(
+      "errors:quizz.trueFalseInvalidAnswers",
+    )
+    expect(
+      issues(
+        quizz([trueFalseQuestion({ answers: ["true", "false", "maybe"] })]),
+      ),
+    ).toContain("errors:quizz.trueFalseInvalidAnswers")
+  })
+
+  it("requires exactly one solution of 0 or 1 for true/false questions", () => {
+    expect(issues(quizz([trueFalseQuestion({ solutions: [0, 1] })]))).toContain(
+      "errors:quizz.trueFalseInvalidSolution",
+    )
+    expect(issues(quizz([trueFalseQuestion({ solutions: [2] })]))).toContain(
+      "errors:quizz.trueFalseInvalidSolution",
+    )
+    expect(issues(quizz([trueFalseQuestion({ solutions: [1] })]))).toEqual([])
+  })
+
+  it("allows true/false without a solution in survey mode", () => {
+    expect(
+      issues(quizz([trueFalseQuestion({ solutions: [] })], QUIZZ_MODES.SURVEY)),
+    ).toEqual([])
+  })
+})
+
+describe("puzzle questions", () => {
+  const puzzleQuestion = (overrides: Partial<Question> = {}): Question => ({
+    type: QUESTION_TYPES.PUZZLE,
+    question: "Order these ?",
+    answers: ["A", "B", "C"],
+    cooldown: 5,
+    time: 15,
+    ...overrides,
+  })
+
+  it("accepts a puzzle without solutions in quiz mode", () => {
+    expect(issues(quizz([puzzleQuestion()]))).toEqual([])
+  })
+
+  it("limits puzzle questions to 2-8 answers", () => {
+    expect(issues(quizz([puzzleQuestion({ answers: ["A"] })]))).toContain(
+      "errors:quizz.puzzleInvalidAnswers",
+    )
+    expect(
+      issues(
+        quizz([
+          puzzleQuestion({
+            answers: Array.from({ length: 9 }, (_, i) => `A${i}`),
+          }),
+        ]),
+      ),
+    ).toContain("errors:quizz.puzzleInvalidAnswers")
+  })
+
+  it("rejects puzzle questions in survey mode", () => {
+    expect(issues(quizz([puzzleQuestion()], QUIZZ_MODES.SURVEY))).toContain(
+      "errors:quizz.puzzleSurveyUnsupported",
+    )
+  })
+})
+
+describe("enabled questions", () => {
+  it("rejects a quizz where every question is disabled", () => {
+    expect(issues(quizz([choiceQuestion({ enabled: false })]))).toContain(
+      "errors:quizz.noEnabledQuestions",
+    )
+    expect(
+      issues(quizz([choiceQuestion({ enabled: false }), choiceQuestion()])),
+    ).toEqual([])
   })
 })
 

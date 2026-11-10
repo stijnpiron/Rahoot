@@ -63,6 +63,10 @@ export const MIN_ANSWERS = 2
 
 export const MAX_ANSWERS = 4
 
+export const PUZZLE_MIN_ANSWERS = 2
+
+export const PUZZLE_MAX_ANSWERS = 8
+
 export const QUIZZ_MODES = {
   QUIZ: "quiz",
   SURVEY: "survey",
@@ -72,6 +76,9 @@ export const QUESTION_TYPES = {
   SINGLE: "single",
   MULTI: "multi",
   ESTIMATION: "estimation",
+  TRUE_FALSE: "trueFalse",
+  PUZZLE: "puzzle",
+  PIN: "pin",
 } as const
 
 export const ESTIMATION_INPUT_MODES = {
