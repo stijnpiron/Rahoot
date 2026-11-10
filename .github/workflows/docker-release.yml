@@ -2,6 +2,13 @@ name: Docker Release
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch to build
+        required: true
+        default: main
+        type: string
 
 env:
   DOCKER_PLATFORMS: |
@@ -17,23 +24,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.branch || github.ref }}
 
       - name: Extract version and tags
         run: |
-          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
             VERSION=${GITHUB_REF_NAME#v}
             echo "VERSION=$VERSION" >> $GITHUB_ENV
-            
+
             # Extract major.minor (ex: 1.2.3 -> 1.2)
             MAJOR_MINOR=$(echo $VERSION | cut -d. -f1,2)
             echo "MAJOR_MINOR=$MAJOR_MINOR" >> $GITHUB_ENV
           else
-            echo "VERSION=latest" >> $GITHUB_ENV
-            echo "MAJOR_MINOR=latest" >> $GITHUB_ENV
+            echo "VERSION=dev" >> $GITHUB_ENV
           fi
-
-      - name: Extract repository name (lowercase)
-        run: echo "REPO_NAME=$(basename ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Extract full repository path (lowercase, for GHCR)
         run: echo "GHCR_REPO=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
@@ -50,13 +55,6 @@ jobs:
           install: true
           platforms: ${{ env.DOCKER_PLATFORMS }}
 
-      - name: Log in to Docker Hub
-        if: ${{ !env.ACT }}
-        uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
       - name: Log in to GitHub Container Registry
         if: ${{ !env.ACT }}
         uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
@@ -72,12 +70,9 @@ jobs:
           platforms: ${{ env.DOCKER_PLATFORMS }}
           push: ${{ !env.ACT }}
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.REPO_NAME }}:${{ env.VERSION }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.REPO_NAME }}:${{ env.MAJOR_MINOR }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.REPO_NAME }}:latest
             ghcr.io/${{ env.GHCR_REPO }}:${{ env.VERSION }}
-            ghcr.io/${{ env.GHCR_REPO }}:${{ env.MAJOR_MINOR }}
-            ghcr.io/${{ env.GHCR_REPO }}:latest
+            ${{ github.event_name == 'release' && format('ghcr.io/{0}:{1}', env.GHCR_REPO, env.MAJOR_MINOR) || '' }}
+            ${{ github.event_name == 'release' && format('ghcr.io/{0}:latest', env.GHCR_REPO) || '' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           no-cache-filters: runner
