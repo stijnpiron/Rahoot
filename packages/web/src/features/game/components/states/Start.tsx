@@ -1,5 +1,6 @@
 import { EVENTS } from "@razzia/common/constants"
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
+import QuestionMedia from "@razzia/web/components/QuestionMedia"
 import { useEvent } from "@razzia/web/features/game/contexts/socket-context"
 import { SFX } from "@razzia/web/features/game/utils/constants"
 import clsx from "clsx"
@@ -10,7 +11,7 @@ interface Props {
   data: CommonStatusDataMap["SHOW_START"]
 }
 
-const Start = ({ data: { time, subject } }: Props) => {
+const Start = ({ data: { time, subject, media } }: Props) => {
   const [showTitle, setShowTitle] = useState(true)
   const [cooldown, setCooldown] = useState(time)
 
@@ -31,9 +32,12 @@ const Start = ({ data: { time, subject } }: Props) => {
   return (
     <section className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center">
       {showTitle ? (
-        <h2 className="anim-show text-center text-3xl font-bold text-white drop-shadow-lg md:text-4xl lg:text-5xl">
-          {subject}
-        </h2>
+        <>
+          <QuestionMedia media={media} alt={subject} />
+          <h2 className="anim-show text-center text-3xl font-bold text-white drop-shadow-lg md:text-4xl lg:text-5xl">
+            {subject}
+          </h2>
+        </>
       ) : (
         <>
           <div

@@ -45,6 +45,13 @@
       "label": "Generate nicknames",
       "hint": "Players pick from generated names instead of typing their own."
     },
+    "startScreen": {
+      "label": "Start screen",
+      "hint": "Show the quiz title before the first question.",
+      "auto": "Timed",
+      "manual": "Manual",
+      "time": "Seconds before the countdown"
+    },
     "answersOnly": {
       "label": "Answers only",
       "hint": "Players only see the answer buttons, with a button to read the question again."
@@ -78,5 +85,13 @@
     "imageAlt": "Pin the answer on the image",
     "teaser": "Drop a pin on the image",
     "noPins": "No pins"
+  },
+  "do": {
+    "teaser": "Complete the task",
+    "done": "Done!",
+    "submit": "Reveal ranking",
+    "notDone": "not done",
+    "elapsed": "elapsed",
+    "points": "+{{points}} pts"
   }
 }

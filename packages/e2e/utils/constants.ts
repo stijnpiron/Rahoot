@@ -10,4 +10,6 @@ export const SCORING_QUIZZ = "E2E Scoring"
 
 export const SURVEY_QUIZZ = "E2E Survey"
 
+export const DO_QUIZZ = "E2E Do"
+
 export const REVEAL_QUIZZ = "E2E Reveal"

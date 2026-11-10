@@ -5,6 +5,7 @@ import {
   QUESTION_TYPES,
 } from "@razzia/common/constants"
 import type { PinPoint, QuestionMediaType } from "@razzia/common/types/game"
+import { isDoOptions } from "@razzia/common/questions/options"
 import type { CommonStatusDataMap } from "@razzia/common/types/game/status"
 import QuestionMedia from "@razzia/web/components/QuestionMedia"
 import QuestionDialog from "@razzia/web/features/game/components/QuestionDialog"
@@ -40,6 +41,8 @@ const Answers = ({
     options,
     answersOnly,
     puzzleOrder,
+    instruction,
+    doParticipants,
   },
 }: Props) => {
   const { socket } = useSocket()
@@ -49,6 +52,7 @@ const Answers = ({
   const [totalAnswer, setTotalAnswer] = useState(0)
   const { t } = useTranslation()
   const { width } = useScreenSize()
+  const isDo = questionType === QUESTION_TYPES.DO && isDoOptions(options)
 
   const popupMedia: QuestionMediaType[] = [MEDIA_TYPES.IMAGE, MEDIA_TYPES.VIDEO]
   const isPopupMedia = popupMedia.includes(media?.type)
@@ -188,7 +192,7 @@ const Answers = ({
         })}
       >
         <div className="mx-auto mb-4 flex w-full max-w-7xl justify-between gap-1 px-2 text-lg font-bold text-white md:text-xl">
-          {time !== NO_TIME_LIMIT && (
+          {time !== NO_TIME_LIMIT && !isDo && (
             <div className="flex flex-col items-center rounded-lg bg-black/40 px-4 text-lg font-bold">
               <span className="translate-y-1 text-sm">
                 {t("game:hud.time")}
@@ -210,6 +214,9 @@ const Answers = ({
           answers={answers}
           options={options}
           puzzleOrder={puzzleOrder}
+          instruction={instruction}
+          time={time}
+          doParticipants={doParticipants}
           media={media}
           onSubmit={handleSubmit}
           onSubmitPin={handleSubmitPin}

@@ -6,7 +6,7 @@ import {
   type QuizzFormValues,
 } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
 import clsx from "clsx"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useController, type FieldPathByValue } from "react-hook-form"
 
 type NumberFieldPath = FieldPathByValue<QuizzFormValues, number | undefined>
@@ -18,15 +18,21 @@ interface Props {
   max?: number
   id?: string
   label?: string
+  factor?: number
 }
 
-const ConfigNumberInput = ({ name, fallback, min, max, id, label }: Props) => {
+const ConfigNumberInput = ({ name, fallback, min, max, id, label, factor = 1 }: Props) => {
   const { questionPath } = useQuizzEditor()
   const { field, fieldState } = useController<QuizzFormValues, NumberFieldPath>(
     { name: questionPath(name) },
   )
   const value = field.value ?? fallback ?? 0
-  const [input, setInput] = useState(String(value))
+  const [input, setInput] = useState(String(value / factor))
+
+  useEffect(() => {
+    setInput(String(value / factor))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [factor])
 
   const handleChange = (raw: string) => {
     setInput(raw)
@@ -37,12 +43,16 @@ const ConfigNumberInput = ({ name, fallback, min, max, id, label }: Props) => {
       return
     }
 
-    field.onChange(Math.min(max ?? Infinity, Math.max(min ?? -Infinity, num)))
+    field.onChange(
+      Math.round(
+        Math.min(max ?? Infinity, Math.max(min ?? -Infinity, num)) * factor,
+      ),
+    )
   }
 
   const handleBlur = () => {
     field.onBlur()
-    setInput(String(value))
+    setInput(String(value / factor))
   }
 
   return (

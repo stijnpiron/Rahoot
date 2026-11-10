@@ -8,7 +8,7 @@ import {
 import { Globe } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
-const LANGUAGES = [
+export const LANGUAGES = [
   { code: "de", label: "common:language.de" },
   { code: "en", label: "common:language.en" },
   { code: "es", label: "common:language.es" },
@@ -21,6 +21,11 @@ const LANGUAGES = [
   { code: "vi", label: "common:language.vi" },
 ]
 
+export const LANG_OVERRIDDEN_KEY = "lang_overridden"
+
+export const hasLanguageOverride = () =>
+  localStorage.getItem(LANG_OVERRIDDEN_KEY) !== null
+
 const LanguageSwitcher = () => {
   const { t, i18n } = useTranslation()
   const normalizedLanguage = i18n.language.slice(0, 2)
@@ -28,7 +33,10 @@ const LanguageSwitcher = () => {
   return (
     <Select
       value={normalizedLanguage}
-      onValueChange={(lang) => i18n.changeLanguage(lang)}
+      onValueChange={(lang) => {
+        localStorage.setItem(LANG_OVERRIDDEN_KEY, lang)
+        i18n.changeLanguage(lang)
+      }}
     >
       <SelectTrigger
         aria-label={t("common:changeLanguage")}

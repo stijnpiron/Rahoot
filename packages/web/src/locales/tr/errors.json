@@ -24,7 +24,8 @@
     "managerDisconnected": "Yöneticinin bağlantısı kesildi",
     "noPlayersConnected": "Bağlı oyuncu yok",
     "notFound": "Oyun bulunamadı",
-    "playerAlreadyConnected": "Oyuncu zaten bağlı"
+    "playerAlreadyConnected": "Oyuncu zaten bağlı",
+    "invalidStartScreenTime": "Süre 1 ile 60 saniye arasında olmalı"
   },
   "invalidRequest": "Geçersiz istek",
   "manager": {
@@ -71,7 +72,9 @@
     "pinAreaRequired": "Görsel üzerine doğru alanı çizin",
     "cooldownRequired": "Soru görünme süresi zorunludur",
     "timeRequired": "Cevaplama süresi zorunludur",
-    "answersRequired": "Bir soru en az 2 cevap içermelidir"
+    "answersRequired": "Bir soru en az 2 cevap içermelidir",
+    "doInvalidOptions": "Görev sorusu seçenekleri geçersiz",
+    "doAnswersUnsupported": "Görev sorularının cevabı yoktur"
   },
   "result": {
     "notFound": "Sonuç bulunamadı"

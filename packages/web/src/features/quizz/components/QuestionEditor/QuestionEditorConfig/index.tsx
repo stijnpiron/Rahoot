@@ -11,6 +11,7 @@ import {
   QUESTION_REGISTRY,
   QUESTION_TYPE_LIST,
 } from "@razzia/web/features/questions"
+import BaseConfig from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/BaseConfig"
 import CategoryField from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/CategoryField"
 import ConfigField from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/ConfigField"
 import { useQuizzEditor } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
@@ -40,10 +41,6 @@ const QuestionEditorConfig = () => {
 
   const { ConfigComponent } = QUESTION_REGISTRY[questionType]
 
-  if (!ConfigComponent) {
-    return null
-  }
-
   const typeOptions = QUESTION_TYPE_LIST.map((type) => ({
     value: type,
     label: t(QUESTION_REGISTRY[type].labelKey),
@@ -72,7 +69,8 @@ const QuestionEditorConfig = () => {
 
       {gameMode === QUIZZ_MODES.QUIZ && <CategoryField />}
 
-      <ConfigComponent key={currentQuestionId} />
+      <BaseConfig />
+      {ConfigComponent && <ConfigComponent key={currentQuestionId} />}
     </aside>
   )
 }

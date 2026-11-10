@@ -68,7 +68,22 @@
         "moveHint": "Verschiebe den Bereich mit dem Hand-Werkzeug an eine neue Position.",
         "mediaHint": "Füge zuerst ein Bild hinzu und zeichne dann den richtigen Bereich.",
         "move": "Bereich verschieben"
-      }
+      },
+      "instruction": "Aufgabenanweisung",
+      "instructionPlaceholder": "z. B. Staple die Becher so schnell wie möglich",
+      "instructionHint": "Wird den Spielern angezeigt, während sie die Aufgabe ausführen",
+      "doFlow": "Ablauf",
+      "doFlowTimer": "Timer",
+      "doFlowOpen": "Offen (ohne Timer)",
+      "doFlowHint": "Der Countdown ist nur ein Hinweis: Die Frage bleibt offen, bis du die Rangliste übermittelst.",
+      "timerExpiry": "Timer bei null",
+      "timerExpiryStop": "Bei 0:00 anhalten",
+      "timerExpiryElapsed": "Weiterzählen",
+      "timerExpiryHint": "Was der Countdown nach dem Erreichen von null anzeigt",
+      "doneButton": "„Fertig“-Knopf",
+      "doneButtonHint": "Spieler tippen auf „Fertig“, wenn sie fertig sind; nicht abgeschlossene Spieler stehen unten in der Rangliste",
+      "manualProceed": "Manuell fortfahren",
+      "manualProceedHint": "Der Manager klickt, um die Antworten anzuzeigen, statt zu warten"
     },
     "deleteQuestion": "Frage löschen",
     "deleteQuestionConfirm": "Möchtest du diese Frage wirklich löschen?",
@@ -89,7 +104,10 @@
       "reorder": "Kachel verschieben"
     },
     "disableQuestion": "Frage deaktivieren",
-    "enableQuestion": "Frage aktivieren"
+    "enableQuestion": "Frage aktivieren",
+    "do": {
+      "noAnswers": "Aufgabenfragen haben keine Antworten"
+    }
   },
   "questionHasErrors": "Diese Frage enthält Fehler",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "Wahr/Falsch",
     "puzzle": "Puzzle",
     "pin": "Bild anpinnen",
-    "slide": "Folie"
+    "slide": "Folie",
+    "do": "Aufgabe"
   },
   "quizzSaved": "Quiz erfolgreich gespeichert",
   "quizzUpdated": "Quiz erfolgreich aktualisiert",

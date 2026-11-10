@@ -6,7 +6,6 @@ import type {
 
 export { default as AnswerComponent } from "@razzia/web/features/questions/multi/components/MultiAnswers"
 
-export { default as ConfigComponent } from "@razzia/web/features/questions/multi/components/MultiConfig"
 
 export { default as SolutionPicker } from "@razzia/web/features/questions/multi/components/MultiPicker"
 

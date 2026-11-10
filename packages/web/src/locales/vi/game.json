@@ -47,7 +47,14 @@
       "label": "Chỉ hiện đáp án",
       "hint": "Người chơi chỉ thấy các nút đáp án, kèm một nút để đọc lại câu hỏi."
     },
-    "title": "Cài đặt trò chơi"
+    "title": "Cài đặt trò chơi",
+    "startScreen": {
+      "label": "Màn hình bắt đầu",
+      "hint": "Chọn cách game bắt đầu",
+      "auto": "Đếm ngược tự động",
+      "manual": "Bắt đầu thủ công",
+      "time": "Số giây đếm ngược"
+    }
   },
   "startGame": "Bắt đầu trò chơi",
   "summary": {
@@ -76,5 +83,13 @@
     "imageAlt": "Đánh dấu câu trả lời trên ảnh",
     "teaser": "Hãy ghim một điểm trên ảnh",
     "noPins": "Không có ghim"
+  },
+  "do": {
+    "done": "Xong!",
+    "submit": "Hiện thứ hạng",
+    "notDone": "chưa xong",
+    "elapsed": "đã trôi",
+    "points": "+{{points}} đ",
+    "teaser": "Hoàn thành nhiệm vụ"
   }
 }

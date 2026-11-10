@@ -1,4 +1,5 @@
 import type { Answer, Question, QuestionType } from "@razzia/common/types/game"
+import * as doScoring from "./do"
 import * as estimation from "./estimation"
 import * as multi from "./multi"
 import * as pin from "./pin"
@@ -18,4 +19,5 @@ export const QUESTION_SCORING: Record<
   [trueFalse.type]: trueFalse.scoring,
   [puzzle.type]: puzzle.scoring,
   [pin.type]: pin.scoring,
+  [doScoring.type]: doScoring.scoring,
 }

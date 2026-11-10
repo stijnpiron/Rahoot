@@ -24,7 +24,8 @@
     "managerDisconnected": "Beheerder heeft de verbinding verbroken",
     "noPlayersConnected": "Geen spelers verbonden",
     "notFound": "Spel niet gevonden",
-    "playerAlreadyConnected": "Speler is al verbonden"
+    "playerAlreadyConnected": "Speler is al verbonden",
+    "invalidStartScreenTime": "Tijd moet tussen 1 en 60 seconden liggen"
   },
   "invalidRequest": "Ongeldig verzoek",
   "manager": {
@@ -71,7 +72,9 @@
     "pinAreaRequired": "Teken het correcte gebied op de afbeelding",
     "cooldownRequired": "Weergavetijd van de vraag is verplicht",
     "timeRequired": "Antwoordtijd is verplicht",
-    "answersRequired": "Een vraag moet minstens 2 antwoorden hebben"
+    "answersRequired": "Een vraag moet minstens 2 antwoorden hebben",
+    "doInvalidOptions": "Ongeldige opties voor de opdracht",
+    "doAnswersUnsupported": "Opdrachtvragen hebben geen antwoorden"
   },
   "result": {
     "notFound": "Resultaat niet gevonden"

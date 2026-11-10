@@ -68,7 +68,22 @@
         "moveHint": "Użyj narzędzia ręki, aby przeciągnąć obszar w nowe miejsce.",
         "mediaHint": "Najpierw dodaj obraz, a potem narysuj właściwy obszar.",
         "move": "Przenieś obszar"
-      }
+      },
+      "instruction": "Polecenie zadania",
+      "instructionPlaceholder": "np. Ustaw kubki tak szybko, jak potrafisz",
+      "instructionHint": "Wyświetlane graczom podczas wykonywania zadania",
+      "doFlow": "Przebieg",
+      "doFlowTimer": "Timer",
+      "doFlowOpen": "Otwarty (bez timera)",
+      "doFlowHint": "Odliczenie ma charakter poglądowy: pytanie pozostaje otwarte do przesłania rankingu.",
+      "timerExpiry": "Timer na zerze",
+      "timerExpiryStop": "Zatrzymaj się na 0:00",
+      "timerExpiryElapsed": "Liczyć dalej",
+      "timerExpiryHint": "Co pokazuje odliczanie po osiągnięciu zera",
+      "doneButton": "Przycisk „Gotowe”",
+      "doneButtonHint": "Gracze dotykają „Gotowe”, gdy skończą; pozostali trafiają na koniec rankingu",
+      "manualProceed": "Ręczne przejście",
+      "manualProceedHint": "Menedżer klika, aby pokazać odpowiedzi zamiast czekać"
     },
     "deleteQuestion": "Usuń pytanie",
     "deleteQuestionConfirm": "Czy na pewno chcesz usunąć to pytanie?",
@@ -89,7 +104,10 @@
       "reorder": "Przenieś kafelek"
     },
     "disableQuestion": "Wyłącz pytanie",
-    "enableQuestion": "Włącz pytanie"
+    "enableQuestion": "Włącz pytanie",
+    "do": {
+      "noAnswers": "Pytania zadaniowe nie mają odpowiedzi"
+    }
   },
   "questionHasErrors": "To pytanie zawiera błędy",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "Prawda/Fałsz",
     "puzzle": "Puzzle",
     "pin": "Pin na obrazie",
-    "slide": "Slajd"
+    "slide": "Slajd",
+    "do": "Zadanie"
   },
   "quizzSaved": "Quiz został zapisany",
   "quizzUpdated": "Quiz został zaktualizowany",

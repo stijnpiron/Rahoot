@@ -16,6 +16,7 @@ export const STATUS = {
   SHOW_RESULT: "SHOW_RESULT",
   SHOW_RESPONSES: "SHOW_RESPONSES",
   SHOW_LEADERBOARD: "SHOW_LEADERBOARD",
+  DO_DONE: "DO_DONE",
   FINISHED: "FINISHED",
   SUMMARY: "SUMMARY",
   WAIT: "WAIT",
@@ -24,7 +25,7 @@ export const STATUS = {
 export type Status = (typeof STATUS)[keyof typeof STATUS]
 
 export interface CommonStatusDataMap {
-  SHOW_START: { time: number; subject: string }
+  SHOW_START: { time: number; subject: string; media?: QuestionMedia }
   SHOW_PREPARED: {
     totalAnswers: number
     questionNumber: number
@@ -35,6 +36,8 @@ export interface CommonStatusDataMap {
     question: string
     media?: QuestionMedia
     cooldown: number
+    instruction?: string
+    manualProceed?: boolean
   }
   SHOW_SLIDE: {
     title?: string
@@ -51,6 +54,8 @@ export interface CommonStatusDataMap {
     options?: QuestionOptions
     answersOnly: boolean
     puzzleOrder?: number[]
+    instruction?: string
+    doParticipants?: Array<{ playerId: string; username: string }>
   }
   SHOW_RESULT: {
     correct: boolean
@@ -81,9 +86,13 @@ interface ManagerExtraStatus {
     options?: QuestionOptions
     note?: string
     puzzleFullyCorrect?: { count: number; total: number }
+    doRanking?: Array<{ playerId: string; username: string; points: number }>
     pins?: Array<PinPoint & { name: string; correct: boolean }>
   }
   SHOW_LEADERBOARD: { oldLeaderboard: Player[]; leaderboard: Player[] }
+  DO_DONE: {
+    done: Array<{ playerId: string; username: string }>
+  }
 }
 
 export type PlayerStatusDataMap = CommonStatusDataMap

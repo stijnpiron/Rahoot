@@ -3,7 +3,6 @@ import { createDefaultPinOptions } from "@razzia/web/features/questions/pin/util
 
 export { default as AnswerComponent } from "@razzia/web/features/questions/pin/components/PinAnswers"
 
-export { default as ConfigComponent } from "@razzia/web/features/questions/pin/components/PinConfig"
 
 export { default as AnswersEditor } from "@razzia/web/features/questions/pin/components/PinEditor"
 

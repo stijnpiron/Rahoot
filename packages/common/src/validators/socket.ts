@@ -49,4 +49,10 @@ export const clientEventValidators = {
   [EVENTS.PLAYER.SELECTED_ANSWER]: gameMessageValidator.extend({
     data: selectedAnswerValidator,
   }),
+  [EVENTS.PLAYER.DONE]: gameMessageValidator,
+  [EVENTS.MANAGER.SUBMIT_DO_ORDER]: gameMessageValidator.extend({
+    data: z.object({
+      order: z.array(z.string().min(1)),
+    }),
+  }),
 }

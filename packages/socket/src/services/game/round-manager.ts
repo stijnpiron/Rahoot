@@ -6,6 +6,7 @@ import {
   NO_TIME_LIMIT,
   QUESTION_TYPES,
   QUIZZ_MODES,
+  START_SCREEN_MODES,
 } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
 import type {
@@ -85,6 +86,8 @@ export class RoundManager {
   private questionsHistory: QuestionResult[] = []
   private autoAdvanceTimer: NodeJS.Timeout | null = null
   private puzzleOrder: number[] | null = null
+  private doDone: Array<{ playerId: string; username: string }> = []
+  private proceed: (() => void) | null = null
 
   constructor(opts: RoundManagerOptions) {
     this.opts = opts
@@ -143,6 +146,10 @@ export class RoundManager {
 
   private isPuzzle(): boolean {
     return this.question.type === QUESTION_TYPES.PUZZLE
+  }
+
+  private isDo(): boolean {
+    return this.question.type === QUESTION_TYPES.DO
   }
 
   private isPin(): boolean {
@@ -258,12 +265,20 @@ export class RoundManager {
 
     this.started = true
 
+    const { startScreen } = this.opts.getSettings()
     this.opts.broadcast(STATUS.SHOW_START, {
-      time: 3,
+      time: startScreen.time,
       subject: this.opts.quizz.subject,
+      media: this.opts.quizz.media,
     })
 
-    await sleep(3)
+    if (startScreen.mode === START_SCREEN_MODES.MANUAL) {
+      await new Promise<void>((resolve) => {
+        this.proceed = resolve
+      })
+    } else {
+      await sleep(startScreen.time)
+    }
 
     this.opts.io.to(this.opts.gameId).emit(EVENTS.GAME.START_COOLDOWN)
     await this.opts.cooldown.start(3)
@@ -276,11 +291,26 @@ export class RoundManager {
       return
     }
 
+    if (this.proceed) {
+      this.clearProceed()
+
+      return
+    }
+
     this.clearAutoAdvance()
 
     if (this.isAskingQuestion()) {
       if (this.isSlide()) {
         this.nextQuestion()
+
+        return
+      }
+
+      if (this.isDo()) {
+        // There is no cooldown to abort: skipping counts as submitting the
+        // ranking with the players who tapped Done first and the rest at the
+        // bottom.
+        this.submitDoOrder(this.doDone.map((done) => done.playerId))
 
         return
       }
@@ -314,6 +344,11 @@ export class RoundManager {
     this.scheduleAutoAdvance(step.delay(this.opts.getSettings()))
   }
 
+  private clearProceed(): void {
+    this.proceed?.()
+    this.proceed = null
+  }
+
   private nextQuestion(): void {
     if (this.isLastQuestion()) {
       this.finish()
@@ -332,6 +367,8 @@ export class RoundManager {
 
     this.currentStep = -1
     this.puzzleOrder = null
+    this.doDone = []
+    this.proceed = null
 
     this.opts.onNewQuestion()
 
@@ -377,9 +414,17 @@ export class RoundManager {
       question: this.question.question,
       media: imageMedia,
       cooldown: this.question.cooldown,
+      instruction: this.isDo() ? this.question.instruction : undefined,
+      manualProceed: this.question.manualProceed ? true : undefined,
     })
 
-    await sleep(this.question.cooldown)
+    if (this.question.manualProceed) {
+      await new Promise<void>((resolve) => {
+        this.proceed = resolve
+      })
+    } else {
+      await sleep(this.question.cooldown)
+    }
 
     if (!this.started) {
       return
@@ -400,7 +445,19 @@ export class RoundManager {
       options: this.question.options,
       answersOnly: this.opts.getSettings().answersOnly,
       puzzleOrder,
+      instruction: this.isDo() ? this.question.instruction : undefined,
+      doParticipants: this.isDo()
+        ? this.opts.players.getAll().map((player) => ({
+            playerId: player.id,
+            username: player.username,
+          }))
+        : undefined,
     })
+
+    if (this.isDo()) {
+      // The manager submits the ranking; the question stays open until then.
+      return
+    }
 
     await this.opts.cooldown.start(this.question.time)
 
@@ -448,6 +505,7 @@ export class RoundManager {
         solutions: undefined,
         responses: answerCounts,
         ...(this.isPin() && { pins: this.buildPinsPayload() }),
+        ...(this.isDo() && { doRanking: this.buildDoRanking() }),
       })
 
       currentPlayers.forEach((player) => {
@@ -501,6 +559,7 @@ export class RoundManager {
           }
         : undefined,
       ...(this.isPin() && { pins: this.buildPinsPayload(sortedPlayers) }),
+      ...(this.isDo() && { doRanking: this.buildDoRanking() }),
     })
 
     this.recordHistory(currentPlayers, sortedPlayers)
@@ -508,6 +567,25 @@ export class RoundManager {
     this.leaderboard = sortedPlayers
     this.tempOldLeaderboard ??= oldLeaderboard
     this.playersAnswers = []
+  }
+
+  private buildDoRanking(): Array<{
+    playerId: string
+    username: string
+    points: number
+  }> {
+    return this.playersAnswers
+      .filter((answer) => answer.answerIds.length > 0)
+      .sort((a, b) => a.answerIds[0] - b.answerIds[0])
+      .map((answer) => {
+        const player = this.opts.players.findById(answer.playerId)
+
+        return {
+          playerId: answer.playerId,
+          username: player?.username ?? "???",
+          points: answer.points,
+        }
+      })
   }
 
   private showLeaderboard(): void {
@@ -542,6 +620,7 @@ export class RoundManager {
   private finish(): void {
     this.started = false
     this.clearAutoAdvance()
+    this.clearProceed()
 
     const finalPlayers = this.isSurvey()
       ? this.opts.players.getAll()
@@ -620,6 +699,12 @@ export class RoundManager {
       return
     }
 
+    if (this.isDo()) {
+      this.markDone(player)
+
+      return
+    }
+
     if (this.playersAnswers.find((a) => a.playerId === socket.id)) {
       return
     }
@@ -662,6 +747,61 @@ export class RoundManager {
       .emit(EVENTS.GAME.PLAYER_ANSWER, this.playersAnswers.length)
     this.opts.players.broadcastCount()
     this.endIfEveryoneAnswered()
+  }
+
+  private markDone(player: Player): void {
+    if (this.doDone.some((d) => d.playerId === player.id)) {
+      return
+    }
+
+    this.doDone = [...this.doDone, { playerId: player.id, username: player.username }]
+
+    this.opts.send(this.opts.getManagerId(), STATUS.DO_DONE, {
+      done: this.doDone,
+    })
+
+    this.opts.send(player.id, STATUS.WAIT, {
+      text: "game:waitingForAnswers",
+    })
+
+    this.opts.io
+      .to(this.opts.gameId)
+      .emit(EVENTS.GAME.PLAYER_ANSWER, this.doDone.length)
+  }
+
+  submitDoOrder(order: string[]): void {
+    if (!this.isDo() || !this.acceptingAnswers) {
+      return
+    }
+
+    const ranked = order.filter((playerId) =>
+      this.opts.players.findById(playerId),
+    )
+    const total = ranked.length
+    const maxPoints = this.question.maxPoints ?? MAX_POINTS
+
+    this.playersAnswers = this.opts.players
+      .getAll()
+      .map((player) => {
+        const rank = ranked.indexOf(player.id)
+        const fraction = (() => {
+          if (rank < 0) {
+            return 0
+          }
+
+          return total <= 1 ? 1 : (total - 1 - rank) / (total - 1)
+        })()
+
+        return {
+          playerId: player.id,
+          answerIds: rank >= 0 ? [rank] : [],
+          points: Math.round(fraction * maxPoints),
+        }
+      })
+
+    this.acceptingAnswers = false
+    this.opts.cooldown.abort()
+    this.runStep(0)
   }
 
   updatePlayerId(oldId: string, newId: string): void {

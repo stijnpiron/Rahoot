@@ -1,10 +1,13 @@
 import type {
   ACCEPTED_MEDIA_TYPES,
+  DO_FLOWS,
+  DO_TIMER_EXPIRIES,
   ESTIMATION_INPUT_MODES,
   MEDIA_TYPES,
   QUESTION_TYPES,
   QUIZZ_MODES,
   SCORING_MODES,
+  START_SCREEN_MODES,
 } from "@razzia/common/constants"
 
 export type QuizzMode = (typeof QUIZZ_MODES)[keyof typeof QUIZZ_MODES]
@@ -42,8 +45,22 @@ export interface PinQuestionOptions {
   area: PinArea | null
 }
 
+export type DoFlow = (typeof DO_FLOWS)[keyof typeof DO_FLOWS]
+
+export type DoTimerExpiry =
+  (typeof DO_TIMER_EXPIRIES)[keyof typeof DO_TIMER_EXPIRIES]
+
+export interface DoQuestionOptions {
+  flow?: DoFlow
+  doneButton?: boolean
+  timerExpiry?: DoTimerExpiry
+}
+
 export type QuestionOptions =
-  MultiQuestionOptions | EstimationQuestionOptions | PinQuestionOptions
+  | MultiQuestionOptions
+  | EstimationQuestionOptions
+  | PinQuestionOptions
+  | DoQuestionOptions
 
 export interface Player {
   id: string
@@ -84,11 +101,13 @@ export interface Question {
   title?: string
   category?: string
   note?: string
+  instruction?: string
   media?: QuestionMedia
   answers: string[]
   solutions?: number[]
   cooldown: number
   time: number
+  manualProceed?: boolean
   maxPoints?: number
   penalty?: number
   options?: QuestionOptions
@@ -98,6 +117,8 @@ export interface Question {
 export interface Quizz {
   gameMode: QuizzMode
   subject: string
+  media?: QuestionMedia
+  language?: string
   questions: Question[]
 }
 
@@ -106,6 +127,14 @@ export type QuizzWithId = Quizz & { id: string }
 export interface QuizzMeta {
   id: string
   subject: string
+}
+
+export type StartScreenMode =
+  (typeof START_SCREEN_MODES)[keyof typeof START_SCREEN_MODES]
+
+export interface StartScreenSettings {
+  mode: StartScreenMode
+  time: number
 }
 
 export interface AutoAdvanceSettings {
@@ -117,6 +146,7 @@ export interface AutoAdvanceSettings {
 export interface GameSettings {
   generatedUsernames: boolean
   answersOnly: boolean
+  startScreen: StartScreenSettings
   autoAdvance: AutoAdvanceSettings
 }
 

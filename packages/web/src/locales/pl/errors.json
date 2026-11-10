@@ -24,7 +24,8 @@
     "managerDisconnected": "Prowadzący się rozłączył",
     "noPlayersConnected": "Brak połączonych graczy",
     "notFound": "Nie znaleziono gry",
-    "playerAlreadyConnected": "Gracz jest już połączony"
+    "playerAlreadyConnected": "Gracz jest już połączony",
+    "invalidStartScreenTime": "Czas musi wynosić od 1 do 60 sekund"
   },
   "invalidRequest": "Nieprawidłowe żądanie",
   "manager": {
@@ -71,7 +72,9 @@
     "pinAreaRequired": "Narysuj właściwy obszar na obrazie",
     "cooldownRequired": "Czas wyświetlania pytania jest wymagany",
     "timeRequired": "Czas na odpowiedź jest wymagany",
-    "answersRequired": "Pytanie musi mieć co najmniej 2 odpowiedzi"
+    "answersRequired": "Pytanie musi mieć co najmniej 2 odpowiedzi",
+    "doInvalidOptions": "Nieprawidłowe opcje zadania",
+    "doAnswersUnsupported": "Pytania zadaniowe nie mają odpowiedzi"
   },
   "result": {
     "notFound": "Nie znaleziono wyniku"

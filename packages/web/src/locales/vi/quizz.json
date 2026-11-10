@@ -68,7 +68,22 @@
         "moveHint": "Dùng công cụ bàn tay để kéo vùng đến vị trí mới.",
         "mediaHint": "Thêm ảnh trước, sau đó vẽ vùng đúng.",
         "move": "Di chuyển vùng"
-      }
+      },
+      "instruction": "Hướng dẫn nhiệm vụ",
+      "instructionPlaceholder": "vd. Xếp các cốc nhanh nhất có thể",
+      "instructionHint": "Hiển thị cho người chơi khi họ thực hiện nhiệm vụ",
+      "doFlow": "Diễn tiến",
+      "doFlowTimer": "Hẹn giờ",
+      "doFlowOpen": "Mở (không hẹn giờ)",
+      "doFlowHint": "Bộ đếm chỉ mang tính tham khảo: câu hỏi vẫn mở cho đến khi bạn gửi thứ hạng.",
+      "timerExpiry": "Bộ đếm về 0",
+      "timerExpiryStop": "Dừng ở 0:00",
+      "timerExpiryElapsed": "Tiếp tục đếm",
+      "timerExpiryHint": "Bộ đếm hiển thị gì sau khi về 0",
+      "doneButton": "Nút «Xong»",
+      "doneButtonHint": "Người chơi chạm «Xong» khi hoàn thành; người chưa xong nằm cuối thứ hạng",
+      "manualProceed": "Chuyển thủ công",
+      "manualProceedHint": "Quản lý nhấp để hiện đáp án thay vì chờ đợi"
     },
     "deleteQuestion": "Xóa câu hỏi",
     "deleteQuestionConfirm": "Bạn có chắc muốn xóa câu hỏi này?",
@@ -89,7 +104,10 @@
       "reorder": "Sắp xếp lại ô"
     },
     "disableQuestion": "Tắt câu hỏi",
-    "enableQuestion": "Bật câu hỏi"
+    "enableQuestion": "Bật câu hỏi",
+    "do": {
+      "noAnswers": "Câu hỏi nhiệm vụ không có đáp án"
+    }
   },
   "questionHasErrors": "Câu hỏi này có lỗi",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "Đúng/Sai",
     "puzzle": "Ghép thứ tự",
     "pin": "Ghim trên ảnh",
-    "slide": "Trang trình bày"
+    "slide": "Trang trình bày",
+    "do": "Nhiệm vụ"
   },
   "quizzSaved": "Đã lưu trò chơi thành công",
   "quizzUpdated": "Đã cập nhật trò chơi thành công",

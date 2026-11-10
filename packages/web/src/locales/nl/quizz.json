@@ -68,7 +68,22 @@
         "moveHint": "Gebruik de hand om het gebied naar een nieuwe positie te slepen.",
         "mediaHint": "Voeg eerst een afbeelding toe en teken er daarna het correcte gebied op.",
         "move": "Gebied verplaatsen"
-      }
+      },
+      "instruction": "Taakinstructie",
+      "instructionPlaceholder": "bijv. Stapel de bekers zo snel mogelijk",
+      "instructionHint": "Getoond aan spelers terwijl ze de taak uitvoeren",
+      "doFlow": "Verloop",
+      "doFlowTimer": "Timer",
+      "doFlowOpen": "Open (zonder timer)",
+      "doFlowHint": "De aftelling is slechts een indicatie: de vraag blijft open tot je de rangschikking indient.",
+      "timerExpiry": "Timer op nul",
+      "timerExpiryStop": "Stoppen op 0:00",
+      "timerExpiryElapsed": "Door blijven tellen",
+      "timerExpiryHint": "Wat de aftelling toont na nul",
+      "doneButton": "Knop «Klaar»",
+      "doneButtonHint": "Spelers tikken op «Klaar» als ze klaar zijn; spelers zonder tik staan onderaan de rangschikking",
+      "manualProceed": "Handmatig verdergaan",
+      "manualProceedHint": "De manager klikt om de antwoorden te tonen in plaats van te wachten"
     },
     "deleteQuestion": "Vraag verwijderen",
     "deleteQuestionConfirm": "Weet je zeker dat je deze vraag wilt verwijderen?",
@@ -89,7 +104,10 @@
       "reorder": "Tegel verplaatsen"
     },
     "disableQuestion": "Vraag uitschakelen",
-    "enableQuestion": "Vraag inschakelen"
+    "enableQuestion": "Vraag inschakelen",
+    "do": {
+      "noAnswers": "Opdrachtvragen hebben geen antwoorden"
+    }
   },
   "questionHasErrors": "Deze vraag bevat fouten",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "Waar/Onwaar",
     "puzzle": "Puzzel",
     "pin": "Pin op afbeelding",
-    "slide": "Dia"
+    "slide": "Dia",
+    "do": "Opdracht"
   },
   "quizzSaved": "Quizz succesvol opgeslagen",
   "quizzUpdated": "Quizz succesvol bijgewerkt",

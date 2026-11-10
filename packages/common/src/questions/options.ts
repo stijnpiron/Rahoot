@@ -1,4 +1,5 @@
 import type {
+  DoQuestionOptions,
   EstimationQuestionOptions,
   MultiQuestionOptions,
   PinQuestionOptions,
@@ -19,3 +20,11 @@ export const isPinOptions = (
   options?: QuestionOptions,
 ): options is PinQuestionOptions =>
   options !== undefined && "area" in options
+
+export const isDoOptions = (
+  options?: QuestionOptions,
+): options is DoQuestionOptions =>
+  options !== undefined &&
+  ("flow" in options ||
+    "doneButton" in options ||
+    "timerExpiry" in options)

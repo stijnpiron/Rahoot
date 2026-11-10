@@ -1,5 +1,6 @@
 import { EVENTS } from "@razzia/common/constants"
 import { STATUS } from "@razzia/common/types/game/status"
+import { hasLanguageOverride } from "@razzia/web/components/LanguageSwitcher"
 import GameWrapper from "@razzia/web/features/game/components/GameWrapper"
 import {
   socketClient,
@@ -25,8 +26,22 @@ const PlayerGamePage = () => {
   const { gameId: gameIdParam } = useParams({ from: "/party/$gameId" })
   const { status, updatePlayer, resetPlayer } = usePlayerStore()
   const { setQuestionStates } = useQuestionStore()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const syncedRef = useRef(false)
+
+  // A quiz can declare a default language; it only applies when the player
+  // has never picked a language themselves.
+  const applyQuizLanguage = (language?: string) => {
+    if (!language || hasLanguageOverride()) {
+      return
+    }
+
+    if (i18n.language.slice(0, 2) === language) {
+      return
+    }
+
+    i18n.changeLanguage(language)
+  }
 
   useSocketConnection()
 
@@ -56,7 +71,8 @@ const PlayerGamePage = () => {
 
   useEvent(
     EVENTS.GAME.SUCCESS_JOIN,
-    ({ gameId: joinedGameId, username, gameMode }) => {
+    ({ gameId: joinedGameId, username, gameMode, language }) => {
+      applyQuizLanguage(language)
       updatePlayer({
         gameId: joinedGameId,
         gameMode,
@@ -72,10 +88,12 @@ const PlayerGamePage = () => {
     ({
       gameId: reconnectGameId,
       gameMode,
+      language,
       status: reconnectStatus,
       player,
       currentQuestion,
     }) => {
+      applyQuizLanguage(language)
       updatePlayer({
         gameId: reconnectGameId,
         gameMode,

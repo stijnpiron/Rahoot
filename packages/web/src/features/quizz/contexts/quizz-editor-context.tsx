@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { QUESTION_TYPES, QUIZZ_MODES } from "@razzia/common/constants"
 import type {
   Question,
+  QuestionMedia,
   QuizzMode,
   QuizzWithId,
 } from "@razzia/common/types/game"
@@ -27,6 +28,8 @@ import {
 export interface QuizzFormValues {
   gameMode: QuizzMode
   subject: string
+  media?: QuestionMedia
+  language?: string
   questions: Question[]
 }
 
@@ -77,6 +80,8 @@ export const QuizzEditorProvider = ({
     defaultValues: {
       gameMode: initialData?.gameMode ?? QUIZZ_MODES.QUIZ,
       subject: initialData?.subject ?? "Untitled Quizz",
+      media: initialData?.media,
+      language: initialData?.language,
       questions: initialData ? initialData.questions : [defaultQuestion()],
     },
   })

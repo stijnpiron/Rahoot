@@ -1,6 +1,7 @@
 import { QUESTION_TYPES } from "@razzia/common/constants"
 import type { Question, QuestionType } from "@razzia/common/types/game"
 import { refineChoiceQuestion } from "@razzia/common/validators/questions/choice"
+import { refineDoQuestion } from "@razzia/common/validators/questions/do"
 import { refineEstimationQuestion } from "@razzia/common/validators/questions/estimation"
 import { refinePinQuestion } from "@razzia/common/validators/questions/pin"
 import { refinePuzzleQuestion } from "@razzia/common/validators/questions/puzzle"
@@ -25,4 +26,5 @@ export const QUESTION_REFINEMENTS: Record<
   [QUESTION_TYPES.TRUE_FALSE]: refineTrueFalseQuestion,
   [QUESTION_TYPES.PUZZLE]: refinePuzzleQuestion,
   [QUESTION_TYPES.PIN]: refinePinQuestion,
+  [QUESTION_TYPES.DO]: refineDoQuestion,
 }

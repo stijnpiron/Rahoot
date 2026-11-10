@@ -8,7 +8,6 @@ import {
   SelectValue,
 } from "@razzia/web/components/Select"
 import { getEstimationOptions } from "@razzia/web/features/questions/estimation/utils"
-import BaseConfig from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/BaseConfig"
 import ConfigField from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/ConfigField"
 import ConfigNumberInput from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/ConfigNumberInput"
 import ConfigSection from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/ConfigSection"
@@ -112,8 +111,6 @@ const EstimationConfig = () => {
           </ConfigField>
         )}
       </ConfigSection>
-
-      <BaseConfig />
     </>
   )
 }

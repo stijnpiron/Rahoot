@@ -31,6 +31,7 @@ class Game {
   readonly gameId: string
   readonly inviteCode: string
   readonly gameMode: QuizzMode
+  readonly language?: string
 
   private _settings: GameSettings = createDefaultGameSettings()
   private _locked = false
@@ -64,6 +65,7 @@ class Game {
     this.gameId = uuid()
     this.inviteCode = createInviteCode()
     this.gameMode = quizz.gameMode
+    this.language = quizz.language
     this._manager = {
       id: "",
       clientId: managerClientId,
@@ -76,6 +78,7 @@ class Game {
       io,
       gameId: this.gameId,
       gameMode: quizz.gameMode,
+      language: quizz.language,
       getManagerId: () => this._manager.id,
       isStarted: () => this.started,
     })
@@ -315,6 +318,7 @@ class Game {
     socket.emit(EVENTS.PLAYER.SUCCESS_RECONNECT, {
       gameId: this.gameId,
       gameMode: this.gameMode,
+      language: this.language,
       currentQuestion: this.round.getReconnectInfo(),
       status,
       player: { username: player.username, points: player.points },
@@ -389,6 +393,10 @@ class Game {
 
   advance() {
     this.round.advance()
+  }
+
+  submitDoOrder(order: string[]) {
+    this.round.submitDoOrder(order)
   }
 }
 

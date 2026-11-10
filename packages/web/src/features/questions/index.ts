@@ -6,6 +6,7 @@ import type {
   ScoringMode,
 } from "@razzia/common/types/game"
 import * as estimation from "@razzia/web/features/questions/estimation"
+import * as doQuestion from "@razzia/web/features/questions/do"
 import * as multi from "@razzia/web/features/questions/multi"
 import * as pin from "@razzia/web/features/questions/pin"
 import * as puzzle from "@razzia/web/features/questions/puzzle"
@@ -41,6 +42,7 @@ export const QUESTION_REGISTRY: Record<QuestionType, QuestionRegistryEntry> = {
   trueFalse,
   puzzle,
   pin,
+  do: doQuestion,
   slide: {
     ...slide,
     initialValues: slideInitialValues,

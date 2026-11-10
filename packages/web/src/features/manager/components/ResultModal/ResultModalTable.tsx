@@ -34,6 +34,8 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
   const isPin =
     isPinOptions(questionResult.options) ||
     questionResult.type === QUESTION_TYPES.PIN
+  const isDo = questionResult.type === QUESTION_TYPES.DO
+  const doRank = isDo && answerIds && answerIds.length > 0 ? answerIds[0] + 1 : null
 
   return (
     <tr>
@@ -44,7 +46,7 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
             {formatValue(answerIds[0])}
           </span>
         )}
-        {hasAnswer && !isEstimation && !isPin && answerIds && (
+        {hasAnswer && !isEstimation && !isPin && !isDo && answerIds && (
           <div className="flex flex-wrap gap-1">
             {answerIds.map((id) => (
               <span
@@ -65,6 +67,11 @@ const ResultModalTableRow = ({ playerAnswer }: RowProps) => {
         {pin && (
           <span className="bg-accent text-accent-foreground inline-flex rounded-md px-2 py-1 text-xs font-bold">
             {Math.round(pin.x * 100)}%, {Math.round(pin.y * 100)}%
+          </span>
+        )}
+        {doRank !== null && (
+          <span className="bg-accent text-accent-foreground inline-flex rounded-md px-2 py-1 text-xs font-bold">
+            #{doRank}
           </span>
         )}
         {!hasAnswer && <span className="text-muted-foreground text-xs">-</span>}

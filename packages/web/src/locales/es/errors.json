@@ -24,7 +24,8 @@
     "managerDisconnected": "El administrador se ha desconectado",
     "noPlayersConnected": "No hay jugadores conectados",
     "notFound": "Partida no encontrada",
-    "playerAlreadyConnected": "El jugador ya está conectado"
+    "playerAlreadyConnected": "El jugador ya está conectado",
+    "invalidStartScreenTime": "El tiempo debe estar entre 1 y 60 segundos"
   },
   "invalidRequest": "Solicitud inválida",
   "manager": {
@@ -71,7 +72,9 @@
     "pinAreaRequired": "Dibuja el área correcta en la imagen",
     "cooldownRequired": "El tiempo de visualización de la pregunta es obligatorio",
     "timeRequired": "El tiempo de respuesta es obligatorio",
-    "answersRequired": "Una pregunta debe tener al menos 2 respuestas"
+    "answersRequired": "Una pregunta debe tener al menos 2 respuestas",
+    "doInvalidOptions": "Opciones de tarea no válidas",
+    "doAnswersUnsupported": "Las preguntas de tarea no tienen respuestas"
   },
   "result": {
     "notFound": "Resultado no encontrado"

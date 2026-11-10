@@ -46,7 +46,14 @@
       "label": "Alleen antwoorden",
       "hint": "Spelers zien alleen de antwoordknoppen, met een knop om de vraag opnieuw te lezen."
     },
-    "title": "Spelinstellingen"
+    "title": "Spelinstellingen",
+    "startScreen": {
+      "label": "Startscherm",
+      "hint": "Kies hoe het spel start",
+      "auto": "Automatische aftelling",
+      "manual": "Handmatige start",
+      "time": "Aftelseconden"
+    }
   },
   "startGame": "Start",
   "summary": {
@@ -75,5 +82,13 @@
     "imageAlt": "Pin het antwoord op de afbeelding",
     "teaser": "Plaats een pin op de afbeelding",
     "noPins": "Geen pinnen"
+  },
+  "do": {
+    "done": "Klaar!",
+    "submit": "Rangschikking tonen",
+    "notDone": "niet klaar",
+    "elapsed": "verstreken",
+    "points": "+{{points}} pt",
+    "teaser": "Voer de opdracht uit"
   }
 }

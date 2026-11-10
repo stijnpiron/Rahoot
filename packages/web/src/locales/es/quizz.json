@@ -68,7 +68,22 @@
         "moveHint": "Usa la herramienta de mano para arrastrar el área a una nueva posición.",
         "mediaHint": "Añade primero una imagen y dibuja después el área correcta.",
         "move": "Mover área"
-      }
+      },
+      "instruction": "Instrucción de la tarea",
+      "instructionPlaceholder": "p. ej. Apila los vasos lo más rápido posible",
+      "instructionHint": "Se muestra a los jugadores mientras realizan la tarea",
+      "doFlow": "Flujo",
+      "doFlowTimer": "Temporizador",
+      "doFlowOpen": "Abierto (sin temporizador)",
+      "doFlowHint": "La cuenta atrás es solo indicativa: la pregunta queda abierta hasta que envíes la clasificación.",
+      "timerExpiry": "Temporizador en cero",
+      "timerExpiryStop": "Detenerse en 0:00",
+      "timerExpiryElapsed": "Seguir contando",
+      "timerExpiryHint": "Qué muestra la cuenta atrás al llegar a cero",
+      "doneButton": "Botón «Listo»",
+      "doneButtonHint": "Los jugadores tocan «Listo» al terminar; los que no, quedan al final de la clasificación",
+      "manualProceed": "Avance manual",
+      "manualProceedHint": "El manager hace clic para mostrar las respuestas en lugar de esperar"
     },
     "deleteQuestion": "Eliminar pregunta",
     "deleteQuestionConfirm": "¿Estás seguro de que quieres eliminar esta pregunta?",
@@ -89,7 +104,10 @@
       "reorder": "Reordenar ficha"
     },
     "disableQuestion": "Desactivar pregunta",
-    "enableQuestion": "Activar pregunta"
+    "enableQuestion": "Activar pregunta",
+    "do": {
+      "noAnswers": "Las preguntas de tarea no tienen respuestas"
+    }
   },
   "questionHasErrors": "Esta pregunta contiene errores",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "Verdadero/Falso",
     "puzzle": "Rompecabezas",
     "pin": "Pin en imagen",
-    "slide": "Diapositiva"
+    "slide": "Diapositiva",
+    "do": "Tarea"
   },
   "quizzSaved": "Cuestionario guardado con éxito",
   "quizzUpdated": "Cuestionario actualizado con éxito",

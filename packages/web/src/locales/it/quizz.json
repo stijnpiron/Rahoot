@@ -68,7 +68,22 @@
         "moveHint": "Usa lo strumento mano per trascinare l'area in una nuova posizione.",
         "mediaHint": "Aggiungi prima un'immagine, poi disegna l'area corretta.",
         "move": "Sposta area"
-      }
+      },
+      "instruction": "Istruzione del compito",
+      "instructionPlaceholder": "ad es. Impila i bicchieri il più velocemente possibile",
+      "instructionHint": "Mostrato ai giocatori mentre eseguono il compito",
+      "doFlow": "Flusso",
+      "doFlowTimer": "Timer",
+      "doFlowOpen": "Aperto (senza timer)",
+      "doFlowHint": "Il conto alla rovescia è solo indicativo: la domanda resta aperta finché non invii la classifica.",
+      "timerExpiry": "Timer a zero",
+      "timerExpiryStop": "Fermsi a 0:00",
+      "timerExpiryElapsed": "Continuare a contare",
+      "timerExpiryHint": "Cosa mostra il conto alla rovescia dopo lo zero",
+      "doneButton": "Pulsante «Fatto»",
+      "doneButtonHint": "I giocatori toccano «Fatto» quando finiscono; gli altri restano in fondo alla classifica",
+      "manualProceed": "Avanzamento manuale",
+      "manualProceedHint": "Il manager clicca per mostrare le risposte invece di attendere"
     },
     "deleteQuestion": "Elimina domanda",
     "deleteQuestionConfirm": "Sei sicuro di voler eliminare questa domanda?",
@@ -89,7 +104,10 @@
       "reorder": "Riordina la tessera"
     },
     "disableQuestion": "Disattiva domanda",
-    "enableQuestion": "Attiva domanda"
+    "enableQuestion": "Attiva domanda",
+    "do": {
+      "noAnswers": "Le domande di compito non hanno risposte"
+    }
   },
   "questionHasErrors": "Questa domanda contiene errori",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "Vero/Falso",
     "puzzle": "Puzzle",
     "pin": "Pin sull'immagine",
-    "slide": "Diapositiva"
+    "slide": "Diapositiva",
+    "do": "Compito"
   },
   "quizzSaved": "Quiz salvato con successo",
   "quizzUpdated": "Quiz aggiornato con successo",

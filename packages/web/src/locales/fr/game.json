@@ -47,7 +47,14 @@
       "label": "Réponses seules",
       "hint": "Les joueurs ne voient que les boutons de réponse, avec un bouton pour relire la question."
     },
-    "title": "Réglages de la partie"
+    "title": "Réglages de la partie",
+    "startScreen": {
+      "label": "Écran de départ",
+      "hint": "Choisis comment la partie démarre",
+      "auto": "Compte à rebours automatique",
+      "manual": "Démarrage manuel",
+      "time": "Secondes du compte à rebours"
+    }
   },
   "startGame": "Démarrer",
   "summary": {
@@ -76,5 +83,13 @@
     "imageAlt": "Placez la réponse sur l'image",
     "teaser": "Déposez une épingle sur l'image",
     "noPins": "Aucune épingle"
+  },
+  "do": {
+    "done": "Terminé !",
+    "submit": "Afficher le classement",
+    "notDone": "pas terminé",
+    "elapsed": "écoulé",
+    "points": "+{{points}} pts",
+    "teaser": "Effectue la tâche"
   }
 }

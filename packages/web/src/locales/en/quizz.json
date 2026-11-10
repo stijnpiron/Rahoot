@@ -68,7 +68,22 @@
         "moveHint": "Use the hand tool to drag the area to a new position.",
         "mediaHint": "Add an image first, then draw the correct area on it.",
         "move": "Move area"
-      }
+      },
+      "instruction": "Task instruction",
+      "instructionPlaceholder": "e.g. Stack the cups as fast as you can",
+      "instructionHint": "Shown to players while they perform the task",
+      "doFlow": "Flow",
+      "doFlowTimer": "Timer",
+      "doFlowOpen": "Open (no timer)",
+      "doFlowHint": "With a timer the countdown is a hint only: the question stays open until you submit the ranking.",
+      "timerExpiry": "Timer at zero",
+      "timerExpiryStop": "Stop at 0:00",
+      "timerExpiryElapsed": "Keep counting up",
+      "timerExpiryHint": "What the countdown shows after reaching zero",
+      "doneButton": "Done button",
+      "doneButtonHint": "Players tap Done when they finish; untapped players sit at the bottom of the ranking",
+      "manualProceed": "Manual proceed",
+      "manualProceedHint": "The manager clicks to show the answers instead of waiting"
     },
     "deleteQuestion": "Delete question",
     "deleteQuestionConfirm": "Are you sure you want to delete this question?",
@@ -89,7 +104,10 @@
       "reorder": "Reorder tile"
     },
     "disableQuestion": "Disable question",
-    "enableQuestion": "Enable question"
+    "enableQuestion": "Enable question",
+    "do": {
+      "noAnswers": "Do-questions have no answers"
+    }
   },
   "questionHasErrors": "This question has errors",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "True/False",
     "puzzle": "Puzzle",
     "pin": "Pin on image",
-    "slide": "Slide"
+    "slide": "Slide",
+    "do": "Do task"
   },
   "quizzSaved": "Quizz saved successfully",
   "quizzUpdated": "Quizz updated successfully",

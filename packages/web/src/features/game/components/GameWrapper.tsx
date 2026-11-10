@@ -33,6 +33,7 @@ type Props = PropsWithChildren & {
   onNext?: () => void
   onBack?: () => void
   manager?: boolean
+  nextOverride?: string | null
 }
 
 const GameWrapper = ({
@@ -41,6 +42,7 @@ const GameWrapper = ({
   onNext,
   onBack,
   manager,
+  nextOverride,
 }: Props) => {
   const { isConnected } = useSocket()
   const { player, gameMode } = usePlayerStore()
@@ -55,7 +57,13 @@ const GameWrapper = ({
     seconds: number
     total: number
   } | null>(null)
-  const next = statusName ? MANAGER_SKIP_BTN[statusName] : null
+  const next = (() => {
+    if (nextOverride !== undefined) {
+      return nextOverride
+    }
+
+    return statusName ? MANAGER_SKIP_BTN[statusName] : null
+  })()
   const isDisabled = skippedStatus !== null && skippedStatus === status
 
   const publicUrl = getPublicUrl()

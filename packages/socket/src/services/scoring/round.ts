@@ -1,4 +1,5 @@
 import type { Answer, Player, Question } from "@razzia/common/types/game"
+import { QUESTION_TYPES } from "@razzia/common/constants"
 import { QUESTION_SCORING } from "@razzia/socket/services/scoring"
 
 export type ScoredPlayer = Player & {
@@ -36,8 +37,10 @@ export const scoreQuestion = (
     })()
 
     const points = (playerAnswer?.points ?? 0) * scoreMultiplier
-    const isCorrect = scoreMultiplier > 0
-    const penalty = !isCorrect && playerAnswer ? (question.penalty ?? 0) : 0
+    const isDo = question.type === QUESTION_TYPES.DO
+    const isCorrect = isDo ? points > 0 : scoreMultiplier > 0
+    const penalty =
+      !isDo && !isCorrect && playerAnswer ? (question.penalty ?? 0) : 0
 
     player.points = Math.max(0, player.points + points - penalty)
     player.streak = isCorrect ? player.streak + 1 : 0
@@ -45,7 +48,7 @@ export const scoreQuestion = (
     return {
       ...player,
       lastCorrect: isCorrect,
-      lastPoints: isCorrect ? points : -penalty,
+      lastPoints: isDo || isCorrect ? points : -penalty,
     }
   })
 

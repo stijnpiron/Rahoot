@@ -9,6 +9,7 @@ import {
 import { isPinOptions } from "@razzia/common/questions/options"
 import { QUESTION_REFINEMENTS } from "@razzia/common/validators/questions"
 import { multiOptionsValidator } from "@razzia/common/validators/questions/choice"
+import { doOptionsValidator } from "@razzia/common/validators/questions/do"
 import { estimationOptionsValidator } from "@razzia/common/validators/questions/estimation"
 import { pinOptionsValidator } from "@razzia/common/validators/questions/pin"
 import { z } from "zod"
@@ -38,6 +39,7 @@ const questionSchema = z.object({
   title: z.string().optional(),
   category: z.string().optional(),
   note: z.string().optional(),
+  instruction: z.string().optional(),
   media: questionMediaValidator.optional(),
   answers: z.array(z.string().min(1, "errors:quizz.answerEmpty")),
   solutions: z.array(z.number()).optional(),
@@ -46,6 +48,7 @@ const questionSchema = z.object({
     .int()
     .min(3, "errors:quizz.cooldownTooShort")
     .max(15, "errors:quizz.cooldownTooLong"),
+  manualProceed: z.boolean().optional(),
   time: z.number().int().min(-1),
   maxPoints: z
     .number()
@@ -59,6 +62,7 @@ const questionSchema = z.object({
       multiOptionsValidator,
       estimationOptionsValidator,
       pinOptionsValidator,
+      doOptionsValidator,
     ])
     .optional(),
 })
@@ -85,6 +89,8 @@ export const quizzValidator = z
   .object({
     gameMode: z.enum(QUIZZ_MODES),
     subject: z.string().min(1, "errors:quizz.subjectEmpty"),
+    media: questionMediaValidator.optional(),
+    language: z.string().optional(),
     questions: z.array(questionValidator).min(1, "errors:quizz.noQuestions"),
   })
   .superRefine((quizz, ctx) => {
@@ -117,7 +123,8 @@ export const quizzValidator = z
 
       if (
         question.type === QUESTION_TYPES.PUZZLE ||
-        question.type === QUESTION_TYPES.PIN
+        question.type === QUESTION_TYPES.PIN ||
+        question.type === QUESTION_TYPES.DO
       ) {
         if (
           question.type === QUESTION_TYPES.PIN &&
@@ -200,7 +207,8 @@ export const normalizeLegacyQuizz = (data: unknown): unknown => {
             : [question.solutions],
         ...(isRecord(question.options) &&
         question.type !== QUESTION_TYPES.ESTIMATION &&
-        question.type !== QUESTION_TYPES.PIN
+        question.type !== QUESTION_TYPES.PIN &&
+        question.type !== QUESTION_TYPES.DO
           ? {
               options: {
                 scoringMode: SCORING_MODES.BALANCED,

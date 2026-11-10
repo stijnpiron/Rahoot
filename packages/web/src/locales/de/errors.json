@@ -24,7 +24,8 @@
     "managerDisconnected": "Manager getrennt",
     "noPlayersConnected": "Keine Spieler verbunden",
     "notFound": "Spiel nicht gefunden",
-    "playerAlreadyConnected": "Spieler bereits verbunden"
+    "playerAlreadyConnected": "Spieler bereits verbunden",
+    "invalidStartScreenTime": "Zeit muss zwischen 1 und 60 Sekunden liegen"
   },
   "invalidRequest": "Ungültige Anfrage",
   "manager": {
@@ -71,7 +72,9 @@
     "pinAreaRequired": "Zeichne den richtigen Bereich auf das Bild",
     "cooldownRequired": "Anzeigezeit der Frage ist erforderlich",
     "timeRequired": "Antwortzeit ist erforderlich",
-    "answersRequired": "Eine Frage muss mindestens 2 Antworten haben"
+    "answersRequired": "Eine Frage muss mindestens 2 Antworten haben",
+    "doInvalidOptions": "Ungültige Optionen für die Aufgabe",
+    "doAnswersUnsupported": "Aufgabenfragen haben keine Antworten"
   },
   "result": {
     "notFound": "Ergebnis nicht gefunden"

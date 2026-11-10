@@ -1,0 +1,16 @@
+{
+  "id": "e2e-do",
+  "gameMode": "quiz",
+  "subject": "E2E Do",
+  "questions": [
+    {
+      "type": "do",
+      "question": "Stack the cups!",
+      "instruction": "Fastest tower wins",
+      "answers": [],
+      "cooldown": 3,
+      "time": 30,
+      "maxPoints": 1000
+    }
+  ]
+}

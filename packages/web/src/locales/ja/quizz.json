@@ -68,7 +68,22 @@
         "moveHint": "手のツールでエリアをドラッグして移動します。",
         "mediaHint": "先に画像を追加してから、正しいエリアを描いてください。",
         "move": "エリアを移動"
-      }
+      },
+      "instruction": "タスクの指示",
+      "instructionPlaceholder": "例：コップをできるだけ早く積む",
+      "instructionHint": "プレイヤーがタスクを行っている間に表示されます",
+      "doFlow": "進行",
+      "doFlowTimer": "タイマー",
+      "doFlowOpen": "オープン（タイマーなし）",
+      "doFlowHint": "カウントダウンは目安です。順位を送信するまで質問は開いたままです。",
+      "timerExpiry": "タイマーがゼロのとき",
+      "timerExpiryStop": "0:00で停止",
+      "timerExpiryElapsed": "数え続ける",
+      "timerExpiryHint": "ゼロに達した後にカウントダウンに表示される内容",
+      "doneButton": "「完了」ボタン",
+      "doneButtonHint": "プレイヤーは完了したら「完了」をタップします。未完了のプレイヤーは順位の下に表示されます。",
+      "manualProceed": "手動で進む",
+      "manualProceedHint": "待たずにマネージャーがクリックして回答を表示します"
     },
     "deleteQuestion": "この質問を削除",
     "deleteQuestionConfirm": "この質問を削除してもよろしいですか？",
@@ -89,7 +104,10 @@
       "reorder": "タイルを並べ替える"
     },
     "disableQuestion": "問題を無効にする",
-    "enableQuestion": "問題を有効にする"
+    "enableQuestion": "問題を有効にする",
+    "do": {
+      "noAnswers": "タスク質問には回答がありません"
+    }
   },
   "questionHasErrors": "この質問にはエラーがあります",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "正誤問題",
     "puzzle": "パズル",
     "pin": "画像にピン留め",
-    "slide": "スライド"
+    "slide": "スライド",
+    "do": "タスク"
   },
   "quizzSaved": "クイズを保存しました",
   "quizzUpdated": "クイズを更新しました",

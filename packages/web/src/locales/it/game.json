@@ -47,7 +47,14 @@
       "label": "Solo risposte",
       "hint": "I giocatori vedono solo i pulsanti di risposta, con un pulsante per rileggere la domanda."
     },
-    "title": "Impostazioni partita"
+    "title": "Impostazioni partita",
+    "startScreen": {
+      "label": "Schermata di avvio",
+      "hint": "Scegli come inizia la partita",
+      "auto": "Countdown automatico",
+      "manual": "Avvio manuale",
+      "time": "Secondi del countdown"
+    }
   },
   "startGame": "Inizia",
   "summary": {
@@ -76,5 +83,13 @@
     "imageAlt": "Segna la risposta sull'immagine",
     "teaser": "Metti un pin sull'immagine",
     "noPins": "Nessun pin"
+  },
+  "do": {
+    "done": "Fatto!",
+    "submit": "Mostra classifica",
+    "notDone": "non fatto",
+    "elapsed": "trascorso",
+    "points": "+{{points}} pt",
+    "teaser": "Completa il compito"
   }
 }

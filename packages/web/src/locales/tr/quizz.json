@@ -68,7 +68,22 @@
         "moveHint": "Alanı yeni bir konuma sürüklemek için el aracını kullanın.",
         "mediaHint": "Önce bir görsel ekleyin, sonra doğru alanı çizin.",
         "move": "Alanı taşı"
-      }
+      },
+      "instruction": "Görev talimatı",
+      "instructionPlaceholder": "örn. Bardakları en hızlı şekilde üst üste koy",
+      "instructionHint": "Oyuncular görevi yaparken gösterilir",
+      "doFlow": "Akış",
+      "doFlowTimer": "Zamanlayıcı",
+      "doFlowOpen": "Açık (zamanlayıcı yok)",
+      "doFlowHint": "Geri sayım yalnızca bilgi amaçlıdır: sıralamayı gönderene kadar soru açık kalır.",
+      "timerExpiry": "Sıfırdaki zamanlayıcı",
+      "timerExpiryStop": "0:00'de dur",
+      "timerExpiryElapsed": "Saymaya devam et",
+      "timerExpiryHint": "Sıfıra ulaştıktan sonra geri sayımın gösterdiği şey",
+      "doneButton": "«Bitti» düğmesi",
+      "doneButtonHint": "Oyuncular bitince «Bitti»ye dokunur; dokunmayanlar sıralamanın sonunda kalır",
+      "manualProceed": "Manuel ilerleme",
+      "manualProceedHint": "Yönetici beklemek yerine cevapları göstermek için tıklar"
     },
     "deleteQuestion": "Soruyu sil",
     "deleteQuestionConfirm": "Bu soruyu silmek istediğinizden emin misiniz?",
@@ -89,7 +104,10 @@
       "reorder": "Kutucuğu yeniden sırala"
     },
     "disableQuestion": "Soruyu devre dışı bırak",
-    "enableQuestion": "Soruyu etkinleştir"
+    "enableQuestion": "Soruyu etkinleştir",
+    "do": {
+      "noAnswers": "Görev sorularının cevabı yoktur"
+    }
   },
   "questionHasErrors": "Bu soruda hatalar var",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "Doğru/Yanlış",
     "puzzle": "Yapboz",
     "pin": "Görselde işaretle",
-    "slide": "Slayt"
+    "slide": "Slayt",
+    "do": "Görev"
   },
   "quizzSaved": "Test başarıyla kaydedildi",
   "quizzUpdated": "Test başarıyla güncellendi",

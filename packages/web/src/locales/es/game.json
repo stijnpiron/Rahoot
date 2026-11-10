@@ -46,7 +46,14 @@
       "label": "Solo respuestas",
       "hint": "Los jugadores solo ven los botones de respuesta, con un botón para volver a leer la pregunta."
     },
-    "title": "Ajustes de la partida"
+    "title": "Ajustes de la partida",
+    "startScreen": {
+      "label": "Pantalla de inicio",
+      "hint": "Elige cómo empieza la partida",
+      "auto": "Cuenta regresiva automática",
+      "manual": "Inicio manual",
+      "time": "Segundos de cuenta regresiva"
+    }
   },
   "startGame": "Iniciar",
   "summary": {
@@ -75,5 +82,13 @@
     "imageAlt": "Marca la respuesta en la imagen",
     "teaser": "Coloca un pin en la imagen",
     "noPins": "Sin pines"
+  },
+  "do": {
+    "done": "¡Listo!",
+    "submit": "Mostrar clasificación",
+    "notDone": "sin terminar",
+    "elapsed": "transcurrido",
+    "points": "+{{points}} pts",
+    "teaser": "Completa la tarea"
   }
 }

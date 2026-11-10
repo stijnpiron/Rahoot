@@ -4,7 +4,7 @@ import {
   QUIZZ_MODES,
   SCORING_MODES,
 } from "@razzia/common/constants"
-import type { Question, Quizz } from "@razzia/common/types/game"
+import type { DoFlow, Question, Quizz } from "@razzia/common/types/game"
 import {
   normalizeLegacyQuizz,
   questionMediaValidator,
@@ -206,6 +206,63 @@ describe("puzzle questions", () => {
     expect(issues(quizz([puzzleQuestion()], QUIZZ_MODES.SURVEY))).toContain(
       "errors:quizz.puzzleSurveyUnsupported",
     )
+  })
+})
+
+describe("do questions", () => {
+  const doQuestion = (overrides: Partial<Question> = {}): Question => ({
+    type: QUESTION_TYPES.DO,
+    question: "Stack the cups!",
+    answers: [],
+    cooldown: 5,
+    time: 60,
+    ...overrides,
+  })
+
+  it("accepts a do question without solutions in quiz mode", () => {
+    expect(issues(quizz([doQuestion()]))).toEqual([])
+  })
+
+  it("accepts a do question in survey mode", () => {
+    expect(issues(quizz([doQuestion()], QUIZZ_MODES.SURVEY))).toEqual([])
+  })
+
+  it("rejects do questions with answers", () => {
+    expect(issues(quizz([doQuestion({ answers: ["A"] })]))).toContain(
+      "errors:quizz.doAnswersUnsupported",
+    )
+  })
+
+  it("rejects do questions with foreign options", () => {
+    expect(
+      issues(
+        quizz([
+          doQuestion({ options: { scoringMode: SCORING_MODES.STRICT } }),
+        ]),
+      ),
+    ).toContain("errors:quizz.doInvalidOptions")
+  })
+
+  it("accepts valid do options", () => {
+    expect(
+      issues(
+        quizz([
+          doQuestion({
+            options: {
+              flow: "open",
+              doneButton: false,
+              timerExpiry: "elapsed",
+            },
+          }),
+        ]),
+      ),
+    ).toEqual([])
+  })
+
+  it("rejects invalid do option values", () => {
+    expect(
+      issues(quizz([doQuestion({ options: { flow: "bogus" as DoFlow } })])),
+    ).not.toEqual([])
   })
 })
 

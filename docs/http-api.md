@@ -105,6 +105,10 @@ Changes the settings of a game you created, before it starts. The body is a **pa
 {
   generatedUsernames?: boolean   // the server names the players instead of letting them type
   answersOnly?: boolean // players only see the answer buttons during SELECT_ANSWER
+  startScreen?: {
+    mode: "auto" | "manual"       // timed splash, or wait for the host to press next
+    time: number                  // seconds the title shows before the countdown, 1-60
+  }
   autoAdvance?: {
     enable: boolean
     responsesDelay: number       // seconds on the answer reveal, 3-600
@@ -119,7 +123,7 @@ Answers `200 { settings }` with the full settings after the change.
 - `409 errors:game.alreadyStarted` — settings are locked once the game is running
 - `400` — validation key, e.g. `errors:game.invalidAutoAdvanceDelay`
 
-The `autoAdvance` object is nested, so sending it replaces all three of its fields at once.
+The `autoAdvance` object is nested, so sending it replaces all three of its fields at once. Same for `startScreen`.
 
 ## Public routes
 

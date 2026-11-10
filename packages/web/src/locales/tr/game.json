@@ -46,7 +46,14 @@
       "label": "Yalnızca cevaplar",
       "hint": "Oyuncular yalnızca cevap butonlarını görür; soruyu tekrar okumak için bir buton bulunur."
     },
-    "title": "Oyun ayarları"
+    "title": "Oyun ayarları",
+    "startScreen": {
+      "label": "Başlangıç ekranı",
+      "hint": "Oyunun nasıl başlayacağını seç",
+      "auto": "Otomatik geri sayım",
+      "manual": "Manuel başlatma",
+      "time": "Geri sayım saniyeleri"
+    }
   },
   "startGame": "Başlat",
   "summary": {
@@ -75,5 +82,13 @@
     "imageAlt": "Cevabı görsel üzerinde işaretle",
     "teaser": "Görsel üzerine bir işaret koyun",
     "noPins": "İşaret yok"
+  },
+  "do": {
+    "done": "Bitti!",
+    "submit": "Sıralamayı göster",
+    "notDone": "bitmedi",
+    "elapsed": "geçen",
+    "points": "+{{points}} p",
+    "teaser": "Görevi tamamla"
   }
 }

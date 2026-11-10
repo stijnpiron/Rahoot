@@ -46,7 +46,14 @@
       "label": "Nur Antworten",
       "hint": "Die Spieler sehen nur die Antwortknöpfe, mit einem Knopf, um die Frage erneut zu lesen."
     },
-    "title": "Spieleinstellungen"
+    "title": "Spieleinstellungen",
+    "startScreen": {
+      "label": "Startbildschirm",
+      "hint": "Wähle, wie das Spiel startet",
+      "auto": "Automatischer Countdown",
+      "manual": "Manueller Start",
+      "time": "Countdown-Sekunden"
+    }
   },
   "startGame": "Starten",
   "summary": {
@@ -75,5 +82,13 @@
     "imageAlt": "Markiere die Antwort auf dem Bild",
     "teaser": "Setze einen Pin auf das Bild",
     "noPins": "Keine Pins"
+  },
+  "do": {
+    "done": "Fertig!",
+    "submit": "Rangliste anzeigen",
+    "notDone": "nicht fertig",
+    "elapsed": "verstrichen",
+    "points": "+{{points}} Pkt",
+    "teaser": "Führe die Aufgabe aus"
   }
 }

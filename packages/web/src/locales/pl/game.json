@@ -46,7 +46,14 @@
       "label": "Tylko odpowiedzi",
       "hint": "Gracze widzą tylko przyciski odpowiedzi oraz przycisk do ponownego przeczytania pytania."
     },
-    "title": "Ustawienia gry"
+    "title": "Ustawienia gry",
+    "startScreen": {
+      "label": "Ekran startowy",
+      "hint": "Wybierz, jak gra się zaczyna",
+      "auto": "Automatyczne odliczanie",
+      "manual": "Ręczny start",
+      "time": "Sekundy odliczania"
+    }
   },
   "startGame": "Start",
   "summary": {
@@ -75,5 +82,13 @@
     "imageAlt": "Oznacz odpowiedź na obrazie",
     "teaser": "Przypnij pinezkę na obrazie",
     "noPins": "Brak pinezek"
+  },
+  "do": {
+    "done": "Gotowe!",
+    "submit": "Pokaż ranking",
+    "notDone": "niegotowy",
+    "elapsed": "upłynęło",
+    "points": "+{{points}} pkt",
+    "teaser": "Wykonaj zadanie"
   }
 }

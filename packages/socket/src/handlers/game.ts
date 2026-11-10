@@ -121,6 +121,18 @@ export const gameSocketHandlers = ({ io, socket }: SocketContext) => {
     ),
   )
 
+  socket.on(EVENTS.PLAYER.DONE, ({ gameId }) =>
+    withPlayerGame(gameId, socket, (game) =>
+      game.selectAnswer(socket, []),
+    ),
+  )
+
+  socket.on(EVENTS.MANAGER.SUBMIT_DO_ORDER, ({ gameId, data }) =>
+    withManagerGame(gameId, socket, (game) =>
+      game.submitDoOrder(data.order),
+    ),
+  )
+
   socket.on(EVENTS.MANAGER.ADVANCE, ({ gameId }) =>
     withManagerGame(gameId, socket, (game) => game.advance()),
   )

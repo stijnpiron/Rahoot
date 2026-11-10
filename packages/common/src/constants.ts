@@ -19,6 +19,7 @@ export const EVENTS = {
     RECONNECT: "player:reconnect",
     LEAVE: "player:leave",
     SELECTED_ANSWER: "player:selectedAnswer",
+    DONE: "player:done",
   },
   MANAGER: {
     SUCCESS_RECONNECT: "manager:successReconnect",
@@ -32,6 +33,7 @@ export const EVENTS = {
     KICK_PLAYER: "manager:kickPlayer",
     START_GAME: "manager:startGame",
     ADVANCE: "manager:advance",
+    SUBMIT_DO_ORDER: "manager:submitDoOrder",
     AUTO_ADVANCE: "manager:autoAdvance",
     SET_LOCK: "manager:setLock",
     LOCK_UPDATED: "manager:lockUpdated",
@@ -47,9 +49,20 @@ export const NO_TIME_LIMIT = -1
 
 export const AUTO_ADVANCE_DELAY = { MIN: 3, MAX: 600 } as const
 
+export const START_SCREEN_MODES = {
+  AUTO: "auto",
+  MANUAL: "manual",
+} as const
+
+export const START_SCREEN_TIME = { MIN: 1, MAX: 60 } as const
+
 export const createDefaultGameSettings = (): GameSettings => ({
   generatedUsernames: false,
   answersOnly: false,
+  startScreen: {
+    mode: START_SCREEN_MODES.AUTO,
+    time: 3,
+  },
   autoAdvance: {
     enable: false,
     responsesDelay: 10,
@@ -80,6 +93,17 @@ export const QUESTION_TYPES = {
   PUZZLE: "puzzle",
   PIN: "pin",
   SLIDE: "slide",
+  DO: "do",
+} as const
+
+export const DO_FLOWS = {
+  TIMER: "timer",
+  OPEN: "open",
+} as const
+
+export const DO_TIMER_EXPIRIES = {
+  STOP: "stop",
+  ELAPSED: "elapsed",
 } as const
 
 export const ESTIMATION_INPUT_MODES = {

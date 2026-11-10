@@ -1,4 +1,4 @@
-import { EVENTS } from "@razzia/common/constants"
+import { EVENTS, START_SCREEN_MODES } from "@razzia/common/constants"
 import { STATUS } from "@razzia/common/types/game/status"
 import GameWrapper from "@razzia/web/features/game/components/GameWrapper"
 import {
@@ -15,7 +15,7 @@ import {
   isKeyOf,
 } from "@razzia/web/features/game/utils/constants"
 import { createFileRoute, useNavigate, useParams } from "@tanstack/react-router"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
 
@@ -23,9 +23,11 @@ const ManagerGamePage = () => {
   const navigate = useNavigate()
   const { gameId: gameIdParam } = useParams({ from: "/party/manager/$gameId" })
   const { socket, isConnected } = useSocket()
-  const { gameId, status, updateManager, resetManager } = useManagerStore()
+  const { gameId, status, settings, updateManager, resetManager } =
+    useManagerStore()
   const { setQuestionStates } = useQuestionStore()
   const { t } = useTranslation()
+  const [startCountdown, setStartCountdown] = useState(false)
 
   useSocketConnection()
 
@@ -33,6 +35,14 @@ const ManagerGamePage = () => {
     if (name in GAME_STATE_COMPONENTS_MANAGER) {
       updateManager({ status: createStatus(name, data) })
     }
+
+    if (name === STATUS.SHOW_START) {
+      setStartCountdown(false)
+    }
+  })
+
+  useEvent(EVENTS.GAME.START_COOLDOWN, () => {
+    setStartCountdown(true)
   })
 
   useEffect(() => {
@@ -122,6 +132,14 @@ const ManagerGamePage = () => {
       onNext={handleSkip}
       onBack={status.name === STATUS.SHOW_ROOM ? handleBack : undefined}
       manager
+      nextOverride={
+        (status.name === STATUS.SHOW_QUESTION && status.data.manualProceed) ||
+        (status.name === STATUS.SHOW_START &&
+          !startCountdown &&
+          settings?.startScreen.mode === START_SCREEN_MODES.MANUAL)
+          ? "common:next"
+          : undefined
+      }
     >
       {CurrentComponent && <CurrentComponent data={status.data as never} />}
     </GameWrapper>

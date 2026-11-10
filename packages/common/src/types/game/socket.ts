@@ -46,6 +46,7 @@ export interface ServerToClientEvents {
     gameId: string
     username: string
     gameMode: QuizzMode
+    language?: string
   }) => void
   [EVENTS.GAME.TOTAL_PLAYERS]: (_count: number) => void
   [EVENTS.GAME.ERROR_MESSAGE]: (_message: string) => void
@@ -62,6 +63,7 @@ export interface ServerToClientEvents {
   [EVENTS.PLAYER.SUCCESS_RECONNECT]: (_data: {
     gameId: string
     gameMode: QuizzMode
+    language?: string
     status: { name: Status; data: StatusDataMap[Status] }
     player: { username: string; points: number }
     currentQuestion: GameUpdateQuestion | null

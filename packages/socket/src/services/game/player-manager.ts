@@ -8,6 +8,7 @@ export interface PlayerManagerOptions {
   io: Server
   gameId: string
   gameMode: QuizzMode
+  language?: string
   getManagerId: () => string
   isStarted: () => boolean
 }
@@ -16,6 +17,7 @@ export class PlayerManager {
   private readonly io: Server
   private readonly gameId: string
   private readonly gameMode: QuizzMode
+  private readonly language?: string
   private readonly getManagerId: () => string
   private readonly isStarted: () => boolean
   private players: Player[] = []
@@ -24,12 +26,14 @@ export class PlayerManager {
     io,
     gameId,
     gameMode,
+    language,
     getManagerId,
     isStarted,
   }: PlayerManagerOptions) {
     this.io = io
     this.gameId = gameId
     this.gameMode = gameMode
+    this.language = language
     this.getManagerId = getManagerId
     this.isStarted = isStarted
   }
@@ -65,6 +69,7 @@ export class PlayerManager {
       gameId: this.gameId,
       username,
       gameMode: this.gameMode,
+      language: this.language,
     })
 
     return null

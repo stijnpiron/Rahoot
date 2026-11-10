@@ -24,7 +24,8 @@
     "managerDisconnected": "Quản trị viên đã ngắt kết nối",
     "noPlayersConnected": "Không có người chơi nào kết nối",
     "notFound": "Không tìm thấy trò chơi",
-    "playerAlreadyConnected": "Người chơi đã kết nối"
+    "playerAlreadyConnected": "Người chơi đã kết nối",
+    "invalidStartScreenTime": "Thời gian phải từ 1 đến 60 giây"
   },
   "invalidRequest": "Yêu cầu không hợp lệ",
   "manager": {
@@ -71,7 +72,9 @@
     "pinAreaRequired": "Vẽ vùng đúng trên ảnh",
     "cooldownRequired": "Thời gian hiển thị câu hỏi là bắt buộc",
     "timeRequired": "Thời gian trả lời là bắt buộc",
-    "answersRequired": "Câu hỏi phải có ít nhất 2 đáp án"
+    "answersRequired": "Câu hỏi phải có ít nhất 2 đáp án",
+    "doInvalidOptions": "Tùy chọn nhiệm vụ không hợp lệ",
+    "doAnswersUnsupported": "Câu hỏi nhiệm vụ không có đáp án"
   },
   "result": {
     "notFound": "Không tìm thấy kết quả"

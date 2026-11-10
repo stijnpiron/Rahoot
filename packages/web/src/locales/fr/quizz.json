@@ -68,7 +68,22 @@
         "moveHint": "Utilisez l'outil main pour faire glisser la zone vers une nouvelle position.",
         "mediaHint": "Ajoutez d'abord une image, puis dessinez la bonne zone.",
         "move": "Déplacer la zone"
-      }
+      },
+      "instruction": "Consigne de la tâche",
+      "instructionPlaceholder": "p. ex. Empilez les gobelets le plus vite possible",
+      "instructionHint": "Affiché aux joueurs pendant qu’ils effectuent la tâche",
+      "doFlow": "Déroulement",
+      "doFlowTimer": "Minuteur",
+      "doFlowOpen": "Ouvert (sans minuteur)",
+      "doFlowHint": "Le compte à rebours n’est qu’indicatif : la question reste ouverte jusqu’à ce que vous validiez le classement.",
+      "timerExpiry": "Minuteur à zéro",
+      "timerExpiryStop": "S’arrêter à 0:00",
+      "timerExpiryElapsed": "Continuer de compter",
+      "timerExpiryHint": "Ce que montre le compte à rebours après zéro",
+      "doneButton": "Bouton « Terminé »",
+      "doneButtonHint": "Les joueurs appuient sur « Terminé » quand ils ont fini ; les autres restent en bas du classement",
+      "manualProceed": "Passage manuel",
+      "manualProceedHint": "Le manager clique pour afficher les réponses au lieu d'attendre"
     },
     "deleteQuestion": "Supprimer la question",
     "deleteQuestionConfirm": "Êtes-vous sûr de vouloir supprimer cette question ?",
@@ -89,7 +104,10 @@
       "reorder": "Réorganiser la tuile"
     },
     "disableQuestion": "Désactiver la question",
-    "enableQuestion": "Activer la question"
+    "enableQuestion": "Activer la question",
+    "do": {
+      "noAnswers": "Les questions de tâche n’ont pas de réponses"
+    }
   },
   "questionHasErrors": "Cette question contient des erreurs",
   "questionType": {
@@ -99,7 +117,8 @@
     "trueFalse": "Vrai/Faux",
     "puzzle": "Puzzle",
     "pin": "Épingle sur image",
-    "slide": "Diapositive"
+    "slide": "Diapositive",
+    "do": "Tâche"
   },
   "quizzSaved": "Quizz enregistré avec succès",
   "quizzUpdated": "Quizz mis à jour avec succès",

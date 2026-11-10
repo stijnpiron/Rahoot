@@ -9,6 +9,9 @@ export interface AnswerComponentProps {
   answers: string[]
   options?: QuestionOptions
   puzzleOrder?: number[]
+  instruction?: string
+  time?: number
+  doParticipants?: Array<{ playerId: string; username: string }>
   media?: QuestionMedia
   onSubmit: (_answerKeys: number[]) => void
   onSubmitPin?: (_pin: PinPoint) => void

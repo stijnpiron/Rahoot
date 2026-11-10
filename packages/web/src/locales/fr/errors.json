@@ -24,7 +24,8 @@
     "managerDisconnected": "Le manager s'est déconnecté",
     "noPlayersConnected": "Aucun joueur connecté",
     "notFound": "Partie introuvable",
-    "playerAlreadyConnected": "Ce joueur est déjà connecté"
+    "playerAlreadyConnected": "Ce joueur est déjà connecté",
+    "invalidStartScreenTime": "La durée doit être entre 1 et 60 secondes"
   },
   "invalidRequest": "Requête invalide",
   "manager": {
@@ -71,7 +72,9 @@
     "pinAreaRequired": "Dessinez la bonne zone sur l'image",
     "cooldownRequired": "Le temps d'affichage de la question est requis",
     "timeRequired": "Le temps de réponse est requis",
-    "answersRequired": "Une question doit avoir au moins 2 réponses"
+    "answersRequired": "Une question doit avoir au moins 2 réponses",
+    "doInvalidOptions": "Options de tâche invalides",
+    "doAnswersUnsupported": "Les questions de tâche n’ont pas de réponses"
   },
   "result": {
     "notFound": "Résultat introuvable"

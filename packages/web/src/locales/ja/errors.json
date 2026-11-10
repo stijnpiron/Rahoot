@@ -24,7 +24,8 @@
     "managerDisconnected": "管理者が切断されました",
     "noPlayersConnected": "接続中のプレイヤーがいません",
     "notFound": "ゲームが見つかりません",
-    "playerAlreadyConnected": "プレイヤーはすでに接続されています"
+    "playerAlreadyConnected": "プレイヤーはすでに接続されています",
+    "invalidStartScreenTime": "時間は1〜60秒の間で指定してください"
   },
   "invalidRequest": "リクエストが無効です",
   "manager": {
@@ -71,7 +72,9 @@
     "pinAreaRequired": "画像に正しいエリアを描いてください",
     "cooldownRequired": "問題の表示時間は必須です",
     "timeRequired": "回答時間は必須です",
-    "answersRequired": "質問には2つ以上の回答が必要です"
+    "answersRequired": "質問には2つ以上の回答が必要です",
+    "doInvalidOptions": "タスク質問のオプションが無効です",
+    "doAnswersUnsupported": "タスク質問には回答がありません"
   },
   "result": {
     "notFound": "結果が見つかりません"

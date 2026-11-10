@@ -156,6 +156,35 @@ A `"pin"` question shows an image and players drop a single pin on it. One autho
 - `solutions`: Not used, do not set it
 - Survey mode: allowed with no area, e.g. a "where are you from?" poll; the reveal shows all named pins
 
+## Do questions
+
+A `"do"` question sends players off to do a real task. Players don't answer anything: they tap a **Done** button (unless disabled) when they finish, and the manager drags the participants into a final ranking. Points come from that ranking.
+
+```json
+{
+  "type": "do",
+  "question": "Stack the cups!",
+  "instruction": "Fastest tower wins",
+  "answers": [],
+  "cooldown": 5,
+  "time": 60,
+  "maxPoints": 1000,
+  "options": {
+    "flow": "timer",
+    "doneButton": true,
+    "timerExpiry": "stop"
+  }
+}
+```
+
+- `answers`: Always an empty array; `solutions` is not used
+- `instruction`: Optional task text shown to players below the question
+- `options.flow`: `"timer"` (a countdown is shown) or `"open"` (no countdown; the question runs until the manager submits)
+- `options.doneButton`: `true` (default) shows players a one-way **Done** button. With `false`, players only see the task and the manager ranks everyone from the start
+- `options.timerExpiry`: Only for `flow: "timer"` — `"stop"` (default) freezes the countdown at 0:00, `"elapsed"` keeps counting up. The timer is a hint only in both cases: the question stays open until the manager submits the ranking
+- Scoring: rank 1 earns `maxPoints`, the last ranked player earns 0, points fall linearly in between. `penalty` is ignored. Players are ranked by their Done taps first (in tap order); everyone else sits at the bottom in join order until the manager drags them
+- Survey mode: allowed — the reveal shows the ranking, without points
+
 ## Slides
 
 A `"slide"` is an informational item shown between questions, e.g. to introduce a new round. It is not scored and does not appear in results; players see it full screen and the manager continues to the next question or slide. Slides count toward the question counter shown in the HUD.

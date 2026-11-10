@@ -4,6 +4,7 @@ import {
   QUESTION_TYPES,
   QUIZZ_MODES,
   SCORING_MODES,
+  START_SCREEN_MODES,
 } from "@razzia/common/constants"
 import type { Question, Quizz } from "@razzia/common/types/game"
 import { STATUS } from "@razzia/common/types/game/status"
@@ -16,6 +17,7 @@ import Game from "@razzia/socket/services/game"
 import { createFakeIo } from "@razzia/socket/test/fake-io"
 import {
   createEstimationQuestion,
+  createDoQuestion,
   createQuestion,
   createQuizz,
 } from "@razzia/socket/test/fixtures"
@@ -127,6 +129,29 @@ describe("joining a game", () => {
 })
 
 describe("quiz flow", () => {
+  it("waits for the manager on a manual start screen", async () => {
+    const question = createQuestion()
+    const { game, manager, status, reachAnswers } = setup(
+      createQuizz([question]),
+    )
+
+    game.updateSettings({
+      startScreen: { mode: START_SCREEN_MODES.MANUAL, time: 3 },
+    })
+
+    void game.start(manager)
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status(game.gameId)?.name).toBe(STATUS.SHOW_START)
+
+    await vi.advanceTimersByTimeAsync(60_000)
+
+    expect(status(game.gameId)?.name).toBe(STATUS.SHOW_START)
+
+    game.advance()
+    await reachAnswers(question)
+  })
+
   it("refuses to start without players", async () => {
     const { game, manager, lastEvent } = setup(
       createQuizz([createQuestion()]),
@@ -451,6 +476,65 @@ describe("game result", () => {
       { playerName: "Bob", answerIds: [0, 1], correct: true, points: 1000 },
       { playerName: "Carol", answerIds: null, correct: false, points: 0 },
     ])
+  })
+})
+
+describe("do questions", () => {
+  it("scores players linearly by the manager's ranking", async () => {
+    const { game, sockets, status, start } = setup(
+      createQuizz([createDoQuestion()]),
+    )
+    const [alice, bob] = sockets
+
+    await start()
+    game.selectAnswer(alice, [])
+    expect(status(MANAGER)?.name).toBe(STATUS.DO_DONE)
+    expect(status(MANAGER)?.data).toMatchObject({
+      done: [{ playerId: "alice", username: "Alice" }],
+    })
+
+    game.selectAnswer(alice, [])
+    game.submitDoOrder(["bob", "alice"])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status("bob")?.data).toMatchObject({ points: 1000 })
+    expect(status("alice")?.data).toMatchObject({ points: 0 })
+    expect(status(MANAGER)?.name).toBe(STATUS.SHOW_RESPONSES)
+    expect(status(MANAGER)?.data).toMatchObject({
+      doRanking: [
+        { playerId: "bob", username: "Bob", points: 1000 },
+        { playerId: "alice", username: "Alice", points: 0 },
+      ],
+    })
+  })
+
+  it("keeps the question open after the timer runs out", async () => {
+    const { game, sockets, status, start } = setup(
+      createQuizz([createDoQuestion()]),
+    )
+    const [alice, bob] = sockets
+
+    await start()
+    await vi.advanceTimersByTimeAsync(120_000)
+
+    expect(status(game.gameId)?.name).toBe(STATUS.SELECT_ANSWER)
+
+    game.selectAnswer(alice, [])
+    game.selectAnswer(bob, [])
+    game.submitDoOrder(["alice", "bob"])
+    await vi.advanceTimersByTimeAsync(TICK_MS)
+
+    expect(status("alice")?.data).toMatchObject({ points: 1000 })
+    expect(status("bob")?.data).toMatchObject({ points: 0 })
+  })
+
+  it("ignores submissions outside the answer phase", async () => {
+    const { game, status, start } = setup(createQuizz([createDoQuestion()]))
+
+    await start()
+    game.submitDoOrder([])
+
+    expect(status(game.gameId)?.name).toBe(STATUS.SELECT_ANSWER)
   })
 })
 

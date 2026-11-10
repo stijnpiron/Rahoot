@@ -143,6 +143,22 @@ emit player:selectedAnswer { gameId, data: { answerKeys: number[] } }
 
 This is the one event a 4-button ESP32 buzzer needs to send: map each physical button to an answer index and emit this event on press, once, while in `SELECT_ANSWER`.
 
+## Do questions
+
+For a `"do"` question there is nothing to answer. While `SELECT_ANSWER` is showing, players may tap done once:
+
+```
+emit player:selectedAnswer { gameId, data: { answerKeys: [] } }
+```
+
+An empty `answerKeys` array marks the player as done (a dedicated `player:done { gameId }` event does the same). The server replies with `WAIT`, and the manager receives a `DO_DONE` status carrying the ordered done list:
+
+```
+on game:status { name: "DO_DONE", data: { done: [{ playerId, username }] } }
+```
+
+The question does not close when `time` runs out — the countdown is a hint only. It closes when the manager submits the final ranking with `manager:submitDoOrder { gameId, data: { order: string[] } }`, where `order` lists player IDs from first to last place. The reveal (`SHOW_RESPONSES`) then carries `doRanking: [{ playerId, username, points }]`. Rank 1 earns `maxPoints`, points fall linearly to 0 for the last ranked player, and `penalty` is ignored.
+
 ## Reconnecting
 
 If the socket disconnects (`disconnect` event fires implicitly, no action needed client-side) and reconnects, refresh the token (`POST /api/auth/session` with the stored one — the `clientId` is preserved), reconnect with it, and call:

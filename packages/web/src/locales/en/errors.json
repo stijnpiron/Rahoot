@@ -17,6 +17,7 @@
     "alreadyStarted": "Game already started",
     "expired": "Game expired",
     "invalidAutoAdvanceDelay": "Delay must be between 3 and 600 seconds",
+    "invalidStartScreenTime": "Time must be between 1 and 60 seconds",
     "kickedByManager": "You have been kicked by the manager",
     "locked": "Game locked",
     "managerAlreadyConnected": "Manager already connected",
@@ -71,7 +72,9 @@
     "pinAreaRequired": "Draw the correct area on the image",
     "cooldownRequired": "Question display time is required",
     "timeRequired": "Answer time is required",
-    "answersRequired": "A question must have at least 2 answers"
+    "answersRequired": "A question must have at least 2 answers",
+    "doInvalidOptions": "Invalid do-question options",
+    "doAnswersUnsupported": "Do-questions have no answers"
   },
   "result": {
     "notFound": "Result not found"

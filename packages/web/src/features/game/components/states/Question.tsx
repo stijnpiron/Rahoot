@@ -8,7 +8,9 @@ interface Props {
   data: CommonStatusDataMap["SHOW_QUESTION"]
 }
 
-const Question = ({ data: { question, media, cooldown } }: Props) => {
+const Question = ({
+  data: { question, media, cooldown, instruction, manualProceed },
+}: Props) => {
   const [sfxShow] = useSound(SFX.SHOW_SOUND, { volume: 0.5 })
 
   useEffect(() => {
@@ -22,6 +24,12 @@ const Question = ({ data: { question, media, cooldown } }: Props) => {
           {question}
         </h2>
 
+        {instruction && (
+          <p className="text-center text-lg font-semibold text-white/90">
+            {instruction}
+          </p>
+        )}
+
         {media?.type === MEDIA_TYPES.IMAGE && (
           <img
             alt={question}
@@ -30,10 +38,12 @@ const Question = ({ data: { question, media, cooldown } }: Props) => {
           />
         )}
       </div>
-      <div
-        className="bg-primary mb-20 h-4 self-start justify-self-end rounded-full"
-        style={{ animation: `progressBar ${cooldown}s linear forwards` }}
-      ></div>
+      {!manualProceed && (
+        <div
+          className="bg-primary mb-20 h-4 self-start justify-self-end rounded-full"
+          style={{ animation: `progressBar ${cooldown}s linear forwards` }}
+        ></div>
+      )}
     </section>
   )
 }

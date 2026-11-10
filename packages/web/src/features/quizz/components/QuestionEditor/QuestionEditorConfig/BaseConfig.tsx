@@ -1,6 +1,7 @@
 import {
   MAX_POINTS,
   NO_TIME_LIMIT,
+  QUESTION_TYPES,
   QUIZZ_MODES,
 } from "@razzia/common/constants"
 import { isMultiOptions } from "@razzia/common/questions/options"
@@ -18,11 +19,15 @@ import ConfigField from "@razzia/web/features/quizz/components/QuestionEditor/Qu
 import ConfigNumberInput from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/ConfigNumberInput"
 import ConfigSection from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorConfig/ConfigSection"
 import { useQuizzEditor } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
+import clsx from "clsx"
 import { ArrowBigDownDash, Clock, ListChecks, Star, Timer } from "lucide-react"
+import { useState } from "react"
 import { useTranslation } from "react-i18next"
 
 const DEFAULT_TIME = 20
 const DEFAULT_PENALTY = 100
+
+const SECONDS_PER_MINUTE = 60
 
 const BaseConfig = () => {
   const { currentQuestion, currentIndex, gameMode, updateQuestion } =
@@ -30,6 +35,10 @@ const BaseConfig = () => {
   const { t } = useTranslation()
   const isTimeLimitEnabled = currentQuestion.time !== NO_TIME_LIMIT
   const isPenaltyEnabled = (currentQuestion.penalty ?? 0) > 0
+  const isDo = currentQuestion.type === QUESTION_TYPES.DO
+  const isManualProceed = currentQuestion.manualProceed === true
+  const [timeUnit, setTimeUnit] = useState<"sec" | "min">("sec")
+  const timeFactor = timeUnit === "min" ? SECONDS_PER_MINUTE : 1
   const { scoringModes } = QUESTION_REGISTRY[currentQuestion.type]
   const { options } = currentQuestion
   const scoringMode = isMultiOptions(options) ? options.scoringMode : undefined
@@ -42,6 +51,10 @@ const BaseConfig = () => {
     updateQuestion(currentIndex, {
       time: checked ? DEFAULT_TIME : NO_TIME_LIMIT,
     })
+  }
+
+  const handleToggleManualProceed = (checked: boolean) => {
+    updateQuestion(currentIndex, { manualProceed: checked ? true : undefined })
   }
 
   const handleTogglePenalty = (checked: boolean) => {
@@ -76,31 +89,33 @@ const BaseConfig = () => {
             </ConfigField.Description>
           </ConfigField>
 
-          <ConfigField>
-            <ConfigField.Label
-              icon={<ArrowBigDownDash className="size-4" />}
-              label={t("quizz:question.config.penalty")}
-              unit={isPenaltyEnabled ? "pts" : undefined}
-              action={
-                <Switch
-                  aria-label={t("quizz:question.config.penalty")}
-                  checked={isPenaltyEnabled}
-                  onCheckedChange={handleTogglePenalty}
-                />
-              }
-            />
-            {isPenaltyEnabled && (
-              <ConfigNumberInput
-                name="penalty"
+          {!isDo && (
+            <ConfigField>
+              <ConfigField.Label
+                icon={<ArrowBigDownDash className="size-4" />}
                 label={t("quizz:question.config.penalty")}
-                fallback={DEFAULT_PENALTY}
-                min={1}
+                unit={isPenaltyEnabled ? "pts" : undefined}
+                action={
+                  <Switch
+                    aria-label={t("quizz:question.config.penalty")}
+                    checked={isPenaltyEnabled}
+                    onCheckedChange={handleTogglePenalty}
+                  />
+                }
               />
-            )}
-            <ConfigField.Description>
-              {t("quizz:question.config.penaltyHint")}
-            </ConfigField.Description>
-          </ConfigField>
+              {isPenaltyEnabled && (
+                <ConfigNumberInput
+                  name="penalty"
+                  label={t("quizz:question.config.penalty")}
+                  fallback={DEFAULT_PENALTY}
+                  min={1}
+                />
+              )}
+              <ConfigField.Description>
+                {t("quizz:question.config.penaltyHint")}
+              </ConfigField.Description>
+            </ConfigField>
+          )}
 
           {scoringModes && scoringMode && (
             <ConfigField>
@@ -138,24 +153,35 @@ const BaseConfig = () => {
           <ConfigField.Label
             icon={<Clock className="size-4" />}
             label={t("quizz:question.config.questionDisplay")}
-            unit="sec"
-          />
-          <ConfigNumberInput
-            name="cooldown"
-            label={t("quizz:question.config.questionDisplay")}
-            min={3}
-            max={15}
+            unit={isManualProceed ? undefined : "sec"}
+            action={
+              <Switch
+                aria-label={t("quizz:question.config.manualProceed")}
+                checked={isManualProceed}
+                onCheckedChange={handleToggleManualProceed}
+              />
+            }
           />
           <ConfigField.Description>
-            {t("quizz:question.config.questionDisplayHint")}
+            {isManualProceed
+              ? t("quizz:question.config.manualProceedHint")
+              : t("quizz:question.config.questionDisplayHint")}
           </ConfigField.Description>
+          {!isManualProceed && (
+            <ConfigNumberInput
+              name="cooldown"
+              label={t("quizz:question.config.questionDisplay")}
+              min={3}
+              max={15}
+            />
+          )}
         </ConfigField>
 
         <ConfigField>
           <ConfigField.Label
             icon={<Timer className="size-4" />}
             label={t("quizz:question.config.answerTime")}
-            unit={isTimeLimitEnabled ? "sec" : undefined}
+            unit={isTimeLimitEnabled ? timeUnit : undefined}
             action={
               <Switch
                 aria-label={t("quizz:question.config.answerTime")}
@@ -165,11 +191,32 @@ const BaseConfig = () => {
             }
           />
           {isTimeLimitEnabled && (
-            <ConfigNumberInput
-              name="time"
-              label={t("quizz:question.config.answerTime")}
-              min={5}
-            />
+            <div className="flex items-center gap-2">
+              <ConfigNumberInput
+                name="time"
+                label={t("quizz:question.config.answerTime")}
+                min={5}
+                factor={timeFactor}
+              />
+              <div className="flex shrink-0 rounded-lg bg-accent p-0.5">
+                {(["sec", "min"] as const).map((unit) => (
+                  <button
+                    key={unit}
+                    type="button"
+                    onClick={() => setTimeUnit(unit)}
+                    aria-pressed={timeUnit === unit}
+                    className={clsx(
+                      "rounded-md px-2 py-1 text-xs font-semibold transition-colors",
+                      timeUnit === unit
+                        ? "bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    {unit}
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
           <ConfigField.Description>
             {isTimeLimitEnabled

@@ -3,7 +3,16 @@ import type { QuizzValidated } from "@razzia/common/validators/quizz"
 import Button from "@razzia/web/components/Button"
 import FieldError from "@razzia/web/components/forms/FieldError"
 import Input from "@razzia/web/components/Input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@razzia/web/components/Select"
 import ToggleGroup from "@razzia/web/components/ToggleGroup"
+import { LANGUAGES } from "@razzia/web/components/LanguageSwitcher"
+import QuizzMediaPicker from "@razzia/web/features/quizz/components/QuizzMediaPicker"
 import {
   createQuizz,
   quizzKeys,
@@ -93,6 +102,40 @@ const QuizzEditorHeader = () => {
           name="subject"
           render={({ field, fieldState }) => (
             <div className="flex items-center gap-6">
+              <QuizzMediaPicker />
+              <Controller
+                control={control}
+                name="language"
+                render={({ field: langField }) => (
+                  <Select
+                    value={langField.value ?? "none"}
+                    onValueChange={(value) =>
+                      langField.onChange(value === "none" ? undefined : value)
+                    }
+                  >
+                    <SelectTrigger
+                      aria-label={t("common:changeLanguage")}
+                      className="border text-sm"
+                    >
+                      <SelectValue>
+                        {langField.value
+                          ? langField.value.toUpperCase()
+                          : t("common:changeLanguage")}
+                      </SelectValue>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="none">
+                        {t("common:changeLanguage")}
+                      </SelectItem>
+                      {LANGUAGES.map((language) => (
+                        <SelectItem key={language.code} value={language.code}>
+                          {t(language.label)}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
+              />
               <Input
                 {...field}
                 variant="sm"
