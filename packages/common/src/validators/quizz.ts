@@ -118,6 +118,17 @@ export const quizzValidator = z
       }
 
       if (question.solutions && question.solutions.length > 0) {
+        if (
+          question.type === QUESTION_TYPES.SINGLE &&
+          question.solutions.length > 1
+        ) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["questions", index, "solutions"],
+            message: "errors:quizz.singleSolutionOnly",
+          })
+        }
+
         return
       }
 

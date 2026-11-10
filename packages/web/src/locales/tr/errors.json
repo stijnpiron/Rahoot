@@ -48,6 +48,7 @@
     "maxPointsNegative": "Puan negatif olamaz",
     "noQuestions": "Bir testte en az bir soru bulunmalıdır",
     "noSolution": "En az bir doğru cevap seçin",
+    "singleSolutionOnly": "Bu soru türü için yalnızca bir doğru cevaba izin verilir",
     "notFound": "Test bulunamadı",
     "penaltyNegative": "Ceza puanı negatif olamaz",
     "questionEmpty": "Soru alanı boş bırakılamaz",

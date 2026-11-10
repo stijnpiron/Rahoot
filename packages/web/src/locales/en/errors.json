@@ -48,6 +48,7 @@
     "maxPointsNegative": "Points cannot be negative",
     "noQuestions": "A quizz must have at least one question",
     "noSolution": "Pick at least one correct answer",
+    "singleSolutionOnly": "Only one correct answer is allowed for this question type",
     "notFound": "Quizz not found",
     "penaltyNegative": "Penalty cannot be negative",
     "questionEmpty": "Question cannot be empty",

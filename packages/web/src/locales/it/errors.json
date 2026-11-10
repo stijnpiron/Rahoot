@@ -48,6 +48,7 @@
     "maxPointsNegative": "I punti non possono essere negativi",
     "noQuestions": "Un quiz deve avere almeno una domanda",
     "noSolution": "Scegli almeno una risposta corretta",
+    "singleSolutionOnly": "Per questo tipo di domanda è consentita una sola risposta corretta",
     "notFound": "Quiz non trovato",
     "penaltyNegative": "La penalità non può essere negativa",
     "questionEmpty": "La domanda non può essere vuota",

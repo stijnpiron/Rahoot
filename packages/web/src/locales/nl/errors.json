@@ -48,6 +48,7 @@
     "maxPointsNegative": "Punten mogen niet negatief zijn",
     "noQuestions": "Een quizz moet minstens één vraag bevatten",
     "noSolution": "Kies minstens één correct antwoord",
+    "singleSolutionOnly": "Voor dit vraagtype is slechts één correct antwoord toegestaan",
     "notFound": "Quizz niet gevonden",
     "penaltyNegative": "Straf mag niet negatief zijn",
     "questionEmpty": "Vraag mag niet leeg zijn",

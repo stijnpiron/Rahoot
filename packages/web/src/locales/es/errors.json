@@ -48,6 +48,7 @@
     "maxPointsNegative": "Los puntos no pueden ser negativos",
     "noQuestions": "Un cuestionario debe tener al menos una pregunta",
     "noSolution": "Elige al menos una respuesta correcta",
+    "singleSolutionOnly": "Solo se permite una respuesta correcta para este tipo de pregunta",
     "notFound": "Cuestionario no encontrado",
     "penaltyNegative": "La penalización no puede ser negativa",
     "questionEmpty": "La pregunta no puede estar vacía",

@@ -149,6 +149,7 @@ export const EXAMPLE_QUIZZ = {
     },
     {
       question: "Which of these are primary colors ?",
+      type: QUESTION_TYPES.MULTI,
       answers: ["Red", "Green", "Blue", "Yellow"],
       solutions: [0, 2, 3],
       cooldown: 5,

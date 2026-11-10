@@ -48,6 +48,7 @@
     "maxPointsNegative": "Liczba punktów nie może być ujemna",
     "noQuestions": "Quiz musi zawierać co najmniej jedno pytanie",
     "noSolution": "Wybierz co najmniej jedną poprawną odpowiedź",
+    "singleSolutionOnly": "Dla tego typu pytania dozwolona jest tylko jedna poprawna odpowiedź",
     "notFound": "Nie znaleziono quizu",
     "penaltyNegative": "Kara nie może być ujemna",
     "questionEmpty": "Pytanie nie może być puste",

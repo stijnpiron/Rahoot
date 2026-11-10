@@ -48,6 +48,7 @@
     "maxPointsNegative": "Số điểm không được âm",
     "noQuestions": "Trò chơi phải có ít nhất một câu hỏi",
     "noSolution": "Chọn ít nhất một đáp án đúng",
+    "singleSolutionOnly": "Chỉ được chọn một đáp án đúng cho loại câu hỏi này",
     "notFound": "Không tìm thấy trò chơi",
     "penaltyNegative": "Điểm phạt không được âm",
     "questionEmpty": "Câu hỏi không được để trống",

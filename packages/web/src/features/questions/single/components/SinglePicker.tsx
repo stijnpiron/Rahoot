@@ -22,7 +22,7 @@ const SingleSolutionPicker = ({ index, isSelected }: SolutionPickerProps) => {
       return
     }
 
-    updateQuestion(currentIndex, { solutions: [...current, index] })
+    updateQuestion(currentIndex, { solutions: [index] })
   }
 
   return (

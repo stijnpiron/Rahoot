@@ -48,6 +48,7 @@
     "maxPointsNegative": "ポイントを負の値にはできません",
     "noQuestions": "クイズには少なくとも1問必要です",
     "noSolution": "正解を1つ以上選んでください",
+    "singleSolutionOnly": "この問題タイプでは正解は1つだけ選択できます",
     "notFound": "クイズが見つかりません",
     "penaltyNegative": "ペナルティを負の値にはできません",
     "questionEmpty": "質問は空にできません",
