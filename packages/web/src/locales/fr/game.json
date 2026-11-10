@@ -91,5 +91,6 @@
     "elapsed": "écoulé",
     "points": "+{{points}} pts",
     "teaser": "Effectue la tâche"
-  }
+  },
+  "puzzleScrollHint": "Faites défiler pour plus d'options"
 }

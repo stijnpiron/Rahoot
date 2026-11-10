@@ -31,7 +31,7 @@ import {
   type RefObject,
 } from "react"
 import { useTranslation } from "react-i18next"
-import { GripVertical } from "lucide-react"
+import { GripVertical, ChevronsUpDown } from "lucide-react"
 
 const PuzzleScrollbar = ({
   viewportRef,
@@ -87,9 +87,9 @@ const PuzzleScrollbar = ({
     return null
   }
 
-  const trackPadding = 4
+  const trackPadding = 6
   const usable = Math.max(height - trackPadding * 2, 0)
-  const thumbHeight = Math.max(usable * thumbRatio, 32)
+  const thumbHeight = Math.max(usable * thumbRatio, 40)
   const maxThumbOffset = usable - thumbHeight
   const thumbOffset = trackPadding + scrollRatio * maxThumbOffset
 
@@ -97,7 +97,7 @@ const PuzzleScrollbar = ({
     <div
       data-puzzle-scrollbar
       aria-hidden
-      className="relative w-3 shrink-0 touch-none"
+      className="relative w-4 shrink-0 touch-none rounded-full bg-black/20 p-1"
       style={{ height }}
       onPointerDown={(event) => {
         event.currentTarget.setPointerCapture(event.pointerId)
@@ -118,7 +118,7 @@ const PuzzleScrollbar = ({
       }}
     >
       <div
-        className="absolute left-0 w-full rounded-full bg-white/60"
+        className="absolute left-1 w-2 rounded-full bg-white shadow-md"
         style={{ top: thumbOffset, height: thumbHeight }}
       />
     </div>
@@ -181,6 +181,7 @@ const PuzzleAnswers = ({
     answers.map((_, index) => index),
   )
   const scrollViewportRef = useRef<HTMLDivElement>(null)
+  const [canScroll, setCanScroll] = useState(false)
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
@@ -191,6 +192,26 @@ const PuzzleAnswers = ({
       coordinateGetter: sortableKeyboardCoordinates,
     }),
   )
+
+  useEffect(() => {
+    const viewport = scrollViewportRef.current
+
+    if (!viewport) {
+      return
+    }
+
+    const checkOverflow = () => {
+      setCanScroll(viewport.scrollHeight > viewport.clientHeight)
+    }
+
+    checkOverflow()
+    const observer = new ResizeObserver(checkOverflow)
+    observer.observe(viewport)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   // Display positions map to original tile indices through the server-side
   // shuffle; submissions are original indices in the arranged order.
@@ -249,6 +270,17 @@ const PuzzleAnswers = ({
             </div>
             <PuzzleScrollbar viewportRef={scrollViewportRef} />
           </div>
+          {canScroll && (
+            <div
+              aria-hidden
+              className="mt-1 flex shrink-0 items-center justify-center gap-1 text-white/80"
+            >
+              <ChevronsUpDown className="size-5 animate-pulse" />
+              <span className="text-sm font-bold">
+                {t("game:puzzleScrollHint", "Scroll for more options")}
+              </span>
+            </div>
+          )}
         </SortableContext>
       </DndContext>
 

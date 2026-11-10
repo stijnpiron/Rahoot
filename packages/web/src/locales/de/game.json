@@ -90,5 +90,6 @@
     "elapsed": "verstrichen",
     "points": "+{{points}} Pkt",
     "teaser": "Führe die Aufgabe aus"
-  }
+  },
+  "puzzleScrollHint": "Für weitere Optionen scrollen"
 }

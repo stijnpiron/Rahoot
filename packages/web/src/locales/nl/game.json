@@ -90,5 +90,6 @@
     "elapsed": "verstreken",
     "points": "+{{points}} pt",
     "teaser": "Voer de opdracht uit"
-  }
+  },
+  "puzzleScrollHint": "Scroll voor meer opties"
 }

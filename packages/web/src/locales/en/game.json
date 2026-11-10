@@ -93,5 +93,6 @@
     "notDone": "not done",
     "elapsed": "elapsed",
     "points": "+{{points}} pts"
-  }
+  },
+  "puzzleScrollHint": "Scroll for more options"
 }

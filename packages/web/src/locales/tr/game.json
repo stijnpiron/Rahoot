@@ -90,5 +90,6 @@
     "elapsed": "geçen",
     "points": "+{{points}} p",
     "teaser": "Görevi tamamla"
-  }
+  },
+  "puzzleScrollHint": "Diğer seçenekler için kaydırın"
 }

@@ -90,5 +90,6 @@
     "elapsed": "経過",
     "points": "+{{points}} pt",
     "teaser": "タスクをこなそう"
-  }
+  },
+  "puzzleScrollHint": "スクロールして他の選択肢を見る"
 }

@@ -91,5 +91,6 @@
     "elapsed": "đã trôi",
     "points": "+{{points}} đ",
     "teaser": "Hoàn thành nhiệm vụ"
-  }
+  },
+  "puzzleScrollHint": "Cuộn để xem thêm lựa chọn"
 }

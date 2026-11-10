@@ -90,5 +90,6 @@
     "elapsed": "transcurrido",
     "points": "+{{points}} pts",
     "teaser": "Completa la tarea"
-  }
+  },
+  "puzzleScrollHint": "Desplázate para ver más opciones"
 }

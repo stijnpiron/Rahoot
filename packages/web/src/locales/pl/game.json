@@ -90,5 +90,6 @@
     "elapsed": "upłynęło",
     "points": "+{{points}} pkt",
     "teaser": "Wykonaj zadanie"
-  }
+  },
+  "puzzleScrollHint": "Przewiń, aby zobaczyć więcej opcji"
 }
