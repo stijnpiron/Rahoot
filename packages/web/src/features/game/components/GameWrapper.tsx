@@ -16,6 +16,7 @@ import {
 } from "@razzia/web/features/game/contexts/socket-context"
 import { useManagerStore } from "@razzia/web/features/game/stores/manager"
 import { usePlayerStore } from "@razzia/web/features/game/stores/player"
+import { getPublicUrl } from "@razzia/web/config"
 import { useQuestionStore } from "@razzia/web/features/game/stores/question"
 import { formatPoints } from "@razzia/web/lib/formatPoints"
 import { MANAGER_SKIP_BTN } from "@razzia/web/features/game/utils/constants"
@@ -56,6 +57,9 @@ const GameWrapper = ({
   } | null>(null)
   const next = statusName ? MANAGER_SKIP_BTN[statusName] : null
   const isDisabled = skippedStatus !== null && skippedStatus === status
+
+  const publicUrl = getPublicUrl()
+  const publicHost = publicUrl ? new URL(publicUrl).host : null
 
   useEvent(EVENTS.GAME.UPDATE_QUESTION, ({ current, total }) => {
     setQuestionStates({
@@ -159,7 +163,7 @@ const GameWrapper = ({
                   <div className="flex items-center gap-3 rounded-lg bg-black/40 px-3 py-1.5 text-xl font-bold text-white drop-shadow-md">
                     {!locked && (
                       <>
-                        <span>{window.location.host}</span>
+                        <span>{publicHost ?? window.location.host}</span>
                         <span className="h-5 w-px bg-white/40" />
                         <span>{inviteCode}</span>
                       </>

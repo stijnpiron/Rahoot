@@ -20,6 +20,7 @@ JWT_SECRET=
 | `JWT_SECRET`       | No       | Signs session tokens. Must be at least 32 characters; a shorter value is ignored.                                      |
 | `WEB_PORT`         | No       | Without Docker only: port the app is served on. Defaults to `3000`.                                                    |
 | `SOCKET_PORT`      | No       | Without Docker only: port of the socket server, proxied behind the web port. Defaults to `3001`.                       |
+| `PUBLIC_URL`       | No       | Public URL players use to join, shown on the room screen and in the QR code. Defaults to the manager's address.         |
 
 `pnpm dev` and `pnpm start` load `.env` automatically. With Docker, `compose.yml` reads the same file through `env_file`, or you can set the variables inline with `environment:`. With a bare `docker run`, pass them with `-e MANAGER_PASSWORD=...`.
 

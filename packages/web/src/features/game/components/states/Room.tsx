@@ -7,6 +7,7 @@ import {
   useSocket,
 } from "@razzia/web/features/game/contexts/socket-context"
 import { useManagerStore } from "@razzia/web/features/game/stores/manager"
+import { getPublicUrl } from "@razzia/web/config"
 import { useOnClickOutside } from "@razzia/web/hooks/useOnClickOutside"
 import { Lock, Maximize2, X } from "lucide-react"
 import { QRCodeSVG } from "qrcode.react"
@@ -21,7 +22,7 @@ interface Props {
 const Room = ({ data: { text, inviteCode } }: Props) => {
   const { gameId, players, locked } = useManagerStore()
   const { socket } = useSocket()
-  const webUrl = window.location.origin
+  const webUrl = getPublicUrl() ?? window.location.origin
   const [playerList, setPlayerList] =
     useState<Array<Player & { timedOut?: boolean }>>(players)
   const [qrOpen, setQrOpen] = useState(false)

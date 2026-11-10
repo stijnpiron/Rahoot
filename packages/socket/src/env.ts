@@ -3,10 +3,17 @@ import z from "zod"
 
 const MIN_SECRET_LENGTH = 32
 
-const optional = (schema: z.ZodString) =>
+const optional = <T extends z.ZodType>(schema: T) =>
   z.preprocess((value) => (value === "" ? undefined : value), schema.optional())
 
 const envSchema = z.object({
+  PUBLIC_URL: optional(
+    z
+      .url()
+      .refine((value) => value.startsWith("http"), {
+        message: "PUBLIC_URL must start with http(s)://",
+      }),
+  ),
   MANAGER_PASSWORD: optional(
     z.string().min(1, "MANAGER_PASSWORD cannot be empty"),
   ),
@@ -43,3 +50,5 @@ export const gameSpeed = parsed.data.GAME_SPEED
 
 export const jwtSecret =
   parsed.data.JWT_SECRET ?? randomBytes(32).toString("hex")
+
+export const publicUrl = parsed.data.PUBLIC_URL
