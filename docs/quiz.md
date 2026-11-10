@@ -175,11 +175,11 @@ A `"slide"` is an informational item shown between questions, e.g. to introduce 
 Slide options:
 
 - `title`: Optional heading shown above the text
-- `question`: The slide text (required)
+- `question`: The slide text (optional)
 - `media`: Optional media object, same as for questions (image, video or audio)
 - `answers`, `solutions`, `cooldown` and `time` are not used; they may be omitted. `cooldown` defaults to `3` and `time` to `-1` when a legacy quiz file is loaded
 
-Slides work in both quiz and survey mode and can be reordered freely in the editor, including between questions of different categories.
+Slides work in both quiz and survey mode and can be reordered freely in the editor, including between questions of different categories. A slide with no text and no media simply shows an empty screen.
 
 ## Categories
 

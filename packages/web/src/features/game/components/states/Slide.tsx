@@ -23,11 +23,17 @@ const Slide = ({ data: { title, question, media } }: Props) => {
             {title}
           </h2>
         )}
-        <p className="text-center text-xl text-white drop-shadow-lg md:text-2xl">
-          {question}
-        </p>
+        {question && (
+          <p className="text-center text-xl text-white drop-shadow-lg md:text-2xl">
+            {question}
+          </p>
+        )}
       </div>
-      <QuestionMedia media={media} alt={title ?? question} autoPlay={false} />
+      <QuestionMedia
+        media={media}
+        alt={[title, question].find(Boolean) ?? "slide"}
+        autoPlay={false}
+      />
     </section>
   )
 }

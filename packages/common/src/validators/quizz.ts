@@ -34,7 +34,7 @@ export const mediaUploadValidator = z.object({
 
 const questionSchema = z.object({
   type: z.enum(QUESTION_TYPES),
-  question: z.string().min(1, "errors:quizz.questionEmpty"),
+  question: z.string(),
   title: z.string().optional(),
   category: z.string().optional(),
   note: z.string().optional(),
@@ -66,6 +66,14 @@ const questionSchema = z.object({
 const questionValidator = questionSchema.superRefine((question, ctx) => {
   if (question.type === QUESTION_TYPES.SLIDE) {
     return
+  }
+
+  if (!question.question.trim()) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["question"],
+      message: "errors:quizz.questionEmpty",
+    })
   }
 
   QUESTION_REFINEMENTS[question.type](question, (path, message) =>
@@ -179,6 +187,8 @@ export const normalizeLegacyQuizz = (data: unknown): unknown => {
         type,
         ...(type === QUESTION_TYPES.SLIDE
           ? {
+              question:
+                typeof question.question === "string" ? question.question : "",
               answers: question.answers ?? [],
               cooldown: question.cooldown ?? 3,
               time: question.time ?? -1,
