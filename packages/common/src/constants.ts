@@ -56,6 +56,8 @@ export const START_SCREEN_MODES = {
 
 export const START_SCREEN_TIME = { MIN: 1, MAX: 60 } as const
 
+export const TITLE_SCREEN_SECONDS = 3
+
 export const createDefaultGameSettings = (): GameSettings => ({
   generatedUsernames: false,
   answersOnly: false,

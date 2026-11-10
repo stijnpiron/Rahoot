@@ -110,7 +110,7 @@ Changes the settings of a game you created, before it starts. The body is a **pa
   answersOnly?: boolean // players only see the answer buttons during SELECT_ANSWER
   startScreen?: {
     mode: "auto" | "manual"       // timed splash, or wait for the host to press next
-    time: number                  // seconds the title shows before the countdown, 1-60
+    time: number                  // seconds the 3-2-1 countdown runs before the first question, 1-60
   }
   autoAdvance?: {
     enable: boolean

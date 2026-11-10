@@ -30,7 +30,10 @@ export class CooldownTimer {
       })
     }
 
-    let count = seconds - 1
+    let count = seconds
+
+    this.io.to(this.gameId).emit(EVENTS.GAME.COOLDOWN, count)
+    count -= 1
 
     return new Promise<void>((resolve) => {
       const interval = setInterval(() => {

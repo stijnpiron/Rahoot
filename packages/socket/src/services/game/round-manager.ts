@@ -7,6 +7,7 @@ import {
   QUESTION_TYPES,
   QUIZZ_MODES,
   START_SCREEN_MODES,
+  TITLE_SCREEN_SECONDS,
 } from "@razzia/common/constants"
 import { isEstimationOptions } from "@razzia/common/questions/options"
 import type {
@@ -277,11 +278,11 @@ export class RoundManager {
         this.proceed = resolve
       })
     } else {
-      await sleep(startScreen.time)
+      await sleep(TITLE_SCREEN_SECONDS)
     }
 
     this.opts.io.to(this.opts.gameId).emit(EVENTS.GAME.START_COOLDOWN)
-    await this.opts.cooldown.start(3)
+    await this.opts.cooldown.start(startScreen.time)
 
     void this.newQuestion()
   }

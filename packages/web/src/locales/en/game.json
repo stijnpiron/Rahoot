@@ -50,7 +50,7 @@
       "hint": "Show the quiz title before the first question.",
       "auto": "Timed",
       "manual": "Manual",
-      "time": "Seconds before the countdown"
+      "time": "Countdown seconds"
     },
     "answersOnly": {
       "label": "Answers only",
