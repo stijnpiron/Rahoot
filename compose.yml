@@ -1,6 +1,7 @@
 services:
   razzia:
-    image: ralex91/razzia:latest
+    build: .
+    image: razzia:local
     ports:
       - "3000:3000"
     volumes:
