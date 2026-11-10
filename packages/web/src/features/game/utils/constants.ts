@@ -37,7 +37,6 @@ export const GAME_STATES = {
 export const GAME_STATE_COMPONENTS = {
   [STATUS.SELECT_ANSWER]: Answers,
   [STATUS.SHOW_QUESTION]: Question,
-  [STATUS.SHOW_SLIDE]: Slide,
   [STATUS.WAIT]: Wait,
   [STATUS.SHOW_START]: Start,
   [STATUS.SHOW_RESULT]: Result,
@@ -48,6 +47,7 @@ export const GAME_STATE_COMPONENTS = {
 
 export const GAME_STATE_COMPONENTS_MANAGER = {
   ...GAME_STATE_COMPONENTS,
+  [STATUS.SHOW_SLIDE]: Slide,
   [STATUS.SHOW_ROOM]: Room,
   [STATUS.SHOW_RESPONSES]: Responses,
   [STATUS.SHOW_LEADERBOARD]: Leaderboard,

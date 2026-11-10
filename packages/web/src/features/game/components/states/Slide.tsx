@@ -17,23 +17,33 @@ const Slide = ({ data: { title, question, media } }: Props) => {
 
   return (
     <section className="anim-show relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center gap-5 px-4">
-      <div className="flex flex-1 flex-col items-center justify-center gap-5">
-        {title && (
-          <h2 className="text-center text-3xl font-bold text-white drop-shadow-lg md:text-4xl lg:text-5xl">
-            {title}
-          </h2>
-        )}
-        {question && (
-          <p className="text-center text-xl text-white drop-shadow-lg md:text-2xl">
-            {question}
-          </p>
-        )}
-      </div>
-      <QuestionMedia
-        media={media}
-        alt={[title, question].find(Boolean) ?? "slide"}
-        autoPlay={false}
-      />
+      {(title || question) && (
+        <div
+          className={
+            media
+              ? "flex flex-col items-center justify-center gap-5"
+              : "flex flex-1 flex-col items-center justify-center gap-5"
+          }
+        >
+          {title && (
+            <h2 className="text-center text-3xl font-bold text-white drop-shadow-lg md:text-4xl lg:text-5xl">
+              {title}
+            </h2>
+          )}
+          {question && (
+            <p className="text-center text-xl text-white drop-shadow-lg md:text-2xl">
+              {question}
+            </p>
+          )}
+        </div>
+      )}
+      {media && (
+        <QuestionMedia
+          media={media}
+          alt={[title, question].find(Boolean) ?? "slide"}
+          autoPlay={false}
+        />
+      )}
     </section>
   )
 }
