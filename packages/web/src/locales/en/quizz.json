@@ -98,7 +98,8 @@
     "estimation": "Estimation",
     "trueFalse": "True/False",
     "puzzle": "Puzzle",
-    "pin": "Pin on image"
+    "pin": "Pin on image",
+    "slide": "Slide"
   },
   "quizzSaved": "Quizz saved successfully",
   "quizzUpdated": "Quizz updated successfully",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Add answer",
   "removeAnswer": "Remove answer",
-  "markCorrect": "Mark {{label}} as correct"
+  "markCorrect": "Mark {{label}} as correct",
+  "addSlide": "Add slide",
+  "slide": {
+    "title": "Heading",
+    "placeholder": "Start typing your slide text..."
+  }
 }

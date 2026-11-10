@@ -13,7 +13,12 @@ export type QuestionRefinement = (
   _addIssue: AddIssue,
 ) => void
 
-export const QUESTION_REFINEMENTS: Record<QuestionType, QuestionRefinement> = {
+export type RefinableQuestionType = Exclude<QuestionType, "slide">
+
+export const QUESTION_REFINEMENTS: Record<
+  RefinableQuestionType,
+  QuestionRefinement
+> = {
   [QUESTION_TYPES.SINGLE]: refineChoiceQuestion,
   [QUESTION_TYPES.MULTI]: refineChoiceQuestion,
   [QUESTION_TYPES.ESTIMATION]: refineEstimationQuestion,

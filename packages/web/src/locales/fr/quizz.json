@@ -98,7 +98,8 @@
     "estimation": "Estimation",
     "trueFalse": "Vrai/Faux",
     "puzzle": "Puzzle",
-    "pin": "Épingle sur image"
+    "pin": "Épingle sur image",
+    "slide": "Diapositive"
   },
   "quizzSaved": "Quizz enregistré avec succès",
   "quizzUpdated": "Quizz mis à jour avec succès",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Ajouter une réponse",
   "removeAnswer": "Retirer une réponse",
-  "markCorrect": "Marquer {{label}} comme bonne réponse"
+  "markCorrect": "Marquer {{label}} comme bonne réponse",
+  "addSlide": "Ajouter une diapositive",
+  "slide": {
+    "title": "Titre",
+    "placeholder": "Commence à taper le texte de la diapositive..."
+  }
 }

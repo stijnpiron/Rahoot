@@ -68,7 +68,10 @@
     "pinMediaRequired": "Une question épingle nécessite une image",
     "pinInvalidOptions": "Paramètres d'épingle manquants ou invalides",
     "pinInvalidArea": "Dessinez une zone valide sur l'image",
-    "pinAreaRequired": "Dessinez la bonne zone sur l'image"
+    "pinAreaRequired": "Dessinez la bonne zone sur l'image",
+    "cooldownRequired": "Le temps d'affichage de la question est requis",
+    "timeRequired": "Le temps de réponse est requis",
+    "answersRequired": "Une question doit avoir au moins 2 réponses"
   },
   "result": {
     "notFound": "Résultat introuvable"

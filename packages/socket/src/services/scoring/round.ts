@@ -29,7 +29,8 @@ export const scoreQuestion = (
         return 0
       }
 
-      const scoring = QUESTION_SCORING[question.type]
+      const scoring =
+        QUESTION_SCORING[question.type as keyof typeof QUESTION_SCORING]
 
       return scoring(question, playerAnswer)
     })()

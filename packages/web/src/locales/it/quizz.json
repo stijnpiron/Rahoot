@@ -98,7 +98,8 @@
     "estimation": "Stima",
     "trueFalse": "Vero/Falso",
     "puzzle": "Puzzle",
-    "pin": "Pin sull'immagine"
+    "pin": "Pin sull'immagine",
+    "slide": "Diapositiva"
   },
   "quizzSaved": "Quiz salvato con successo",
   "quizzUpdated": "Quiz aggiornato con successo",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Aggiungi risposta",
   "removeAnswer": "Rimuovi risposta",
-  "markCorrect": "Segna {{label}} come corretta"
+  "markCorrect": "Segna {{label}} come corretta",
+  "addSlide": "Aggiungi diapositiva",
+  "slide": {
+    "title": "Titolo",
+    "placeholder": "Inizia a scrivere il testo della diapositiva..."
+  }
 }

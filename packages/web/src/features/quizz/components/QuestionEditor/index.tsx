@@ -5,10 +5,17 @@ import QuestionEditorConfig from "@razzia/web/features/quizz/components/Question
 import QuestionEditorMedia from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorMedia"
 import QuestionEditorNote from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorNote"
 import QuestionEditorTitle from "@razzia/web/features/quizz/components/QuestionEditor/QuestionEditorTitle"
+import SlideEditor from "@razzia/web/features/quizz/components/QuestionEditor/SlideEditor"
 import { useQuizzEditor } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
+import { QUESTION_TYPES } from "@razzia/common/constants"
 
 const QuestionEditor = () => {
   const { currentQuestion, currentQuestionId, isRemoving } = useQuizzEditor()
+
+  if (currentQuestion.type === QUESTION_TYPES.SLIDE) {
+    return <SlideEditor />
+  }
+
   const AnswersEditor =
     QUESTION_REGISTRY[currentQuestion.type].AnswersEditor ??
     QuestionEditorAnswers

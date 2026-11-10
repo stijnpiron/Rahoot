@@ -98,7 +98,8 @@
     "estimation": "Ước lượng",
     "trueFalse": "Đúng/Sai",
     "puzzle": "Ghép thứ tự",
-    "pin": "Ghim trên ảnh"
+    "pin": "Ghim trên ảnh",
+    "slide": "Trang trình bày"
   },
   "quizzSaved": "Đã lưu trò chơi thành công",
   "quizzUpdated": "Đã cập nhật trò chơi thành công",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Thêm câu trả lời",
   "removeAnswer": "Xóa câu trả lời",
-  "markCorrect": "Đánh dấu {{label}} là đúng"
+  "markCorrect": "Đánh dấu {{label}} là đúng",
+  "addSlide": "Thêm trang trình bày",
+  "slide": {
+    "title": "Tiêu đề",
+    "placeholder": "Bắt đầu nhập nội dung trang..."
+  }
 }

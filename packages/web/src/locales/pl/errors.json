@@ -68,7 +68,10 @@
     "pinMediaRequired": "Pytanie z pinezką wymaga obrazu",
     "pinInvalidOptions": "Brak ustawień pinezki lub są nieprawidłowe",
     "pinInvalidArea": "Narysuj prawidłowy obszar na obrazie",
-    "pinAreaRequired": "Narysuj właściwy obszar na obrazie"
+    "pinAreaRequired": "Narysuj właściwy obszar na obrazie",
+    "cooldownRequired": "Czas wyświetlania pytania jest wymagany",
+    "timeRequired": "Czas na odpowiedź jest wymagany",
+    "answersRequired": "Pytanie musi mieć co najmniej 2 odpowiedzi"
   },
   "result": {
     "notFound": "Nie znaleziono wyniku"

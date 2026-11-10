@@ -40,6 +40,10 @@ const QuestionEditorConfig = () => {
 
   const { ConfigComponent } = QUESTION_REGISTRY[questionType]
 
+  if (!ConfigComponent) {
+    return null
+  }
+
   const typeOptions = QUESTION_TYPE_LIST.map((type) => ({
     value: type,
     label: t(QUESTION_REGISTRY[type].labelKey),

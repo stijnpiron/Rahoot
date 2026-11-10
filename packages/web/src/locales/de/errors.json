@@ -68,7 +68,10 @@
     "pinMediaRequired": "Eine Pin-Frage braucht ein Bild",
     "pinInvalidOptions": "Pin-Einstellungen fehlen oder sind ungültig",
     "pinInvalidArea": "Zeichne einen gültigen Bereich auf das Bild",
-    "pinAreaRequired": "Zeichne den richtigen Bereich auf das Bild"
+    "pinAreaRequired": "Zeichne den richtigen Bereich auf das Bild",
+    "cooldownRequired": "Anzeigezeit der Frage ist erforderlich",
+    "timeRequired": "Antwortzeit ist erforderlich",
+    "answersRequired": "Eine Frage muss mindestens 2 Antworten haben"
   },
   "result": {
     "notFound": "Ergebnis nicht gefunden"

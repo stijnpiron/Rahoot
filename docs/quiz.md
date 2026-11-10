@@ -50,7 +50,7 @@ Quiz Options:
 - `gameMode`: `"quiz"` (default) or `"survey"`, see [Survey mode](#survey-mode)
 - `subject`: Title/topic of the quiz
 - `questions`: Array of question objects containing:
-  - `type`: `"single"` (exactly one answer), `"multi"` (one or more), `"estimation"` (a number, see [Estimation questions](#estimation-questions)), `"trueFalse"` (see [True/False questions](#truefalse-questions)), `"puzzle"` (see [Puzzle questions](#puzzle-questions)) or `"pin"` (see [Pin questions](#pin-questions)). Defaults to `"single"` when omitted
+  - `type`: `"single"` (exactly one answer), `"multi"` (one or more), `"estimation"` (a number, see [Estimation questions](#estimation-questions)), `"trueFalse"` (see [True/False questions](#truefalse-questions)), `"puzzle"` (see [Puzzle questions](#puzzle-questions)), `"pin"` (see [Pin questions](#pin-questions)) or `"slide"` (see [Slides](#slides)). Defaults to `"single"` when omitted
   - `question`: The question text
   - `category`: Optional round name, see [Categories](#categories)
   - `note`: Optional explanation shown on the main screen when the answer is revealed, e.g. `"Red, green and blue are the primary colors of light"`
@@ -155,6 +155,31 @@ A `"pin"` question shows an image and players drop a single pin on it. One autho
 - `options.area`: the correct area in normalized image coordinates (0-1 on both axes). `kind` is `"rect"` (`x`, `y`, `w`, `h`), `"circle"` (`cx`, `cy`, `r`) or `"freehand"` (`points`, at least 3). Required in quiz mode, optional in survey mode. Pins inside the area earn full points, pins outside earn nothing
 - `solutions`: Not used, do not set it
 - Survey mode: allowed with no area, e.g. a "where are you from?" poll; the reveal shows all named pins
+
+## Slides
+
+A `"slide"` is an informational item shown between questions, e.g. to introduce a new round. It is not scored and does not appear in results; players see it full screen and the manager continues to the next question or slide. Slides count toward the question counter shown in the HUD.
+
+```json
+{
+  "type": "slide",
+  "title": "Round 2: Geography",
+  "question": "Let's test your knowledge of world capitals!",
+  "media": {
+    "type": "image",
+    "url": "/media/world-map.png"
+  }
+}
+```
+
+Slide options:
+
+- `title`: Optional heading shown above the text
+- `question`: The slide text (required)
+- `media`: Optional media object, same as for questions (image, video or audio)
+- `answers`, `solutions`, `cooldown` and `time` are not used; they may be omitted. `cooldown` defaults to `3` and `time` to `-1` when a legacy quiz file is loaded
+
+Slides work in both quiz and survey mode and can be reordered freely in the editor, including between questions of different categories.
 
 ## Categories
 

@@ -98,7 +98,8 @@
     "estimation": "Szacowanie",
     "trueFalse": "Prawda/Fałsz",
     "puzzle": "Puzzle",
-    "pin": "Pin na obrazie"
+    "pin": "Pin na obrazie",
+    "slide": "Slajd"
   },
   "quizzSaved": "Quiz został zapisany",
   "quizzUpdated": "Quiz został zaktualizowany",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Dodaj odpowiedź",
   "removeAnswer": "Usuń odpowiedź",
-  "markCorrect": "Oznacz {{label}} jako poprawną"
+  "markCorrect": "Oznacz {{label}} jako poprawną",
+  "addSlide": "Dodaj slajd",
+  "slide": {
+    "title": "Nagłówek",
+    "placeholder": "Zacznij pisać tekst slajdu..."
+  }
 }

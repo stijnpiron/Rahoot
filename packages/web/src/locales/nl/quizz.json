@@ -98,7 +98,8 @@
     "estimation": "Schatting",
     "trueFalse": "Waar/Onwaar",
     "puzzle": "Puzzel",
-    "pin": "Pin op afbeelding"
+    "pin": "Pin op afbeelding",
+    "slide": "Dia"
   },
   "quizzSaved": "Quizz succesvol opgeslagen",
   "quizzUpdated": "Quizz succesvol bijgewerkt",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Antwoord toevoegen",
   "removeAnswer": "Antwoord verwijderen",
-  "markCorrect": "Markeer {{label}} als correct"
+  "markCorrect": "Markeer {{label}} als correct",
+  "addSlide": "Dia toevoegen",
+  "slide": {
+    "title": "Kop",
+    "placeholder": "Begin met typen..."
+  }
 }

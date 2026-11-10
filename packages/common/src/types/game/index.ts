@@ -81,6 +81,7 @@ export interface UploadedMedia {
 export interface Question {
   type: QuestionType
   question: string
+  title?: string
   category?: string
   note?: string
   media?: QuestionMedia

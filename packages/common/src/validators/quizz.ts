@@ -35,6 +35,7 @@ export const mediaUploadValidator = z.object({
 const questionSchema = z.object({
   type: z.enum(QUESTION_TYPES),
   question: z.string().min(1, "errors:quizz.questionEmpty"),
+  title: z.string().optional(),
   category: z.string().optional(),
   note: z.string().optional(),
   media: questionMediaValidator.optional(),
@@ -63,6 +64,10 @@ const questionSchema = z.object({
 })
 
 const questionValidator = questionSchema.superRefine((question, ctx) => {
+  if (question.type === QUESTION_TYPES.SLIDE) {
+    return
+  }
+
   QUESTION_REFINEMENTS[question.type](question, (path, message) =>
     ctx.addIssue({ code: "custom", path, message }),
   )
@@ -98,6 +103,10 @@ export const quizzValidator = z
     }
 
     quizz.questions.forEach((question, index) => {
+      if (question.type === QUESTION_TYPES.SLIDE) {
+        return
+      }
+
       if (
         question.type === QUESTION_TYPES.PUZZLE ||
         question.type === QUESTION_TYPES.PIN
@@ -163,9 +172,18 @@ export const normalizeLegacyQuizz = (data: unknown): unknown => {
         return question
       }
 
+      const type = question.type ?? QUESTION_TYPES.SINGLE
+
       return {
         ...question,
-        type: question.type ?? QUESTION_TYPES.SINGLE,
+        type,
+        ...(type === QUESTION_TYPES.SLIDE
+          ? {
+              answers: question.answers ?? [],
+              cooldown: question.cooldown ?? 3,
+              time: question.time ?? -1,
+            }
+          : {}),
         solutions:
           question.solutions === undefined || Array.isArray(question.solutions)
             ? question.solutions
@@ -184,3 +202,8 @@ export const normalizeLegacyQuizz = (data: unknown): unknown => {
     }),
   }
 }
+
+export const quizzInputValidator = z.preprocess(
+  normalizeLegacyQuizz,
+  quizzValidator,
+)

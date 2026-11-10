@@ -98,7 +98,8 @@
     "estimation": "Tahmin",
     "trueFalse": "Doğru/Yanlış",
     "puzzle": "Yapboz",
-    "pin": "Görselde işaretle"
+    "pin": "Görselde işaretle",
+    "slide": "Slayt"
   },
   "quizzSaved": "Test başarıyla kaydedildi",
   "quizzUpdated": "Test başarıyla güncellendi",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Cevap ekle",
   "removeAnswer": "Cevabı kaldır",
-  "markCorrect": "{{label}} seçeneğini doğru olarak işaretle"
+  "markCorrect": "{{label}} seçeneğini doğru olarak işaretle",
+  "addSlide": "Slayt ekle",
+  "slide": {
+    "title": "Başlık",
+    "placeholder": "Slayt metnini yazmaya başla..."
+  }
 }

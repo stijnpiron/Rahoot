@@ -98,7 +98,8 @@
     "estimation": "Schätzung",
     "trueFalse": "Wahr/Falsch",
     "puzzle": "Puzzle",
-    "pin": "Bild anpinnen"
+    "pin": "Bild anpinnen",
+    "slide": "Folie"
   },
   "quizzSaved": "Quiz erfolgreich gespeichert",
   "quizzUpdated": "Quiz erfolgreich aktualisiert",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Antwort hinzufügen",
   "removeAnswer": "Antwort entfernen",
-  "markCorrect": "{{label}} als richtig markieren"
+  "markCorrect": "{{label}} als richtig markieren",
+  "addSlide": "Folie hinzufügen",
+  "slide": {
+    "title": "Überschrift",
+    "placeholder": "Beginne mit dem Tippen..."
+  }
 }

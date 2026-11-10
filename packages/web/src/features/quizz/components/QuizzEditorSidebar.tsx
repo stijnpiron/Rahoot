@@ -24,7 +24,7 @@ import {
   type QuizzFormValues,
 } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
 import clsx from "clsx"
-import { Plus } from "lucide-react"
+import { Image as ImageIcon, Plus } from "lucide-react"
 import { useRef } from "react"
 import { useFormContext } from "react-hook-form"
 import { useTranslation } from "react-i18next"
@@ -90,6 +90,7 @@ const QuizzEditorSidebar = () => {
     currentIndex,
     setCurrentIndex,
     addQuestion,
+    addSlide,
     removeQuestion,
     reorderQuestions,
     updateQuestion,
@@ -168,10 +169,18 @@ const QuizzEditorSidebar = () => {
 
       <Button
         onClick={addQuestion}
-        className="bg text-md bg-accent text-accent-foreground mt-1 mb-8 flex items-center justify-center gap-1"
+        className="bg text-md bg-accent text-accent-foreground mt-1 flex items-center justify-center gap-1"
       >
         <Plus className="size-6" />
         {t("quizz:addQuestion")}
+      </Button>
+
+      <Button
+        onClick={addSlide}
+        className="bg text-md bg-accent text-accent-foreground mb-8 flex items-center justify-center gap-1"
+      >
+        <ImageIcon className="size-6" />
+        {t("quizz:addSlide")}
       </Button>
     </aside>
   )

@@ -68,7 +68,10 @@
     "pinMediaRequired": "Câu hỏi ghim cần một ảnh",
     "pinInvalidOptions": "Thiếu cài đặt ghim hoặc không hợp lệ",
     "pinInvalidArea": "Vẽ một vùng hợp lệ trên ảnh",
-    "pinAreaRequired": "Vẽ vùng đúng trên ảnh"
+    "pinAreaRequired": "Vẽ vùng đúng trên ảnh",
+    "cooldownRequired": "Thời gian hiển thị câu hỏi là bắt buộc",
+    "timeRequired": "Thời gian trả lời là bắt buộc",
+    "answersRequired": "Câu hỏi phải có ít nhất 2 đáp án"
   },
   "result": {
     "notFound": "Không tìm thấy kết quả"

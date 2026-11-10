@@ -11,6 +11,7 @@ export const STATUS = {
   SHOW_START: "SHOW_START",
   SHOW_PREPARED: "SHOW_PREPARED",
   SHOW_QUESTION: "SHOW_QUESTION",
+  SHOW_SLIDE: "SHOW_SLIDE",
   SELECT_ANSWER: "SELECT_ANSWER",
   SHOW_RESULT: "SHOW_RESULT",
   SHOW_RESPONSES: "SHOW_RESPONSES",
@@ -34,6 +35,11 @@ export interface CommonStatusDataMap {
     question: string
     media?: QuestionMedia
     cooldown: number
+  }
+  SHOW_SLIDE: {
+    title?: string
+    question: string
+    media?: QuestionMedia
   }
   SELECT_ANSWER: {
     question: string

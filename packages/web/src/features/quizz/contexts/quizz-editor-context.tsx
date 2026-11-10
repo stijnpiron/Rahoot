@@ -41,6 +41,7 @@ interface QuizzEditorContextType {
   isRemoving: boolean
   setCurrentIndex: (_index: number) => void
   addQuestion: () => void
+  addSlide: () => void
   removeQuestion: (_index: number) => void
   reorderQuestions: (_from: number, _to: number) => void
   updateQuestion: (_index: number, _updates: Partial<Question>) => void
@@ -101,6 +102,18 @@ export const QuizzEditorProvider = ({
     setCurrentIndex(questions.length)
   }
 
+  const addSlide = () => {
+    append({
+      type: QUESTION_TYPES.SLIDE,
+      question: "",
+      title: "",
+      answers: [],
+      cooldown: 3,
+      time: -1,
+    })
+    setCurrentIndex(questions.length)
+  }
+
   const removeQuestion = (index: number) => {
     flushSync(() => setRemovingFrom(questions))
     remove(index)
@@ -148,6 +161,7 @@ export const QuizzEditorProvider = ({
           isRemoving: removingFrom === questions,
           setCurrentIndex,
           addQuestion,
+          addSlide,
           removeQuestion,
           reorderQuestions,
           updateQuestion,

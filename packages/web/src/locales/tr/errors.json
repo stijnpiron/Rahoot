@@ -68,7 +68,10 @@
     "pinMediaRequired": "İşaret sorusu bir görsel gerektirir",
     "pinInvalidOptions": "İşaret ayarları eksik veya geçersiz",
     "pinInvalidArea": "Görsel üzerine geçerli bir alan çizin",
-    "pinAreaRequired": "Görsel üzerine doğru alanı çizin"
+    "pinAreaRequired": "Görsel üzerine doğru alanı çizin",
+    "cooldownRequired": "Soru görünme süresi zorunludur",
+    "timeRequired": "Cevaplama süresi zorunludur",
+    "answersRequired": "Bir soru en az 2 cevap içermelidir"
   },
   "result": {
     "notFound": "Sonuç bulunamadı"

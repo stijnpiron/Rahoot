@@ -149,6 +149,10 @@ export class RoundManager {
     return this.question.type === QUESTION_TYPES.PIN
   }
 
+  private isSlide(): boolean {
+    return this.question.type === QUESTION_TYPES.SLIDE
+  }
+
   private buildPinsPayload(
     scored: ScoredPlayer[] = [],
   ): Array<PinPoint & { name: string; correct: boolean }> {
@@ -275,6 +279,12 @@ export class RoundManager {
     this.clearAutoAdvance()
 
     if (this.isAskingQuestion()) {
+      if (this.isSlide()) {
+        this.nextQuestion()
+
+        return
+      }
+
       this.acceptingAnswers = false
       this.opts.cooldown.abort()
 
@@ -329,6 +339,16 @@ export class RoundManager {
       current: this.currentQuestion + 1,
       total: this.opts.quizz.questions.length,
     })
+
+    if (this.isSlide()) {
+      this.opts.broadcast(STATUS.SHOW_SLIDE, {
+        title: this.question.title,
+        question: this.question.question,
+        media: this.question.media,
+      })
+
+      return
+    }
 
     const puzzleOrder = this.isPuzzle() ? this.getPuzzleOrder() : undefined
 
@@ -507,7 +527,9 @@ export class RoundManager {
     const summary = {
       subject: this.opts.quizz.subject,
       totalPlayers: players.length,
-      totalQuestions: this.opts.quizz.questions.length,
+      totalQuestions: this.opts.quizz.questions.filter(
+        (question) => question.type !== QUESTION_TYPES.SLIDE,
+      ).length,
     }
 
     this.opts.send(this.opts.getManagerId(), STATUS.SUMMARY, summary)

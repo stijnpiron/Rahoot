@@ -98,7 +98,8 @@
     "estimation": "Estimación",
     "trueFalse": "Verdadero/Falso",
     "puzzle": "Rompecabezas",
-    "pin": "Pin en imagen"
+    "pin": "Pin en imagen",
+    "slide": "Diapositiva"
   },
   "quizzSaved": "Cuestionario guardado con éxito",
   "quizzUpdated": "Cuestionario actualizado con éxito",
@@ -129,5 +130,10 @@
   },
   "addAnswer": "Añadir respuesta",
   "removeAnswer": "Quitar respuesta",
-  "markCorrect": "Marcar {{label}} como correcta"
+  "markCorrect": "Marcar {{label}} como correcta",
+  "addSlide": "Añadir diapositiva",
+  "slide": {
+    "title": "Título",
+    "placeholder": "Empieza a escribir el texto de la diapositiva..."
+  }
 }

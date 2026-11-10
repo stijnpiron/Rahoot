@@ -68,7 +68,10 @@
     "pinMediaRequired": "Una domanda pin richiede un'immagine",
     "pinInvalidOptions": "Impostazioni pin mancanti o non valide",
     "pinInvalidArea": "Disegna un'area valida sull'immagine",
-    "pinAreaRequired": "Disegna l'area corretta sull'immagine"
+    "pinAreaRequired": "Disegna l'area corretta sull'immagine",
+    "cooldownRequired": "Il tempo di visualizzazione della domanda è obbligatorio",
+    "timeRequired": "Il tempo di risposta è obbligatorio",
+    "answersRequired": "Una domanda deve avere almeno 2 risposte"
   },
   "result": {
     "notFound": "Risultato non trovato"

@@ -128,6 +128,10 @@ const Answers = ({
 
   const { AnswerComponent } = QUESTION_REGISTRY[questionType]
 
+  if (!AnswerComponent) {
+    return null
+  }
+
   const MediaIcon = media?.type === MEDIA_TYPES.VIDEO ? Video : Image
 
   return (

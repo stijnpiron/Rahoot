@@ -8,7 +8,10 @@ import * as trueFalse from "./trueFalse"
 
 export type ScoringFn = (_question: Question, _answer: Answer) => number
 
-export const QUESTION_SCORING: Record<QuestionType, ScoringFn> = {
+export const QUESTION_SCORING: Record<
+  Exclude<QuestionType, "slide">,
+  ScoringFn
+> = {
   [single.type]: single.scoring,
   [multi.type]: multi.scoring,
   [estimation.type]: estimation.scoring,

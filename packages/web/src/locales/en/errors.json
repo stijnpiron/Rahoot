@@ -68,7 +68,10 @@
     "pinMediaRequired": "A pin question needs an image",
     "pinInvalidOptions": "Pin settings are missing or invalid",
     "pinInvalidArea": "Draw a valid area on the image",
-    "pinAreaRequired": "Draw the correct area on the image"
+    "pinAreaRequired": "Draw the correct area on the image",
+    "cooldownRequired": "Question display time is required",
+    "timeRequired": "Answer time is required",
+    "answersRequired": "A question must have at least 2 answers"
   },
   "result": {
     "notFound": "Result not found"

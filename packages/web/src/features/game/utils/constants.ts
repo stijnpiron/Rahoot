@@ -7,6 +7,7 @@ import Question from "@razzia/web/features/game/components/states/Question"
 import Responses from "@razzia/web/features/game/components/states/Responses"
 import Result from "@razzia/web/features/game/components/states/Result"
 import Room from "@razzia/web/features/game/components/states/Room"
+import Slide from "@razzia/web/features/game/components/states/Slide"
 import Start from "@razzia/web/features/game/components/states/Start"
 import Summary from "@razzia/web/features/game/components/states/Summary"
 import Wait from "@razzia/web/features/game/components/states/Wait"
@@ -36,6 +37,7 @@ export const GAME_STATES = {
 export const GAME_STATE_COMPONENTS = {
   [STATUS.SELECT_ANSWER]: Answers,
   [STATUS.SHOW_QUESTION]: Question,
+  [STATUS.SHOW_SLIDE]: Slide,
   [STATUS.WAIT]: Wait,
   [STATUS.SHOW_START]: Start,
   [STATUS.SHOW_RESULT]: Result,
@@ -80,6 +82,7 @@ export const MANAGER_SKIP_BTN = {
   [STATUS.SHOW_START]: null,
   [STATUS.SHOW_PREPARED]: null,
   [STATUS.SHOW_QUESTION]: null,
+  [STATUS.SHOW_SLIDE]: "common:next",
   [STATUS.SELECT_ANSWER]: "common:skip",
   [STATUS.SHOW_RESULT]: null,
   [STATUS.SHOW_RESPONSES]: "common:next",

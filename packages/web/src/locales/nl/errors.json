@@ -68,7 +68,10 @@
     "pinMediaRequired": "Een pin-vraag heeft een afbeelding nodig",
     "pinInvalidOptions": "Pin-instellingen ontbreken of zijn ongeldig",
     "pinInvalidArea": "Teken een geldig gebied op de afbeelding",
-    "pinAreaRequired": "Teken het correcte gebied op de afbeelding"
+    "pinAreaRequired": "Teken het correcte gebied op de afbeelding",
+    "cooldownRequired": "Weergavetijd van de vraag is verplicht",
+    "timeRequired": "Antwoordtijd is verplicht",
+    "answersRequired": "Een vraag moet minstens 2 antwoorden hebben"
   },
   "result": {
     "notFound": "Resultaat niet gevonden"

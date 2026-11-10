@@ -68,7 +68,10 @@
     "pinMediaRequired": "ピン問題には画像が必要です",
     "pinInvalidOptions": "ピン設定がないか無効です",
     "pinInvalidArea": "画像に有効なエリアを描いてください",
-    "pinAreaRequired": "画像に正しいエリアを描いてください"
+    "pinAreaRequired": "画像に正しいエリアを描いてください",
+    "cooldownRequired": "問題の表示時間は必須です",
+    "timeRequired": "回答時間は必須です",
+    "answersRequired": "質問には2つ以上の回答が必要です"
   },
   "result": {
     "notFound": "結果が見つかりません"
