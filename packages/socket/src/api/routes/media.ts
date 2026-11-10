@@ -1,11 +1,15 @@
 import { zValidator } from "@hono/zod-validator"
 import { MAX_MEDIA_SIZE } from "@razzia/common/constants"
-import { mediaUploadValidator } from "@razzia/common/validators/quizz"
+import {
+  mediaUploadValidator,
+  mediaUrlImportValidator,
+} from "@razzia/common/validators/quizz"
 import { apiFactory } from "@razzia/socket/api/factory"
 import { requireManager } from "@razzia/socket/api/middleware"
 import { i18nHook } from "@razzia/socket/api/validation"
 import {
   deleteMedia,
+  importMediaFromUrl,
   listMedia,
   saveMedia,
 } from "@razzia/socket/services/media"
@@ -18,6 +22,15 @@ const routes = apiFactory
   .createApp()
   .use(requireManager)
   .get("/", (c) => c.json({ media: listMedia() }))
+  .post(
+    "/url",
+    zValidator("json", mediaUrlImportValidator, i18nHook),
+    async (c) =>
+      c.json(
+        await importMediaFromUrl(c.req.valid("json").url),
+        StatusCodes.CREATED,
+      ),
+  )
   .post(
     "/",
     bodyLimit({

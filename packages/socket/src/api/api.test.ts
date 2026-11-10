@@ -420,4 +420,45 @@ describe("media", () => {
     expect(response.status).toBe(status)
     expect(await json(response)).toEqual({ error })
   })
+
+  it("imports a media from a URL", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() =>
+        Promise.resolve(
+          new Response(PNG_BYTES, {
+            status: 200,
+            headers: { "Content-Length": String(PNG_BYTES.length) },
+          }),
+        ),
+      ),
+    )
+
+    try {
+      const response = await request("/media/url", {
+        method: "POST",
+        token: managerToken,
+        body: { url: "https://example.com/pictures/picture.png" },
+      })
+
+      expect(response.status).toBe(StatusCodes.CREATED)
+
+      const media = await json<{ name: string; url: string }>(response)
+
+      expect(media.name).toMatch(/^picture-[\w-]{8}\.png$/u)
+      expect(media.url).toBe(`/media/${media.name}`)
+    } finally {
+      vi.unstubAllGlobals()
+    }
+  })
+
+  it("rejects an invalid import URL", async () => {
+    const response = await request("/media/url", {
+      method: "POST",
+      token: managerToken,
+      body: { url: "ftp://example.com/picture.png" },
+    })
+
+    expect(response.status).toBe(StatusCodes.BAD_REQUEST)
+  })
 })

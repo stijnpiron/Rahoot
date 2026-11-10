@@ -91,6 +91,8 @@
     "missingFile": "Hiçbir dosya gönderilmedi",
     "notFound": "Medya bulunamadı",
     "tooLarge": "Dosya çok büyük",
-    "uploadFailed": "Dosya yüklenemedi"
+    "uploadFailed": "Dosya yüklenemedi",
+    "invalidUrl": "Geçersiz medya URL'si",
+    "importFailed": "Medya indirilemedi"
   }
 }

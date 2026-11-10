@@ -2,7 +2,11 @@ import { ACCEPTED_MEDIA_TYPES, MAX_MEDIA_SIZE } from "@razzia/common/constants"
 import type { UploadedMedia } from "@razzia/common/types/game"
 import Button from "@razzia/web/components/Button"
 import MediaThumbnail from "@razzia/web/features/quizz/components/QuestionEditor/MediaLibrary/MediaThumbnail"
-import { mediaKeys, uploadMedia } from "@razzia/web/features/quizz/queries"
+import {
+  mediaKeys,
+  importMediaFromUrl,
+  uploadMedia,
+} from "@razzia/web/features/quizz/queries"
 import { ApiError } from "@razzia/web/lib/api"
 import {
   useIsMutating,
@@ -34,26 +38,39 @@ export const useUploadMedia = (
 
   const pendingCount = useIsMutating({ mutationKey: uploadKey })
 
+  const onError = (error: unknown) => {
+    if (
+      error instanceof ApiError &&
+      error.status === StatusCodes.CONFLICT &&
+      error.data?.media
+    ) {
+      setDuplicate({ media: error.data.media as UploadedMedia })
+
+      return
+    }
+
+    toast.error(
+      t(error instanceof ApiError ? error.key : "errors:media.uploadFailed"),
+    )
+  }
+
+  const onSettled = () =>
+    queryClient.invalidateQueries({ queryKey: mediaKeys.all })
+
   const { mutate } = useMutation({
     mutationKey: uploadKey,
     mutationFn: uploadMedia,
     onSuccess: (media) => onUploaded?.(media),
-    onError: (error) => {
-      if (
-        error instanceof ApiError &&
-        error.status === StatusCodes.CONFLICT &&
-        error.data?.media
-      ) {
-        setDuplicate({ media: error.data.media as UploadedMedia })
+    onError,
+    onSettled,
+  })
 
-        return
-      }
-
-      toast.error(
-        t(error instanceof ApiError ? error.key : "errors:media.uploadFailed"),
-      )
-    },
-    onSettled: () => queryClient.invalidateQueries({ queryKey: mediaKeys.all }),
+  const { mutate: importUrl } = useMutation({
+    mutationKey: uploadKey,
+    mutationFn: importMediaFromUrl,
+    onSuccess: (media) => onUploaded?.(media),
+    onError,
+    onSettled,
   })
 
   const upload = (files: Iterable<File>) => {
@@ -120,5 +137,5 @@ export const useUploadMedia = (
     </Dialog.Root>
   )
 
-  return { upload, pendingCount, duplicateDialog }
+  return { upload, importUrl, pendingCount, duplicateDialog }
 }

@@ -91,6 +91,8 @@
     "missingFile": "Nie przesłano żadnego pliku",
     "notFound": "Nie znaleziono pliku multimedialnego",
     "tooLarge": "Plik jest za duży",
-    "uploadFailed": "Nie udało się przesłać pliku"
+    "uploadFailed": "Nie udało się przesłać pliku",
+    "invalidUrl": "Nieprawidłowy adres URL mediów",
+    "importFailed": "Nie udało się pobrać mediów"
   }
 }

@@ -1,5 +1,6 @@
 import {
   ACCEPTED_MEDIA_TYPES,
+  MAX_MEDIA_SIZE,
   MEDIA_URL_PREFIX,
 } from "@razzia/common/constants"
 import type {
@@ -153,8 +154,17 @@ export const saveMedia = async (file: File): Promise<UploadedMedia> => {
   }
 
   const { ext, type } = ACCEPTED_MEDIA_TYPES[detected.mime]
-  const dir = getMediaDir()
   const baseName = file.name.replace(/\.[^.]*$/u, "")
+
+  return persistMedia(buffer, baseName, { ext, type })
+}
+
+const persistMedia = (
+  buffer: Buffer,
+  baseName: string,
+  { ext, type }: { ext: string; type: UploadedMediaType },
+): UploadedMedia => {
+  const dir = getMediaDir()
   const generateName = () =>
     `${normalizeFilename(baseName, { fallback: "media", maxLength: MAX_SLUG_LENGTH })}${ext}`
 
@@ -191,6 +201,81 @@ export const saveMedia = async (file: File): Promise<UploadedMedia> => {
   writeHashes({ ...hashes, [hash]: name })
 
   return toUploadedMedia(name, type)
+}
+
+const readBodyWithLimit = async (
+  response: Response,
+  limit: number,
+): Promise<Buffer> => {
+  const declared = response.headers.get("content-length")
+
+  if (declared && Number(declared) > limit) {
+    throw unsupportedMediaType("errors:media.tooLarge")
+  }
+
+  const reader = response.body?.getReader()
+
+  if (!reader) {
+    throw invalidInput("errors:media.importFailed")
+  }
+
+  const chunks: Buffer[] = []
+  let size = 0
+
+  for (;;) {
+    // Chunks arrive sequentially from the stream, they cannot be awaited in parallel.
+    // eslint-disable-next-line no-await-in-loop
+    const { done, value } = await reader.read()
+
+    if (done) {
+      break
+    }
+
+    size += value.byteLength
+
+    if (size > limit) {
+      // eslint-disable-next-line no-await-in-loop
+      await reader.cancel()
+      throw unsupportedMediaType("errors:media.tooLarge")
+    }
+
+    chunks.push(Buffer.from(value))
+  }
+
+  return Buffer.concat(chunks)
+}
+
+export const importMediaFromUrl = async (
+  rawUrl: string,
+): Promise<UploadedMedia> => {
+  const url = new URL(rawUrl)
+
+  if (url.protocol !== "http:" && url.protocol !== "https:") {
+    throw invalidInput("errors:media.invalidUrl")
+  }
+
+  const response = await fetch(url, {
+    redirect: "follow",
+    signal: AbortSignal.timeout(30_000),
+  }).catch(() => undefined)
+
+  if (!response?.ok) {
+    throw invalidInput("errors:media.importFailed")
+  }
+
+  const buffer = await readBodyWithLimit(response, MAX_MEDIA_SIZE)
+  const detected = await fileTypeFromBuffer(buffer)
+
+  if (!detected || !isAcceptedMime(detected.mime)) {
+    throw unsupportedMediaType("errors:media.invalidType")
+  }
+
+  const { ext, type } = ACCEPTED_MEDIA_TYPES[detected.mime]
+  const baseName = decodeURIComponent(
+    url.pathname.split("/").pop() ?? "",
+  ).replace(/\.[^.]*$/u, "")
+
+  return persistMedia(buffer, baseName, { ext, type })
 }
 
 export const deleteMedia = (name: string): void => {

@@ -91,6 +91,8 @@
     "missingFile": "Er is geen bestand verzonden",
     "notFound": "Media niet gevonden",
     "tooLarge": "Bestand is te groot",
-    "uploadFailed": "Kan het bestand niet uploaden"
+    "uploadFailed": "Kan het bestand niet uploaden",
+    "invalidUrl": "Ongeldige media-URL",
+    "importFailed": "Downloaden van de media is mislukt"
   }
 }

@@ -1,6 +1,7 @@
 import {
   MAX_MEDIA_SIZE,
   MEDIA_TYPES,
+  MEDIA_URL_PREFIX,
   QUESTION_TYPES,
 } from "@razzia/common/constants"
 import type { QuestionMediaType } from "@razzia/common/types/game"
@@ -48,7 +49,7 @@ const QuestionEditorMedia = () => {
 
   const isPinQuestion = currentQuestion.type === QUESTION_TYPES.PIN
 
-  const { upload, pendingCount, duplicateDialog } = useUploadMedia(
+  const { upload, importUrl, pendingCount, duplicateDialog } = useUploadMedia(
     ({ type, url }) => updateQuestion(currentIndex, { media: { type, url } }),
   )
   const isUploading = pendingCount > 0
@@ -67,10 +68,19 @@ const QuestionEditorMedia = () => {
   }
 
   const hadnleChangeMediaType = (type: QuestionMediaType) => () => {
-    const result = questionMediaValidator.safeParse({
-      type,
-      url: questionMedia?.url,
-    })
+    const url = questionMedia?.url
+
+    if (!url) {
+      return
+    }
+
+    if (!url.startsWith(MEDIA_URL_PREFIX)) {
+      importUrl(url)
+
+      return
+    }
+
+    const result = questionMediaValidator.safeParse({ type, url })
 
     if (!result.success) {
       toast.error(t(result.error.issues[0].message))

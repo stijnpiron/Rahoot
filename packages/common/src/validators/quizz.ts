@@ -33,6 +33,12 @@ export const mediaUploadValidator = z.object({
     .max(MAX_MEDIA_SIZE, "errors:media.tooLarge"),
 })
 
+export const mediaUrlImportValidator = z.object({
+  url: z
+    .url("errors:media.invalidUrl")
+    .refine((url) => /^https?:/u.test(url), "errors:media.invalidUrl"),
+})
+
 const questionSchema = z.object({
   type: z.enum(QUESTION_TYPES),
   question: z.string(),

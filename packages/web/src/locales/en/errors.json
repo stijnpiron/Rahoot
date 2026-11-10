@@ -91,6 +91,8 @@
     "missingFile": "No file was sent",
     "notFound": "Media not found",
     "tooLarge": "File is too large",
-    "uploadFailed": "Failed to upload the file"
+    "uploadFailed": "Failed to upload the file",
+    "invalidUrl": "Invalid media URL",
+    "importFailed": "Failed to download the media"
   }
 }

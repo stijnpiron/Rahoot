@@ -91,6 +91,8 @@
     "missingFile": "Chưa có tệp nào được gửi",
     "notFound": "Không tìm thấy media",
     "tooLarge": "Tệp quá lớn",
-    "uploadFailed": "Tải tệp lên thất bại"
+    "uploadFailed": "Tải tệp lên thất bại",
+    "invalidUrl": "URL media không hợp lệ",
+    "importFailed": "Không thể tải xuống media"
   }
 }

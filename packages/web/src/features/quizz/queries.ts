@@ -14,5 +14,8 @@ export const mediaListQuery = () =>
 export const uploadMedia = (file: File) =>
   unwrap(api.media.$post({ form: { file } }), "errors:media.uploadFailed")
 
+export const importMediaFromUrl = (url: string) =>
+  unwrap(api.media.url.$post({ json: { url } }), "errors:media.importFailed")
+
 export const deleteMedia = (name: string) =>
   unwrapEmpty(api.media[":name"].$delete({ param: { name } }))

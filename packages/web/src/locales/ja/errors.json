@@ -91,6 +91,8 @@
     "missingFile": "ファイルが送信されていません",
     "notFound": "メディアが見つかりません",
     "tooLarge": "ファイルサイズが大きすぎます",
-    "uploadFailed": "ファイルのアップロードに失敗しました"
+    "uploadFailed": "ファイルのアップロードに失敗しました",
+    "invalidUrl": "無効なメディアURLです",
+    "importFailed": "メディアのダウンロードに失敗しました"
   }
 }

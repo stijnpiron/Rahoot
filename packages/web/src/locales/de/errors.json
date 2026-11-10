@@ -91,6 +91,8 @@
     "missingFile": "Es wurde keine Datei gesendet",
     "notFound": "Medium nicht gefunden",
     "tooLarge": "Die Datei ist zu groß",
-    "uploadFailed": "Hochladen der Datei fehlgeschlagen"
+    "uploadFailed": "Hochladen der Datei fehlgeschlagen",
+    "invalidUrl": "Ungültige Medien-URL",
+    "importFailed": "Medien konnte nicht heruntergeladen werden"
   }
 }

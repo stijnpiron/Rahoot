@@ -1,11 +1,17 @@
-import { MEDIA_TYPES } from "@razzia/common/constants"
-import type { QuestionMediaType, UploadedMedia } from "@razzia/common/types/game"
+import { MEDIA_TYPES, MEDIA_URL_PREFIX } from "@razzia/common/constants"
+import type {
+  QuestionMediaType,
+  UploadedMedia,
+} from "@razzia/common/types/game"
 import { questionMediaValidator } from "@razzia/common/validators/quizz"
 import Button from "@razzia/web/components/Button"
 import Input from "@razzia/web/components/Input"
 import QuestionMedia from "@razzia/web/components/QuestionMedia"
 import MediaLibrary from "@razzia/web/features/quizz/components/QuestionEditor/MediaLibrary"
-import { UPLOAD_ACCEPT, useUploadMedia } from "@razzia/web/features/quizz/hooks/useUploadMedia"
+import {
+  UPLOAD_ACCEPT,
+  useUploadMedia,
+} from "@razzia/web/features/quizz/hooks/useUploadMedia"
 import clsx from "clsx"
 import {
   ChevronDown,
@@ -37,8 +43,13 @@ const QuizzMediaPicker = () => {
   const [isUrlOpen, setIsUrlOpen] = useState(Boolean(media?.url))
   const { t } = useTranslation()
 
-  const { upload, pendingCount, duplicateDialog } = useUploadMedia(
-    (item: UploadedMedia) => setValue("media", { type: item.type, url: item.url }, { shouldDirty: true }),
+  const { upload, importUrl, pendingCount, duplicateDialog } = useUploadMedia(
+    (item: UploadedMedia) =>
+      setValue(
+        "media",
+        { type: item.type, url: item.url },
+        { shouldDirty: true },
+      ),
   )
   const isUploading = pendingCount > 0
 
@@ -53,10 +64,19 @@ const QuizzMediaPicker = () => {
   }
 
   const handleChangeMediaType = (type: QuestionMediaType) => () => {
-    const result = questionMediaValidator.safeParse({
-      type,
-      url: media?.url,
-    })
+    const url = media?.url
+
+    if (!url) {
+      return
+    }
+
+    if (!url.startsWith(MEDIA_URL_PREFIX)) {
+      importUrl(url)
+
+      return
+    }
+
+    const result = questionMediaValidator.safeParse({ type, url })
 
     if (!result.success) {
       return
@@ -104,7 +124,11 @@ const QuizzMediaPicker = () => {
       {isOpen && (
         <div className="bg-background absolute top-12 left-0 z-30 flex w-80 flex-col items-center gap-3 rounded-xl p-4 shadow-xl">
           {media?.url ? (
-            <QuestionMedia media={media} alt={t("quizz:titleQuizzPlaceholder")} autoPlay={false} />
+            <QuestionMedia
+              media={media}
+              alt={t("quizz:titleQuizzPlaceholder")}
+              autoPlay={false}
+            />
           ) : (
             <ImageOff className="stroke-accent-foreground size-10" />
           )}
@@ -185,7 +209,11 @@ const QuizzMediaPicker = () => {
         </div>
       )}
 
-      <MediaLibrary open={isLibraryOpen} onOpenChange={setIsLibraryOpen} onSelect={handleSelectFromLibrary} />
+      <MediaLibrary
+        open={isLibraryOpen}
+        onOpenChange={setIsLibraryOpen}
+        onSelect={handleSelectFromLibrary}
+      />
 
       {duplicateDialog}
     </div>

@@ -1,12 +1,13 @@
 import { getPath } from "@razzia/socket/services/config"
 import {
   deleteMedia,
+  importMediaFromUrl,
   listMedia,
   saveMedia,
 } from "@razzia/socket/services/media"
 import fs from "fs"
 import { join } from "path"
-import { beforeEach, describe, expect, it } from "vitest"
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
 const PNG_BYTES = Buffer.from(
   "89504e470d0a1a0a0000000d4948445200000001000000010806000000",
@@ -67,6 +68,75 @@ describe("listMedia", () => {
     fs.writeFileSync(join(mediaDir(), "with space.png"), "")
 
     expect(listMedia().map((m) => m.name)).toEqual([media.name])
+  })
+})
+
+describe("importMediaFromUrl", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals()
+  })
+
+  const stubFetch = (response: Partial<Response>) => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() => Promise.resolve(response as Response)),
+    )
+  }
+
+  const stubBody = (bytes: Uint8Array) => ({
+    ok: true,
+    headers: new Headers(),
+    body: new ReadableStream({
+      start(controller) {
+        controller.enqueue(bytes)
+        controller.close()
+      },
+    }),
+  })
+
+  it("downloads, detects and stores the media", async () => {
+    stubFetch(stubBody(PNG_BYTES))
+
+    const media = await importMediaFromUrl(
+      "https://example.com/pictures/My%20Cat.png",
+    )
+
+    expect(media.type).toBe("image")
+    expect(media.name).toMatch(/^my-cat-[\w-]{8}\.png$/u)
+    expect(fs.existsSync(join(mediaDir(), media.name))).toBe(true)
+  })
+
+  it("rejects non-http protocols", async () => {
+    await expect(
+      importMediaFromUrl("ftp://example.com/cat.png"),
+    ).rejects.toThrow("errors:media.invalidUrl")
+  })
+
+  it("rejects a failed download", async () => {
+    stubFetch({ ok: false })
+
+    await expect(
+      importMediaFromUrl("https://example.com/cat.png"),
+    ).rejects.toThrow("errors:media.importFailed")
+  })
+
+  it("rejects content that is not an accepted media", async () => {
+    stubFetch(stubBody(new TextEncoder().encode("<html></html>")))
+
+    await expect(
+      importMediaFromUrl("https://example.com/page"),
+    ).rejects.toThrow("errors:media.invalidType")
+  })
+
+  it("rejects downloads larger than the media size limit", async () => {
+    stubFetch({
+      ok: true,
+      headers: new Headers({ "content-length": String(101 * 1024 * 1024) }),
+    })
+
+    await expect(
+      importMediaFromUrl("https://example.com/huge.png"),
+    ).rejects.toThrow("errors:media.tooLarge")
   })
 })
 

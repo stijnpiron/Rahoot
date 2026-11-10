@@ -91,6 +91,8 @@
     "missingFile": "Aucun fichier envoyé",
     "notFound": "Média introuvable",
     "tooLarge": "Le fichier est trop volumineux",
-    "uploadFailed": "Échec de l'import du fichier"
+    "uploadFailed": "Échec de l'import du fichier",
+    "invalidUrl": "URL du média invalide",
+    "importFailed": "Échec du téléchargement du média"
   }
 }

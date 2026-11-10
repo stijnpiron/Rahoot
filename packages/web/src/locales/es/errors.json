@@ -91,6 +91,8 @@
     "missingFile": "No se ha enviado ningún archivo",
     "notFound": "Archivo no encontrado",
     "tooLarge": "El archivo es demasiado grande",
-    "uploadFailed": "No se pudo subir el archivo"
+    "uploadFailed": "No se pudo subir el archivo",
+    "invalidUrl": "URL del medio no válida",
+    "importFailed": "No se pudo descargar el medio"
   }
 }
